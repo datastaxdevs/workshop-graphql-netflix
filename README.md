@@ -155,11 +155,11 @@ Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in you
 
 ![image](img/graphql-playground.png?raw=true)
 
-✅ In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix`:
+✅ In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix_keyspace` if you used a different name:
 ```yaml
 mutation {
   reference_list: createTable(
-    keyspaceName:"netflix",
+    keyspaceName:"netflix_keyspace",
     tableName:"reference_list",
     ifNotExists:true
     partitionKeys: [ 
@@ -176,7 +176,7 @@ mutation {
 
 ## 4. Insert data in the Table with GraphQL
 
-✅ In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
+✅ In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix_keyspace`
 
 ✅ Populate HTTP HEADER variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
 
@@ -262,7 +262,7 @@ query getAllGenre {
 ```yaml
 mutation {
   movies_by_genre: createTable(
-    keyspaceName:"netflix",
+    keyspaceName:"netflix_keyspace",
     tableName:"movies_by_genre",
     ifNotExists: true,
     partitionKeys: [
@@ -345,7 +345,7 @@ mutation insertMovies {
 
 ✅ In GraphQL Playground, not changing tab (yeah) list values from the table with the following command.
 
-```
+```yaml
 query getMovieAction {
     movies_by_genre (
       value: {genre:"Sci-Fi"},
@@ -452,7 +452,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 
 ## 5. Retrieve application token to securely connect to the database
 
-Use the token you previously generated.
+Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using the instructions above
 
 ## 6. Configure Environment Variables and Install Dependencies
 
@@ -522,20 +522,11 @@ Now that you've hooked everything up, time to deplpoy to production.
   ```
   
   You've deployed your app to Netlify!
-  (EDIT IMAGE)
-  ![Netlify Setup Example](./tutorial/images/netlify-livesite.png?raw=true)
+  ![Netlify Setup Example](./tutorial/images/prodDeploy.png?raw=true)
 
 # Part 3 - Working with AstraDB and the GraphQL API
 
-## EDIT  ME
-
-
-# Part 3 - Serverless Functions, how they work
-So how do these functions work with no back-end server?
-
-The short answer is that Netlify is providing the back-end environment for us. All we have to do is tell Netlify where to find the functions. Netlify will do the rest.
-
-### 15. Serverless configuration
+### Serverless configuration
 
 Take a look at `netlify.toml`.
 
