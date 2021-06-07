@@ -116,7 +116,7 @@ _Make sure to chose a password with minimum 8 characters, containing upper and l
 |Field| Value|
 |---|---|
 |**database name**| `netflix_workshop_db` |
-|**keypace**| `netflix_keyspace` |
+|**keyspace**| `netflix_keyspace` |
 |**Cloud Provider**| *Use the one you like, click a cloud provider logo,  pick an Area in the list and finally pick a region.* |
 
 _You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
@@ -352,11 +352,7 @@ mutation insertMovies {
 *👁️ Expected output*
 ![image](img/graphql-playground-5.png?raw=true)
 
-```diff
--(EDIT)
-```
-
-> ℹ️ To get more movie data check the files in the `data` folder.
+> ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
 
 [🏠 Back to Table of Contents](#table-of-content)
 
