@@ -445,7 +445,6 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
  npm install -g netlify-cli
 ```
 
-(EDIT IMAGE)
  * <details><summary>Show me!</summary>
     <img src="tutorial/images/netlify-install-cli.png?raw=true" />
     </details>
