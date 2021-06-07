@@ -50,7 +50,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
 
-## Homework (EDIT)
+## Homework
 
 <img src="tutorial/images/netflix-badge.png?raw=true" width="200" align="right" />
 
