@@ -39,19 +39,19 @@ A simple Netflix clone running on AstraDB that leverages the GraphQL API.
 
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
-- [Slide deck](./slides/slides.pdf)(EDIT)
+- [Slide deck](./slides/slides.pdf)
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
 
-## Homework (EDIT)
+## Homework
 
-<img src="tutorial/images/tiktok-badge.png?raw=true" width="200" align="right" />
+<img src="tutorial/images/netflix-badge.png?raw=true" width="200" align="right" />
 
 Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
 
-1. Complete the practice steps from this repository as described below. Make screenshots alongside the steps and show us your deployed production TikTok clone up in Netlify.
+1. Complete the practice steps from this repository as described below. Make screenshots alongside the steps and show us your deployed production Netlfix clone up in Netlify.
 2. (Optional extra credit) Watch the 2 hour Ania video [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the completed app.
-3. Submit your homework [here](https://github.com/datastaxdevs/workshop-astra-tik-tok/issues/new?assignees=HadesArchitect&labels=homework%2Cpending&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
+3. Submit your homework [here](https://github.com/datastaxdevs/workshop-astra-tik-tok/issues/new?assignees=HadesArchitect&labels=homework%2Cpending&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E) (EDIT)
 
 That's it, you are done! Expect an email next week!
   
