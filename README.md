@@ -90,9 +90,6 @@ That's it, you are done! Expect an email next week!
 8. [Connect Netlify to your site](#9-connect-netlify-to-your-site)
 9. [Deploy to production](#10-deploy-to-production)
 
-### Part III - Working with AstraDB and the GraphQL API
-1. [Serverless Configuration](#11-connecting-the-database)
-
 ### Extra resources
 [What is JamStack?](jamstack.md)
 
@@ -614,33 +611,6 @@ Now that you've hooked everything up, time to deplpoy to production.
   You've deployed your app to Netlify!
   ![Netlify Setup Example](./tutorial/images/prodDeploy.png?raw=true)
 
-# Part 3 - Working with AstraDB and the GraphQL API
-
-## Serverless configuration
-
-Take a look at `netlify.toml`.
-
-```
-[build]
-command = "npm run build"
-functions = "functions"
-publish = "build"
-```
-
-This is the configuration file we include in our codebase that tells Netlify how to build our app. In our case it's really simple. First we give the `build` command to build our app: `npm run build`. Then we tell Netlify where to find our serverless functions, and finally where to find the resulting app after build.
-
-So Netlify will create endpoints for our serverless functions based on the files it finds in our functions folder.
-
-✅ We can see these functions in our Netlify account.
-- Go to netlify.com and sign in.
-- Select your site from the list.
-- Select the "Functions" tab at the top.
-
-![netlify_functions](./tutorial/images/netlify_functions_tab.gif)
-
-From here we can see all our functions and get direct links as well as watch real time logs.
-
-![netlify_endpoint](./tutorial/images/netlify_endpoint_nav.gif)
 
 # Extra resources
 
