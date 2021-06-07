@@ -427,7 +427,6 @@ This will take a few minutes.
 
 ### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
 
-(EDIT IMAGE)
 ![correct notcorrect](tutorial/images/correct-not-correct.png?raw=true)
 
 If you are still using the `datastaxdevs` repo please ensure to follow the previous step, [step3](#3-clone-your-github-repository) to get to your repo.
