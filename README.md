@@ -80,15 +80,15 @@ That's it, you are done! Expect an email next week!
 9. [Load a CSV DataSet](#9-load-a-csv-dataset)
 
 ###  Part II - Deploy to Production
-1. [Deploy to Netlify](#2-deploy-to-netlify)
-2. [Clone your GitHub repository](#3-clone-your-github-repository)
-3. [Launch GitPod](#4-launch-gitpod-ide)
-4. [Install the Netlify CLI](#5-install-the-netlify-cli-command-line-interface)
-5. [Retrieve application token to securely connect to the database](#6-generate-application-token-to-securely-connect-to-the-database)
-6. [Configure Environment Variables and Install Dependencies](#7-configure-and-connect-database)
-7. [Launch your app](#8-launch-your-app)
-8. [Connect Netlify to your site](#9-connect-netlify-to-your-site)
-9. [Deploy to production](#10-deploy-to-production)
+1. [Deploy to Netlify](#1-deploy-to-netlify)
+2. [Clone your GitHub repository](#2-clone-your-github-repository)
+3. [Launch GitPod](#3-launch-gitpod-ide)
+4. [Install the Netlify CLI](#4-install-the-netlify-cli-command-line-interface)
+5. [Retrieve application token to securely connect to the database](#5-generate-application-token-to-securely-connect-to-the-database)
+6. [Configure Environment Variables and Install Dependencies](#6-configure-and-connect-database)
+7. [Launch your app](#7-launch-your-app)
+8. [Connect Netlify to your site](#8-connect-netlify-to-your-site)
+9. [Deploy to production](#9-deploy-to-production)
 
 ### Extra resources
 [What is JamStack?](jamstack.md)
@@ -442,7 +442,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 > *If the file open in the browser save it with the name `movies.csv`. This is important as the filename will be the table name.*
 
 <p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/dataset/movies.csv">
+<a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/data/movies.csv">
  <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
 </a>
 </p>
@@ -540,6 +540,12 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 ## 5. Retrieve application token to securely connect to the database
 
 Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using the instructions above
+
+You will also need the GraphQL Endpoint for your keyspace.
+First, go to the AstraDB connect page for your database.
+![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
+Then scroll down to find the endpoint for your keyspace.
+![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
 
 ## 6. Configure Environment Variables and Install Dependencies
 
