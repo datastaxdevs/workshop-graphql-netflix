@@ -1,0 +1,25 @@
+tasks:
+  - name: workshop-graphql-netflix
+    init: |
+      cd /workspace/workshop-graphql-netflix
+      nvm install node
+      npm install -g npm@latest
+    command: |
+      cd /workspace/workshop-graphql-netflix
+      echo "workshopgraphql-netflix gitpod ready - LET'S DO THIS!"
+      npm install
+ports:
+  - port: 8888
+    onOpen: open-preview
+  - port: 3000
+    onOpen: ignore      
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false

@@ -10,6 +10,7 @@
 A simple **ReactJS** Netflix homepage clone running on *AstraDB* that leverages a GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
 
 <!--- ENDEXCLUDE --->
+- [Live Demo](https://workshop-graphql-netflix.netlify.app/) or [Video Walkthrough](https://imgur.com/3ns3UJB)
 
 ![image](./img/ui.png)
 
@@ -577,7 +578,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 
 ## 5. Retrieve application token to securely connect to the database
 
-Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using the instructions above
+Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using [the instructions above](#2-create-a-security-token)
 
 You will also need the GraphQL Endpoint for your keyspace.
 First, go to the AstraDB connect page for your database.
@@ -608,21 +609,48 @@ npm install
   * The application should automatically launch in the GitPod preview pane
 
 ## 8. Connect Netlify to your site
+
 Execute each of the commands below to link your code to your Netlify deployment.
-  * First thing, we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL-C` (control key + the C key) in order to stop the process.
-  * Then continue with the following commands
-  * This will pop up a browser to authenticate with netlify
+
+✅ **Step 8a:**  we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
+
+✅ **Step 8b:** Enter the followiing command to pop up a browser to authenticate with netlify
+
   ```
   netlify login
   ```
-  _Note, when using GitPod the preview pane will not display this properly. You must click the "open in a new window" button in the very top right of the preview pane._
 
-  * This will link your workspace to the associated site
-  ```
-  netlify link
-  ```
+*👁️ Expected output*
+```
+Opening https://app.netlify.com/authorize?....
+⠋ Waiting for authorization...^C
+```
 
-  * This will take the .env file created by astra-setup and upload it to netlify
+✅ **Step 8c:** Open the link in a new WINDOWS for the link to work, git
+
+  > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
+
+*👁️ Expected output*
+
+```
+You are now logged into your Netlify account!
+Run netlify status for account details
+To see all available commands run: netlify help
+gitpod /workspace/workshop-graphql-netflix $ 
+```
+
+✅ **Step 8d:** link your workspace to the associated site with the following command
+
+```
+netlify link
+```
+
+*👁️ Expected output*
+
+![image](tutorial/images/netlify-link.png?raw=true)
+
+✅ **Step 8e:** take the .env file upload it to netlify
+  
   ```
   netlify env:import .env
   ```
