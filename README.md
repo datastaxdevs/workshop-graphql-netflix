@@ -5,7 +5,7 @@
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
 
-*50 minutes, Intermediate, [Start Building](#running-astra-netflix)*
+*50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
 
 A simple **ReactJS** Netflix homepage clone running on *AstraDB* that leverages a GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
 
@@ -103,7 +103,7 @@ That's it, you are done! Expect an email next week!
 
 **`ASTRADB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.  
 
-✅ Click the button to login or register with Datastax. You can use your `Github`, `Google` accounts or register with an `email`.
+✅ **Step 1a:** Click the button to login or register with Datastax. You can use your `Github`, `Google` accounts or register with an `email`.
 
 _Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
 
@@ -127,25 +127,25 @@ You will see your new database `pending` in the Dashboard.
 
 The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 
 ## 2. Create a security token
 
-✅ [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen
+✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen
 
-Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value would not be provided afterward.
+✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value would not be provided afterward.
 
 **👁️ Expected output**
 - <details><summary>Show me!</summary>
     <img src="img/astra-create-token.gif?raw=true" />
 </details>
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 3. Create table **genre** with GraphQL
 
-✅ Open **GraphQL Playground** by 
+✅  **Step 3a:** Open **GraphQL Playground** by 
 1. Click on your active database
 2. Click `Connect` TAB
 3. Click `GRAPHQL API`
@@ -156,11 +156,11 @@ Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in you
 
 > *Note that values in the picture do no reflect the database name `netflix_workshop_db`, reason is we do not reproduce every pictures each time*
 
-✅ In GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
+✅  **Step 3b:** In GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
 
 ![image](img/graphql-playground.png?raw=true)
 
-✅ In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix_keyspace` if you used a different name:
+✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix_keyspace` if you used a different name:
 
 - Copy the following mutation on the left panel
 ```yaml
@@ -182,17 +182,17 @@ mutation {
 
 ![image](tutorial/images/playground-1.png?raw=true)
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 4. Insert data in the Table with GraphQL
 
-✅ In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix_keyspace`
+✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix_keyspace`
 
-✅ Populate **HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
+✅  **Step 3b:** Populate **HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
 
 ![image](img/graphql-playground-2.png?raw=true)
 
-✅ In GraphQL Playground,populate the `reference_list` table with the following values
+✅  **Step 4c:** In GraphQL Playground,populate the `reference_list` table with the following values
 
 - Copy the following mutation on the left panel
 
@@ -248,11 +248,11 @@ mutation insertGenres {
 
 * Use the arrow in the middle of the screen to execute the query
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 5. Retrieving list of values
 
-✅ In GraphQL Playground, not changing tab (yeah) list values from the table with the following query.
+✅  **Step 5a:** In GraphQL Playground, not changing tab (yeah) list values from the table with the following query.
 
 ```yaml
 query getAllGenre {
@@ -267,11 +267,11 @@ query getAllGenre {
 *👁️ Expected output*
 ![image](img/graphql-playground-3.png?raw=true)
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 6. Creating a Movies Table
 
-✅ Move to tab `GRAPHQL-SCHEMA`, everything should be set, use the following mutation to create a new table:
+✅  **Step 6a:** Move to tab `GRAPHQL-SCHEMA`, everything should be set, use the following mutation to create a new table:
 
 ```yaml
 mutation {
@@ -298,11 +298,11 @@ mutation {
 *👁️ Expected output*
 ![image](img/graphql-playground-4.png?raw=true)
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 7. Insert Values in Movie table
 
-✅ Move to tab `GRAPHQL`, everything should be set, use the following mutation to populate movies table: 
+✅  **Step 7a:** Move to tab `GRAPHQL`, everything should be set, use the following mutation to populate movies table: 
 
 ```yaml
 mutation insertMovies {
@@ -354,11 +354,11 @@ mutation insertMovies {
 
 > ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
 
-[🏠 Back to Table of Contents](#table-of-content)
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 8. Retrieve values from Movie tables
 
-✅ In GraphQL Playground, not changing tab (yeah) list values from the table with the following command.
+✅  **Step 8a:** In GraphQL Playground, not changing tab (yeah) list values from the table with the following command.
 
 ```yaml
 query getMovieAction {
@@ -379,7 +379,7 @@ query getMovieAction {
 *👁️ Expected output*
 ![image](img/graphql-playground-6.png?raw=true)
 
-✅ For small datasets you can retrieve all values in the table but for performance or network reasons you need to you paging. Let's do the same query asking for a `page size to 2`
+✅ **Step 8b Enable paging:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform paging. Let's do same query as before now asking for a `page size to 2`
 
 ```yaml
 query getMovieAction {
@@ -399,9 +399,11 @@ query getMovieAction {
 }
 ```
 
+*👁️ Expected output*
+
 ![image](tutorial/images/playground-2.png?raw=true)
 
-Notice that `pageState` is also now returned. Let's use it to fetch the next 2 items. Edit the next query to replace your own pageState `YOUR_PAGE_STATE`
+✅ **Step 8c: Fetch next page paging:**  Notice that `pageState` is also now returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace your own pageState `YOUR_PAGE_STATE`
 
 ```yaml
 query getMovieAction {
@@ -421,13 +423,11 @@ query getMovieAction {
 }
 ```
  
-voila !
+*👁️ Expected output*
 
 ![image](tutorial/images/playground-3.png?raw=true)
 
-<br/>
-<br/>
-<br/>
+[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 9. Load a CSV DataSet
 
@@ -443,21 +443,63 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 </a>
 </p>
 
-✅ **Step 9b: Open Astra Data Loader**
+✅ **Step 9b: Open Astra Data Loader Importer**
+
+- Locate the `Upload Data button` to open the Data Loader.
+
+![image](tutorial/images/import-movies-0.png?raw=true)
+
+✅ **Step 9c: Upload the dataset**
+
+Click on the area Drag n drop a single file and look for the file `movies.csv` on your machine, this file has been downloaded in step 9b.
 
 ![image](tutorial/images/import-movies-1.png?raw=true)
 
+Once the file has been upload notive the `Upload Successful` message in green. You can now click `NEXT`
+
+✅ **Step 9d: Define target table**
+
+- Locate the field Table Name and make sure and set value to `movies_by_genre`
+
 ![image](tutorial/images/import-movies-2.png?raw=true)
+
+- In `Keys and Clustering` section enter `genre` as the partition key.
+
+![image](tutorial/images/import-movies-4.png?raw=true)
+
+You can now click on `NEXT` to move forward.
+
+✅ **Step 9e: Define target database**
 
 ![image](tutorial/images/import-movies-3.png?raw=true)
 
+Select the database we are currently using:
 
-✅ **Step 9c: Open Astra Data Loader**
+| Field | Value |
+| --- | --- |
+| **Target Database** | `netflix_workshop_db` |
+| **Target Keyspace** | `netflix_keyspace` |
 
+and click next to launch the treatment asynchronously.
+
+✅ **Step 9f: Wait for the batch to import your data**
+
+After a few seconds (about 30s) ,you will get an email informing you that the batch has been scheduled.
+
+![image](tutorial/images/import-movies-5.png?raw=true)
+
+As you can see the operation here is asynchronous. About a minute later your will get another email to tell you the data has been inserted.
+
+![image](tutorial/images/import-movies-6.png?raw=true)
+
+**Congratulations the Database is SET !!!**
+
+[🏠 Back to Table of Contents](#table-of-contents)
 
 # Part 2 - Deploy to Production
 
 ## 1. Deploy to Netlify
+
 - <details><summary> What does the netlify deploy button do?</summary>The Netlify deploy button will:<ul>
     <li>Create a new repository for you on Github</li>
     <li>Create a site on Netlify</li>
@@ -466,7 +508,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 
 - Click the button to deploy
 
-  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/RyanWelford/workshop-graphql-netflix)
+  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
  * <details><summary>Show me!</summary>
     <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
     </details>
