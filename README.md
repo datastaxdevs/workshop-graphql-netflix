@@ -133,7 +133,7 @@ The status will change to `Active` when the database is ready, this will only ta
 
 ## 2. Create a security token
 
-✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen
+✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen. Use "Database Administrator" permission.
 
 ✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value would not be provided afterward.
 
@@ -273,6 +273,7 @@ query getAllGenre {
 ## 6. Creating a Movies Table
 
 ✅  **Step 6a:** Move to tab `GRAPHQL-SCHEMA`, everything should be set, use the following mutation to create a new table:
+_Remember to change the keyspaceName if you used something different.
 
 ```yaml
 mutation {
@@ -436,7 +437,7 @@ query getMovieAction {
 
 To download the DATASET, right-click (or CTRL + Click to open in new tab) the button below and download the targat file on your machine.
 
-> *If the file open in the browser save it with the name `movies.csv`. This is important as the filename will be the table name.*
+> *If the file opens in the browser save it with the name `movies.csv`. This is important as the filename will be the table name.*
 
 <p align="left">
 <a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/data/movies.csv">
@@ -565,6 +566,8 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 
      [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
    </details>
+   
+ℹ️ _It may take a moment for GitPod to fully initialize.
 
 ## 4. Install the Netlify CLI (Command Line Interface)
  * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
@@ -626,7 +629,7 @@ Opening https://app.netlify.com/authorize?....
 ⠋ Waiting for authorization...^C
 ```
 
-✅ **Step 8c:** Open the link in a new WINDOWS for the link to work, git
+✅ **Step 8c:** Open the link in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
 
   > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
 
