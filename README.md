@@ -61,7 +61,7 @@ Don't forget to complete your upgrade and get your verified skill badge! Finish 
 2. Insert a movie of your choice in the database.
 3. Make screenshots alongside the steps and show us your deployed production Netflix clone up in Netlify.
 4. (Optional extra credit) Watch the 2 hour Ania video [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the completed app.
-5. Submit your homework [here](https://github.com/datastaxdevs/workshop-graphql-netflix/issues/new?assignees=HadesArchitect&labels=homework%2Cpending&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
+5. Submit your homework [here](https://github.com/datastaxdevs/workshop-graphql-netflix/issues/new?assignees=HadesArchitect%2C+SonicDMG%2C+RyanWelford&labels=homework%2C+wait+for+review&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
 
 That's it, you are done! Expect an email next week!
   
