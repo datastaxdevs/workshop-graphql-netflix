@@ -1,5 +1,5 @@
 <!--- STARTEXCLUDE --->
-# 🎓 Netflix Clone using AstraDB and GraphQL
+# 🎓 Netflix Clone using Astra DB and GraphQL
 
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -7,7 +7,7 @@
 
 *50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
 
-A simple **ReactJS** Netflix homepage clone running on *AstraDB* that leverages a GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
+A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages a GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
 
 <!--- ENDEXCLUDE --->
 - [Live Demo](https://workshop-graphql-netflix.netlify.app/) or [Video Walkthrough](https://imgur.com/3ns3UJB)
@@ -18,7 +18,7 @@ A simple **ReactJS** Netflix homepage clone running on *AstraDB* that leverages 
 * Deploy a Netflix clone to production
 * Learn **GraphQL API** and how to use it with a database to create the tables and navigate the data.
 * Learn about **paging** and **infinite scrolling** in web ui
-* Leverage Netlify and DataStax AstraDB
+* Leverage Netlify and DataStax Astra DB
 
 ## ℹ️ Frequently asked questions ℹ️ 
 
@@ -33,7 +33,7 @@ A simple **ReactJS** Netflix homepage clone running on *AstraDB* that leverages 
 
 - *What other prerequisites are there?*
 > * You will need a github account
-> * You will also need Netlify and AstraDB accounts, but we'll work through that in the exercises
+> * You will also need Netlify and Astra DB accounts, but we'll work through that in the exercises
 > * Use **Chrome** or **Firefox** for the best experience. Other browsers are great, but don't work well with the GitPod integration we use a bit later.
 
 - *Do I need to pay for anything for this workshop?*
@@ -70,7 +70,7 @@ That's it, you are done! Expect an email next week!
 ## Table of contents
 
 ### Part I - DB Setup & Data Ingest
-1. [Create AstraDB Instance](#1-login-or-register-to-astradb-and-create-database)
+1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
 2. [Create a security token](#2-create-a-security-token)
 3. [Create table **genre** with GraphQL](#3-create-table-genre-with-graphql)
 4. [Insert data in **genre**  with GraphQL](#4-insert-data-in-the-table-with-graphql)
@@ -584,7 +584,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using [the instructions above](#2-create-a-security-token)
 
 You will also need the GraphQL Endpoint for your keyspace.
-First, go to the AstraDB connect page for your database.
+First, go to the Astra DB connect page for your database.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
 Then scroll down to find the endpoint for your keyspace.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
@@ -692,6 +692,6 @@ Now that you've hooked everything up, time to deplpoy to production.
 ## Video tutorial with Ania Kubow
 Thank you to our wonderful friend Ania Kubow for producing the Netflix clone. If you are not aware of Ania and love learning about coding you should absolutely check out her YouTube channel listed below.
 
-While we focused on getting you up and running to production with AstraDB and Netlify, Ania's video will dig into more details on the app itself. Check it out to dig in more.
+While we focused on getting you up and running to production with Astra DB and Netlify, Ania's video will dig into more details on the app itself. Check it out to dig in more.
 
 [Ania's Netflix Video](https://www.youtube.com/watch?v=g8COh40v2jU)
