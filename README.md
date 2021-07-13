@@ -617,7 +617,7 @@ Execute each of the commands below to link your code to your Netlify deployment.
 
 ✅ **Step 8a:**  we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
 
-✅ **Step 8b:** Enter the followiing command to pop up a browser to authenticate with netlify
+✅ **Step 8b:** Enter the following command to pop up a browser to authenticate with netlify
 
   ```
   netlify login
@@ -666,7 +666,7 @@ netlify link
 -->
 
 ## 9. Deploy to production
-Now that you've hooked everything up, time to deplpoy to production.
+Now that you've hooked everything up, time to deploy to production.
 
   * Run
   ```
