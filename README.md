@@ -92,7 +92,7 @@ That's it, you are done! Expect an email next week!
 9. [Deploy to production](#9-deploy-to-production)
 
 ### Extra resources
-[What is JamStack?](jamstack.md)
+[What is JamStack?](https://github.com/DataStax-Academy/battlestax/blob/master/README_JAM.md)
 
 [Video tutorial with Ania Kubow](#video-tutorial-with-ania-kubow)
 
@@ -368,7 +368,7 @@ query getMovieAction {
       value: {genre:"Sci-Fi"},
        orderBy: [year_DESC]) {
       values {
-      	year,
+        year,
         title,
         duration,
         synopsis,
@@ -390,7 +390,7 @@ query getMovieAction {
        options: {pageSize: 2},
        orderBy: [year_DESC]) {
       values {
-      	year,
+        year,
         title,
         duration,
         synopsis,
@@ -414,7 +414,7 @@ query getMovieAction {
        options: {pageSize: 2, pageState: "<YOUR_PAGE_STATE>"},
        orderBy: [year_DESC]) {
       values {
-      	year,
+        year,
         title,
         duration,
         synopsis,
@@ -435,12 +435,12 @@ query getMovieAction {
 
 ✅ **Step 9a: Download the dataset**
 
-To download the DATASET, right-click (or CTRL + Click to open in new tab) the button below and download the targat file on your machine.
+To download the DATASET, right-click (or CTRL + Click to open in new tab) the button below and download the target file on your machine.
 
-> *If the file opens in the browser save it with the name `movies.csv`. This is important as the filename will be the table name.*
+> *If the file opens in the browser save it with the name `movies_by_genre.csv`. This is important as the filename will be the table name.*
 
 <p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/data/movies.csv">
+<a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/data/movies_by_genre.csv">
  <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
 </a>
 </p>
@@ -453,7 +453,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 
 ✅ **Step 9c: Upload the dataset**
 
-Click on the area Drag n drop a single file and look for the file `movies.csv` on your machine, this file has been downloaded in step 9b.
+Click on the area Drag n drop a single file and look for the file `movies_by_genre.csv` on your machine, this file has been downloaded in step 9b.
 
 ![image](tutorial/images/import-movies-1.png?raw=true)
 
@@ -461,7 +461,7 @@ Once the file has been upload notive the `Upload Successful` message in green. Y
 
 ✅ **Step 9d: Define target table**
 
-- Locate the field Table Name and make sure and set value to `movies_by_genre`
+- Locate the field Table Name and make sure it is set to `movies_by_genre`
 
 ![image](tutorial/images/import-movies-2.png?raw=true)
 
@@ -617,7 +617,7 @@ Execute each of the commands below to link your code to your Netlify deployment.
 
 ✅ **Step 8a:**  we'll need to **STOP** the `netlify dev` command we issued a moment ago. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
 
-✅ **Step 8b:** Enter the followiing command to pop up a browser to authenticate with netlify
+✅ **Step 8b:** Enter the following command to pop up a browser to authenticate with netlify
 
   ```
   netlify login
@@ -666,7 +666,7 @@ netlify link
 -->
 
 ## 9. Deploy to production
-Now that you've hooked everything up, time to deplpoy to production.
+Now that you've hooked everything up, time to deploy to production.
 
   * Run
   ```
