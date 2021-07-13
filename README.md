@@ -61,7 +61,7 @@ Don't forget to complete your upgrade and get your verified skill badge! Finish 
 2. Insert a movie of your choice in the database.
 3. Make screenshots alongside the steps and show us your deployed production Netflix clone up in Netlify.
 4. (Optional extra credit) Watch the 2 hour Ania video [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the completed app.
-5. Submit your homework [here](https://github.com/datastaxdevs/workshop-graphql-netflix/issues/new?assignees=HadesArchitect%2C+SonicDMG%2C+RyanWelford&labels=homework%2C+wait+for+review&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
+5. Submit your homework [here](https://github.com/datastaxdevs/appdev-week3-graphql/issues/new?assignees=HadesArchitect%2C+SonicDMG%2C+RyanWelford&labels=homework%2C+wait+for+review&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
 
 That's it, you are done! Expect an email next week!
   
@@ -440,7 +440,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 > *If the file opens in the browser save it with the name `movies_by_genre.csv`. This is important as the filename will be the table name.*
 
 <p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/main/data/movies_by_genre.csv">
+<a href="https://raw.githubusercontent.com/datastaxdevs/appdev-week3-graphql/main/data/movies_by_genre.csv">
  <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
 </a>
 </p>
@@ -510,7 +510,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 - Click the button to deploy
 
-  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
+  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/appdev-week3-graphql)
  * <details><summary>Show me!</summary>
     <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
     </details>
@@ -570,7 +570,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
 ℹ️ _It may take a moment for GitPod to fully initialize.
 
 ## 4. Install the Netlify CLI (Command Line Interface)
- * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
+ * In the `appdev-week3-graphql` directory run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
 ```
@@ -639,7 +639,7 @@ Opening https://app.netlify.com/authorize?....
 You are now logged into your Netlify account!
 Run netlify status for account details
 To see all available commands run: netlify help
-gitpod /workspace/workshop-graphql-netflix $ 
+gitpod /workspace/appdev-week3-graphql $ 
 ```
 
 ✅ **Step 8d:** link your workspace to the associated site with the following command

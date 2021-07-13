@@ -1,12 +1,12 @@
 tasks:
-  - name: workshop-graphql-netflix
+  - name: appdev-week3-graphql
     init: |
-      cd /workspace/workshop-graphql-netflix
+      cd /workspace/appdev-week3-graphql
       nvm install node
       npm install -g npm@latest
     command: |
-      cd /workspace/workshop-graphql-netflix
-      echo "workshopgraphql-netflix gitpod ready - LET'S DO THIS!"
+      cd /workspace/appdev-week3-graphql
+      echo "appdev-week3-graphql gitpod ready - LET'S DO THIS!"
       npm install
 ports:
   - port: 8888
