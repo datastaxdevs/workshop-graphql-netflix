@@ -591,12 +591,15 @@ Then scroll down to find the endpoint for your keyspace.
 
 ## 6. Configure Environment Variables and Install Dependencies
 
-✅ Create `.env` file
+✅ Create `.env` file (do _not_ leave curly brackets)
 
 ```ini
 ASTRA_DB_APPLICATION_TOKEN={ your_token }
 ASTRA_GRAPHQL_ENDPOINT={ your_endpoint }
 ```
+
+![env-file](tutorial/images/env_file.png)
+
 
 👩‍💻  Install all the packages
 
