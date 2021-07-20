@@ -1,13 +1,14 @@
 tasks:
   - name: appdev-week3-graphql
-    init: |
+    before: |
       cd /workspace/appdev-week3-graphql
       nvm install node
       npm install -g npm@latest
-    command: |
-      cd /workspace/appdev-week3-graphql
-      echo "appdev-week3-graphql gitpod ready - LET'S DO THIS!"
+      npm install -g netlify-cli
       npm install
+    command: |
+      echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
+      gp open README.md
 ports:
   - port: 8888
     onOpen: open-preview
