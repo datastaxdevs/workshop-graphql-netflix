@@ -150,7 +150,7 @@ The status will change to `Active` when the database is ready, this will only ta
 1. Click on your active database
 2. Click `Connect` TAB
 3. Click `GRAPHQL API`
-4. Clik link to you playground.
+4. Click link to your playground.
 
 *As show on the picture below.*
 ![image](img/open-playground.png?raw=true)
