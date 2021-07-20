@@ -569,6 +569,14 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
    
 ℹ️ _It may take a moment for GitPod to fully initialize.
 
+#### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
+* From your GitPod terminal execute the following command
+```
+git remote -v
+```
+
+If the result returned from the command displays **`datastaxdevs`** then you are not in the correct repository. If this is the case please [repeat step 2 above](#2-access-your-github-repository), otherwise just move on to the next step.
+
 ## 4. Install the Netlify CLI (Command Line Interface)
  * In the `appdev-week3-graphql` directory run the following command to install the netlify-cli
  ```
