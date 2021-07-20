@@ -541,7 +541,7 @@ This will take a few minutes.
     <img src="tutorial/images/deploy-4.png" />
     </details>
 
-## 2. Clone your GitHub repository
+## 2. Access your GitHub repository
 
   * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
     <details>
