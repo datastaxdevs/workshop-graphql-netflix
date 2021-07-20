@@ -447,7 +447,7 @@ To download the DATASET, right-click (or CTRL + Click to open in new tab) the bu
 
 ✅ **Step 9b: Open Astra Data Loader Importer**
 
-- Locate the `Upload Data button` to open the Data Loader.
+- Locate the `Load Data` button to open the Data Loader.
 
 ![image](tutorial/images/import-movies-0.png?raw=true)
 
