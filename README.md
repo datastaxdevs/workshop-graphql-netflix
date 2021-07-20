@@ -482,7 +482,7 @@ Select the database we are currently using:
 | **Target Database** | `netflix_workshop_db` |
 | **Target Keyspace** | `netflix_keyspace` |
 
-and click next to launch the treatment asynchronously.
+and click next to start the process asynchronously.
 
 ✅ **Step 9f: Wait for the batch to import your data**
 
