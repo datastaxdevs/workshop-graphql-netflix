@@ -155,7 +155,7 @@ The status will change to `Active` when the database is ready, this will only ta
 *As show on the picture below.*
 ![image](img/open-playground.png?raw=true)
 
-> *Note that values in the picture do no reflect the database name `netflix_workshop_db`, reason is we do not reproduce every pictures each time*
+> *Note that values in the picture do no reflect the database name `netflix_workshop_db`, reason is we do not reproduce every picture each time*
 
 ✅  **Step 3b:** In GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
 
