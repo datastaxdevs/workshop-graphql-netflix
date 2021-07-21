@@ -567,7 +567,7 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
      [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
    </details>
    
-ℹ️ _It may take a moment for GitPod to fully initialize.
+ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize.
 
 #### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
 * From your GitPod terminal execute the following command
