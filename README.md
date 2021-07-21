@@ -82,11 +82,11 @@ That's it, you are done! Expect an email next week!
 
 ###  Part II - Deploy to Production
 1. [Deploy to Netlify](#1-deploy-to-netlify)
-2. [Clone your GitHub repository](#2-clone-your-github-repository)
+2. [Clone your GitHub repository](#2-access-your-github-repository)
 3. [Launch GitPod](#3-launch-gitpod-ide)
 4. [Install the Netlify CLI](#4-install-the-netlify-cli-command-line-interface)
-5. [Retrieve application token to securely connect to the database](#5-generate-application-token-to-securely-connect-to-the-database)
-6. [Configure Environment Variables and Install Dependencies](#6-configure-and-connect-database)
+5. [Retrieve application token to securely connect to the database](#5-retrieve-application-token-to-securely-connect-to-the-database)
+6. [Configure Environment Variables and Install Dependencies](#6-configure-environment-variables-and-install-dependencies)
 7. [Launch your app](#7-launch-your-app)
 8. [Connect Netlify to your site](#8-connect-netlify-to-your-site)
 9. [Deploy to production](#9-deploy-to-production)
