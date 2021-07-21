@@ -92,6 +92,10 @@ That's it, you are done! Expect an email next week!
 9. [Deploy to production](#9-deploy-to-production)
 
 ### Extra resources
+[React starter using NPX](https://github.com/datastaxdevs/react-basics)
+
+[React ToDo app](https://github.com/datastaxdevs/appdev-week1-todolist)
+
 [What is JamStack?](https://github.com/datastaxdevs/workshop-battlestax/blob/master/README_JAM.md)
 
 [Video tutorial with Ania Kubow](#video-tutorial-with-ania-kubow)
