@@ -571,7 +571,13 @@ If you are still using the `datastaxdevs` repo please ensure to follow the previ
      [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
    </details>
    
-ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize.
+ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
+
+> (_Note_: if the Gitpod button does not work, for example you are using Safari, don't despair!
+> You can manually build the URL you need and open it in a new tab like this: `https://gitpod.io/#<YOUR REPO FULL URL>`,
+> pasting in it the full address of **your** GitHub repository. For example,
+> `https://gitpod.io/#https://github.com/JohnSmith/my-netflix.clone`, assuming your are "JohnSmith"
+> on Github and your repo is "my-netflix-clone").
 
 #### WAIT! Before moving on ensure you are working out of YOUR repository, not the datastaxdevs repository.
 * From your GitPod terminal execute the following command
