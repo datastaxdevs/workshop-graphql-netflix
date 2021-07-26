@@ -521,6 +521,12 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 This will take a few minutes.
 
+  * If there is an existing account in Netlify, make sure the Netlify account settings show that it's connected to the appropriate git repository,
+    <details>
+    <summary>Show me! </summary>
+    <img src="tutorial/images/netlify-connect-01.png" />
+    </details>
+
   * Click on `Site deploy in progress` within the Netlify UI, 
     <details>
     <summary>Show me! </summary>
