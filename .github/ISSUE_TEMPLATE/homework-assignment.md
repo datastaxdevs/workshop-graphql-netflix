@@ -7,11 +7,11 @@ assignees: SonicDMG, RyanWelford
 
 ---
 
-**Name:** <NAME>
-**Email:** <email>
-**Linkedin Profile:** <LINK>
+**Name:** REPLACE_ME
+**Email:** REPLACE_ME
+**Linkedin Profile:** REPLACE_ME
 
-Attach the homework screenshots below:
+Attach the homework screenshot below:
 -----------------------------------------
 
-<SCREENSHOTS>
+<SCREENSHOT>
