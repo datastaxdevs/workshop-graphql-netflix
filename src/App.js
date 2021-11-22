@@ -5,25 +5,37 @@ import HeroSection from "./components/HeroSection"
 import NavBar from "./components/NavBar"
 
 const App = () => {
-  const genreIncrement = 4
+  const pageSize = 4
+  const [requestedPage, setRequestedPage] = useState(0)
+  const [pageState, setPageState] = useState(null)
   const [genres, setGenres] = useState(null)
-  const [limit, setLimit] = useState(genreIncrement)
 
   const fetchData = async () => {
     const response = await fetch("/.netlify/functions/getGenres", {
       method: "POST",
-      body: limit,
+      body: JSON.stringify({pageState, pageSize}),
     })
     const responseBody = await response.json()
-    setGenres(responseBody.data.reference_list.values)
+    setPageState(responseBody.data.reference_list.pageState)
+    setGenres(gs => (gs || []).concat(responseBody.data.reference_list.values))
   }
 
-  console.log(limit)
+  useEffect(() => {
+    // we trigger the first page of genres at the beginning
+    setRequestedPage(1)
+  }, [])
 
   useEffect(() => {
-    fetchData()
+    const goalItems = pageSize * requestedPage
+    const currentItems = (genres || []).length
+    const bottomReached = currentItems > 0 && pageState === null
+    // we ask for more genres if we are not at bottom of infinite scroll
+    // (and if there are less items than the nominally requested pages)
+    if ((goalItems > currentItems) && !bottomReached){
+      fetchData()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [limit])
+  }, [requestedPage])
 
   return (
     <>
@@ -39,7 +51,7 @@ const App = () => {
       <div
         className="page-end"
         onMouseEnter={() => {
-          setLimit(limit + genreIncrement)
+          setRequestedPage( np => np + 1 )
         }}
       />
     </>

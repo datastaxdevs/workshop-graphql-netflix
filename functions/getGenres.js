@@ -1,21 +1,26 @@
 const fetch = require('node-fetch')
 
 exports.handler = async function (event) {
-  const limit = JSON.parse(event.body)
 
+  const body = JSON.parse(event.body)
   const url = process.env.ASTRA_GRAPHQL_ENDPOINT
   const query = `
     query getAllGenres {
       reference_list (
         value: { label: "genre"},
-        options: { limit: ${JSON.stringify(limit)} }
+        options: {
+          pageSize: ${JSON.stringify(body.pageSize)},
+          pageState: ${JSON.stringify(body.pageState)}
+        }
       ) {
         values {
           value
         }
+        pageState
       }
     }
-  `  
+  `
+
   const response = await fetch(url, {
     method: 'POST',
     headers: {
