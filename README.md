@@ -639,8 +639,8 @@ Then scroll down to find the endpoint for your keyspace.
 ✅ Create `.env` file (do _not_ leave curly brackets)
 
 ```ini
-ASTRA_DB_APPLICATION_TOKEN={ your_token }
-ASTRA_GRAPHQL_ENDPOINT={ your_endpoint }
+ASTRA_DB_APPLICATION_TOKEN=REPLACE_ME
+ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 ```
 
 ![env-file](tutorial/images/env_file.png)
