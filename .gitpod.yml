@@ -2,7 +2,7 @@ tasks:
   - name: appdev-week3-graphql
     before: |
       cd /workspace/appdev-week3-graphql
-      nvm install node
+      nvm install 16.13.0
       npm install -g npm@latest
       npm install -g netlify-cli
       npm install
