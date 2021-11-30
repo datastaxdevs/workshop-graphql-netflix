@@ -9,15 +9,20 @@ const App = () => {
   const [requestedPage, setRequestedPage] = useState(0)
   const [pageState, setPageState] = useState(null)
   const [genres, setGenres] = useState(null)
+  const [isFetching, setIsFetching] = useState(false)
 
   const fetchData = async () => {
-    const response = await fetch("/.netlify/functions/getGenres", {
-      method: "POST",
-      body: JSON.stringify({pageState, pageSize}),
-    })
-    const responseBody = await response.json()
-    setPageState(responseBody.data.reference_list.pageState)
-    setGenres(gs => (gs || []).concat(responseBody.data.reference_list.values))
+    if (! isFetching)  {
+      setIsFetching(true)
+      const response = await fetch("/.netlify/functions/getGenres", {
+        method: "POST",
+        body: JSON.stringify({pageState, pageSize}),
+      })
+      const responseBody = await response.json()
+      setPageState(responseBody.data.reference_list.pageState)
+      setGenres(gs => (gs || []).concat(responseBody.data.reference_list.values))
+      setIsFetching(false)
+    }
   }
 
   useEffect(() => {
