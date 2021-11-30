@@ -26,7 +26,7 @@ const Section = ({ genre }) => {
       {movies && (
         <div className="movie-section">
           {movies.map((movie, index) => (
-            <Card key={index} movie={movie} />
+            <Card key={movie.title} movie={movie} />
           ))}
           <div
             className="more-button"
