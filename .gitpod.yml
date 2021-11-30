@@ -1,7 +1,7 @@
 tasks:
-  - name: appdev-week3-graphql
+  - name: workshop-graphql-netflix
     before: |
-      cd /workspace/appdev-week3-graphql
+      cd /workspace/workshop-graphql-netflix
       nvm install 16.13.0
       npm install -g npm@latest
       npm install -g netlify-cli
