@@ -120,8 +120,8 @@ _Make sure to chose a password with minimum 8 characters, containing upper and l
 **Use the following values when creating the database**
 |Field| Value|
 |---|---|
-|**database name**| `netflix_workshop_db` |
-|**keyspace**| `netflix_keyspace` |
+|**database name**| `workshops` |
+|**keyspace**| `netflix` |
 |**Cloud Provider**| *Use the one you like, click a cloud provider logo,  pick an Area in the list and finally pick a region.* |
 
 _You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
@@ -159,19 +159,19 @@ The status will change to `Active` when the database is ready, this will only ta
 *As show on the picture below.*
 ![image](img/open-playground.png?raw=true)
 
-> *Note that values in the picture do no reflect the database name `netflix_workshop_db`, reason is we do not reproduce every picture each time*
+> *Note that values in the picture do no reflect the database name `workshops`, reason is we do not reproduce every picture each time*
 
 ✅  **Step 3b:** In GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
 
 ![image](img/graphql-playground.png?raw=true)
 
-✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix_keyspace` if you used a different name:
+✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix` if you used a different name:
 
 - Copy the following mutation on the left panel
 ```yaml
 mutation {
   reference_list: createTable(
-    keyspaceName:"netflix_keyspace",
+    keyspaceName:"netflix",
     tableName:"reference_list",
     ifNotExists:true
     partitionKeys: [ 
@@ -191,7 +191,7 @@ mutation {
 
 ## 4. Insert data in the Table with GraphQL
 
-✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix_keyspace`
+✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
 ✅  **Step 4b:** Populate **HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
 
@@ -303,7 +303,7 @@ _Remember to change the keyspaceName if you used something different.
 ```yaml
 mutation {
   movies_by_genre: createTable(
-    keyspaceName:"netflix_keyspace",
+    keyspaceName:"netflix",
     tableName:"movies_by_genre",
     ifNotExists: true,
     partitionKeys: [
@@ -504,8 +504,8 @@ Select the database we are currently using:
 
 | Field | Value |
 | --- | --- |
-| **Target Database** | `netflix_workshop_db` |
-| **Target Keyspace** | `netflix_keyspace` |
+| **Target Database** | `workshops` |
+| **Target Keyspace** | `netflix` |
 
 and click next to start the process asynchronously.
 
