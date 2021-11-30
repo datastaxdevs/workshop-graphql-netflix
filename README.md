@@ -535,7 +535,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 - Click the button to deploy
 
-  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/appdev-week3-graphql)
+  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
  * <details><summary>Show me!</summary>
     <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
     </details>
@@ -615,7 +615,7 @@ git remote -v
 If the result returned from the command displays **`datastaxdevs`** then you are not in the correct repository. If this is the case please [repeat step 2 above](#2-access-your-github-repository), otherwise just move on to the next step.
 
 ## 4. Install the Netlify CLI (Command Line Interface)
- * In the `appdev-week3-graphql` directory run the following command to install the netlify-cli
+ * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
 ```
