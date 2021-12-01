@@ -528,7 +528,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
 
 * _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-graphql-netflix)
 
    
 ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
@@ -808,6 +808,9 @@ This will take a few minutes.
     </details>
 
 ## 3. Follow Part 2 in **YOUR** Repository
+
+Use this link to open Gitpod from **YOUR** repository!
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 ## 4. Connect Netlify to your site
 
