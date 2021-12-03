@@ -110,7 +110,7 @@ That's it, you are done! Expect an email next week!
 
 _Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
 
-<a href="https://astra.dev/12-1"><img src="img/create_astra_db.png?raw=true" /></a>
+<a href="https://astra.dev/12-3"><img src="img/create_astra_db.png?raw=true" /></a>
 - <details><summary>Show me!</summary>
     <img src="https://github.com/datastaxdevs/workshop-spring-stargate/raw/main/images/tutorials/astra-create-db.gif?raw=true" />
 </details>
