@@ -90,6 +90,8 @@ That's it, you are done! Expect an email next week!
 7. [Launch your app](#7-launch-your-app)
 
 ### Extra resources
+[Intro to GraphQL Workshop](https://github.com/datastaxdevs/workshop-intro-to-graphql)
+
 [React starter using NPX](https://github.com/datastaxdevs/react-basics)
 
 [React ToDo app](https://github.com/datastaxdevs/appdev-week1-todolist)
