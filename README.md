@@ -48,6 +48,7 @@ See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
 - [Slide deck](./slides/slides.pdf)
+- [Workshop video](https://www.youtube.com/watch?v=y_jbhaiVCL0)
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
 
