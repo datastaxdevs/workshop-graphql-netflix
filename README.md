@@ -216,9 +216,18 @@ mutation insertGenres {
   children: insertreference_list(value: {label:"genre", value:"Children & Family"}) {
      value{value}
   }
+  classic: insertreference_list(value: {label:"genre", value:"Classic"}) {
+     value{value}
+  } 
   comedies: insertreference_list(value: {label:"genre", value:"Comedies"}) {
      value{value}
   }
+  crime: insertreference_list(value: {label:"genre", value:"Crime"}) {
+     value{value}
+  } 
+  cult: insertreference_list(value: {label:"genre", value:"Cult"}) {
+     value{value}
+  }  
   documentaries: insertreference_list(value: {label:"genre", value:"Documentaries"}) {
      value{value}
   }
@@ -237,9 +246,15 @@ mutation insertGenres {
   independent: insertreference_list(value: {label:"genre", value:"Independent"}) {
      value{value}
   }
-  music: insertreference_list(value: {label:"genre", value:"Music & Musicals"}) {
+  international: insertreference_list(value: {label:"genre", value:"International"}) {
      value{value}
-  }
+  } 
+  musicmusicals: insertreference_list(value: {label:"genre", value:"Music & Musicals"}) {
+     value{value}
+  } 
+  realitytv: insertreference_list(value: {label:"genre", value:"Reality TV"}) {
+     value{value}
+  } 
   romance: insertreference_list(value: {label:"genre", value:"Romance"}) {
      value{value}
   }
@@ -249,27 +264,9 @@ mutation insertGenres {
   thriller: insertreference_list(value: {label:"genre", value:"Thriller"}) {
      value{value}
   } 
-  realitytv: insertreference_list(value: {label:"genre", value:"Reality TV"}) {
-     value{value}
-  } 
   tvshow: insertreference_list(value: {label:"genre", value:"TV Show"}) {
      value{value}
   } 
-  musicmusicals: insertreference_list(value: {label:"genre", value:"Music & Musicals"}) {
-     value{value}
-  } 
-  classic: insertreference_list(value: {label:"genre", value:"Classic"}) {
-     value{value}
-  } 
-  international: insertreference_list(value: {label:"genre", value:"International"}) {
-     value{value}
-  } 
-  crime: insertreference_list(value: {label:"genre", value:"Crime"}) {
-     value{value}
-  } 
-  cult: insertreference_list(value: {label:"genre", value:"Cult"}) {
-     value{value}
-  }  
 }
 ```
 
