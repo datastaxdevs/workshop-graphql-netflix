@@ -535,7 +535,7 @@ As you can see the operation here is asynchronous. About a minute later your wil
    
 ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
 
-##2 Know your gitpod
+## 2. Know your gitpod
 
 Take a moment to read this entire section since it'll help you with the rest of the workshop as you'll be spending lot of your time in Gitpod. If you're familiar with Gitpod, you can easily skip this entire section.
 
@@ -942,7 +942,7 @@ Congratulations, your made it to the END of the show.
 
 **🧑🏻‍🤝‍🧑🏽 Let's get in touch**
 
-| ![B](images/tutorials/rags.png)                           |
+| ![B](tutorial/images/rags.png)                           |
 | ---------------------------------------------------------- |
 | Rags Srinivas <br>[@ragsns](https://github.com/ragsns) |
 
