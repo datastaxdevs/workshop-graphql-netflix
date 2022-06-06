@@ -7,7 +7,7 @@
 
 *50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
 
-A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages a GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
+A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages the GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
 
 <!--- ENDEXCLUDE --->
 See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
@@ -64,7 +64,7 @@ Don't forget to complete your upgrade and get your verified skill badge! Finish 
 4. (Optional extra credit) Watch the 2 hour Ania video [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the completed app.
 5. Submit your homework [here](https://dtsx.io/homework-graphql-netflix)
 
-That's it, you are done! Expect an email next week!
+That's it, you are done! Expect an email next few week(s)!
   
 # Let's start
 
@@ -107,7 +107,7 @@ That's it, you are done! Expect an email next week!
 
 > *When creating your instance use the promotion code **ANIA200** to get 200$ of free credit allowing you about 30 million writes + 30 Million reads  + 80GB a month of monthly storage!!*
 
-**`ASTRADB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 20M reads/writes, 80GB storage monthly - sufficient to run small production workloads.  
+**`ASTRADB`** is the simplest way to use Cassandra in an application with almost zero operations  - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 20M reads/writes, 80GB storage monthly - sufficient to run small production workloads.  
 
 ✅ **Step 1a:** Click the button to login or register with Datastax. You can use your `Github`, `Google` accounts or register with an `email`.
 
@@ -128,6 +128,8 @@ _Make sure to chose a password with minimum 8 characters, containing upper and l
 _You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
 
 You will see your new database `pending` in the Dashboard.
+
+**Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to unhibernate the database first.**
 
 ![image](./tutorial/images/db-pending.png)
 
@@ -533,8 +535,54 @@ As you can see the operation here is asynchronous. About a minute later your wil
    
 ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
 
+##2 Know your gitpod
 
-## 2. Serverless Functions
+Take a moment to read this entire section since it'll help you with the rest of the workshop as you'll be spending lot of your time in Gitpod. If you're familiar with Gitpod, you can easily skip this entire section.
+
+The extreme left side has the explorer view(1). The top left, middle to right is where you'll be editing files(2), etc. and the bottom left, middle to right is what we will refer to as the Gitpod terminal window(3) as shown below.
+
+**👁️ Expected output**
+
+![gitpod](tutorial/images/gitpod-01-home-annotated.png?raw=true)
+
+
+You can always get back to the file explorer view whenever by clicking on the hamburger menu on the top left followed by `View` and `Explorer` as shown below.
+
+![gitpod](tutorial/images/Filexplorer0.png?raw=true)
+
+✅ **Step 2a: Know your public URL**
+
+The workshop application has opened with an ephemeral URL. To know the URL where your application endpoint will be exposed you can run the following command in the terminal after the build has completed. **Please note this URL and open this up in a new browser window as shown below**.
+
+```bash
+gp url 8080
+```
+
+**👁️ Expected output**
+
+![gitpod](tutorial/images/gitpod-02-url.png?raw=true)
+
+
+Although the application is not running yet, 
+launch a new browser window (**don't close it for the rest of the workshop since you'll continually keep using this**. If you accidentally close it, just come back to this step. The browser will generate an error (due to application not running yet) which is fine for now as shown below.
+
+**👁️ Expected output**
+
+![gitpod](tutorial/images/newbrowser1.png?raw=true)
+
+You may encounter the following at different steps and although this may not be applicable right away, the steps are included **in advance** and summarized here so that you can keep an eye out for it. Different paths and different environments might be slightly different although Gipod levels the playing field a bit.
+
+You can allow cutting and pasting into the window by clicking on `Allow` as shown below.
+
+![gitpod](tutorial/images/allow.png?raw=true)
+
+Or allow ports to be opened by just exiting windows that are informational messages about ports like below.
+
+![gitpod](tutorial/images/OpenPorts.png?raw=true)
+
+
+
+## 3. Serverless Functions
 
 Take a look at `functions/getGenres.js`
 
@@ -630,7 +678,7 @@ query {
 }
 ```
 
-## 3. Fetching from the Front-End
+## 4. Fetching from the Front-End
 
 Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
 
@@ -692,7 +740,7 @@ const fetchData = async () => {
 
 Now that we know how the front-end works, let's launch our app!
 
-## 4. Install the Netlify CLI (Command Line Interface)
+## 5. Install the Netlify CLI (Command Line Interface)
  * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
@@ -702,7 +750,7 @@ Now that we know how the front-end works, let's launch our app!
     <img src="tutorial/images/netlify-install-cli.png?raw=true" />
     </details>
 
-## 5. Retrieve application token to securely connect to the database
+## 6. Retrieve application token to securely connect to the database
 
 Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using [the instructions above](#2-create-a-security-token)
 
@@ -712,7 +760,7 @@ First, go to the Astra DB connect page for your database.
 Then scroll down to find the endpoint for your keyspace.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
 
-## 6. Configure Environment Variables and Install Dependencies
+## 7. Configure Environment Variables and Install Dependencies
 
 ✅ Create `.env` file (do _not_ leave curly brackets)
 
@@ -730,7 +778,7 @@ ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 npm install
 ```
 
-## 7. Launch your app
+## 8. Launch your app
   * Run the application 
   ```
   netlify dev
@@ -747,7 +795,7 @@ While we focused on getting you up and running to production with Astra DB and N
 
 [Ania's Netflix Video](https://www.youtube.com/watch?v=g8COh40v2jU)
 
-# Want to Deploy the Netflix Clone?
+# Want to Deploy the Netflix Clone [Optional]?
 
 Follow these steps to Deploy the Netflix clone to your own Netlify site!
 
@@ -886,3 +934,19 @@ Now that you've hooked everything up, time to deploy to production.
   
   You've deployed your app to Netlify!
   ![Netlify Setup Example](./tutorial/images/prodDeploy.png?raw=true)
+
+## The END
+
+Congratulations, your made it to the END of the show.
+
+
+**🧑🏻‍🤝‍🧑🏽 Let's get in touch**
+
+| ![B](images/tutorials/rags.png)                           |
+| ---------------------------------------------------------- |
+| Rags Srinivas <br>[@ragsns](https://github.com/ragsns) |
+
+[🏠 Back to Table of Contents](#0-table-of-contents)
+---
+
+[![thankyou](tutorial/images/thankyou.gif)]()
