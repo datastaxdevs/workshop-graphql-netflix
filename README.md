@@ -7,7 +7,8 @@
 
 *50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
 
-A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages the GraphQL API with *paging* and *infinite scrolling.* The materials has been built with the collaboration of [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and Datastax developer advocates team.
+A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages the GraphQL API with *paging* and *infinite scrolling.*
+This application is the result of the collaboration between [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and the Datastax Developer Advocate team.
 
 <!--- ENDEXCLUDE --->
 See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
@@ -15,10 +16,11 @@ See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 ![image](./img/ui.png)
 
 ## 🎯 Objectives
-* Deploy a Netflix clone to production
+* Build and run a Netflix clone.
 * Learn **GraphQL API** and how to use it with a database to create the tables and navigate the data.
-* Learn about **paging** and **infinite scrolling** in web ui
-* Leverage Netlify and DataStax Astra DB
+* Learn about **paging** and **infinite scrolling** in a Web UI.
+* Leverage Netlify and DataStax Astra DB.
+* Deploy the Netflix clone to production with Netlify.
 
 ## ℹ️ Frequently asked questions ℹ️
 
@@ -60,9 +62,10 @@ Don't forget to complete your upgrade and get your verified skill badge! Finish 
 
 1. Complete the practice steps from this repository as described below.
 2. Insert a movie OR genre of your choice in the database (It's ok to copy an existing one, just change the name a bit so we can tell it is yours).
-3. Make a screenshot showing us your deployed production Netflix clone up in Netlify (with your new movie/genre in the image) OR drop the link to your deployed Netlify site. Please ensure to tell us the name of the new movie or genre you added so we can grade your homework more quickly.
-4. (Optional extra credit) Watch the 2 hour Ania video [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the completed app.
-5. Submit your homework [here](https://dtsx.io/homework-graphql-netflix)
+3. Take a screenshot of your Netflix clone running either from your Gitpod or (better) deployed to production in Netlify (in this case, you could also give us the Netlify URL).
+4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name in the submission comment field as well).
+5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
+6. Submit your homework [here](https://dtsx.io/homework-graphql-netflix).
 
 That's it, you are done! Expect an email next few week(s)!
   
@@ -87,7 +90,7 @@ That's it, you are done! Expect an email next few week(s)!
 3. [Serverless Functions](#3-serverless-functions)
 4. [Fetching from the Front-End](#4-fetching-from-the-front-end)
 5. [Install the Netlify CLI](#5-install-the-netlify-cli-command-line-interface)
-6. [Retrieve application token to securely connect to the database](#6-retrieve-application-token-to-securely-connect-to-the-database)
+6. [Retrieve connection parameters](#6-retrieve-connection-parameters)
 7. [Configure Environment Variables and Install Dependencies](#7-configure-environment-variables-and-install-dependencies)
 8. [Launch your app](#8-launch-your-app)
 
@@ -105,31 +108,20 @@ That's it, you are done! Expect an email next few week(s)!
 
 ## 1. Login or Register to AstraDB and create database
 
-> *When creating your instance use the promotion code **ANIA200** to get 200$ of free credit allowing you about 30 million writes + 30 Million reads  + 80GB a month of monthly storage!!*
+> 🎁 *When creating your instance, use the promotion code **ANIA200** to get 200$ of additional free credit!*
 
-**`ASTRADB`** is the simplest way to use Cassandra in an application with almost zero operations  - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 20M reads/writes, 80GB storage monthly - sufficient to run small production workloads.  
+**`ASTRADB`** is the simplest way to use Cassandra in an application with almost zero operations  - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 20M reads/writes, 80GB storage monthly - sufficient to run small production workloads. Click here to start:
 
-✅ **Step 1a:** Click the button to login or register with Datastax. You can use your `Github`, `Google` accounts or register with an `email`.
+<a href="https://astra.dev/6-15"><img src="img/create_astra_db.png?raw=true" /></a>
 
-_Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
+Follow the instructions on [creating an Astra DB instance](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) and use the following values:
 
-<a href="https://astra.dev/5-11"><img src="img/create_astra_db.png?raw=true" /></a>
-- <details><summary>Show me!</summary>
-    <img src="https://github.com/datastaxdevs/workshop-spring-stargate/raw/main/images/tutorials/astra-create-db.gif?raw=true" />
-</details>
-
-**Use the following values when creating the database**
 |Field| Value|
 |---|---|
 |**database name**| `workshops` |
 |**keyspace**| `netflix` |
-|**Cloud Provider**| *Use the one you like, click a cloud provider logo,  pick an Area in the list and finally pick a region.* |
 
-_You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
-
-You will see your new database `pending` in the Dashboard.
-
-**Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to unhibernate the database first.**
+_Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to "Resume" the database first._
 
 ![image](./tutorial/images/db-pending.png)
 
@@ -140,16 +132,11 @@ The status will change to `Active` when the database is ready, this will only ta
 
 ## 2. Create a security token
 
-✅  **Step 2a:**  [Create a token for your app](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) to use in the settings screen. Use "Database Administrator" permission.
-
-✅  **Step 2b:**  Copy the token value (eg `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`) in your clipboard and save the CSV, this value would not be provided afterward.
-
-**👁️ Expected output**
-- <details><summary>Show me!</summary>
-    <img src="img/astra-create-token.gif?raw=true" />
-</details>
+[Create a token for your app](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure), _using the "Database Administrator" role_. Keep it handy for later use (best to download the CSV token, as the values
+will not be visible afterward). The token you'll need looks like `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`
 
 [🏠 Back to Table of Contents](#table-of-contents)
+
 
 ## 3. Create table **genre** with GraphQL
 
@@ -164,11 +151,11 @@ The status will change to `Active` when the database is ready, this will only ta
 
 > *Note that values in the picture do no reflect the database name `workshops`, reason is we do not reproduce every picture each time*
 
-✅  **Step 3b:** In GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
+✅  **Step 3b:** In GraphQL Playground ("graphql-schema" tab), **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
 
 ![image](img/graphql-playground.png?raw=true)
 
-✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, making sure to replace `netflix` if you used a different name:
+✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, (making sure to replace `netflix` if you used a different keyspace name):
 
 - Copy the following mutation on the left panel
 ```yaml
@@ -186,7 +173,7 @@ mutation {
   )
 }
 ```
-* Use the arrow in the middle of the screen to execute the query
+* Use the big "play-button" arrow in the middle of the screen to execute the query
 
 ![image](tutorial/images/playground-1.png?raw=true)
 
@@ -272,13 +259,13 @@ mutation insertGenres {
 }
 ```
 
-* Use the arrow in the middle of the screen to execute the query
+* Use the big "play-button" arrow in the middle of the screen to execute the query
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
 ## 5. Retrieving list of values
 
-✅  **Step 5a:** In GraphQL Playground, not changing tab (yeah) list values from the table with the following query.
+✅  **Step 5a:** In GraphQL Playground, not changing tab (second tab: "graphql", yeah) list values from the table with the following query.
 
 ```yaml
 query getAllGenre {
@@ -297,8 +284,8 @@ query getAllGenre {
 
 ## 6. Creating a Movies Table
 
-✅  **Step 6a:** Move to tab `GRAPHQL-SCHEMA`, everything should be set, use the following mutation to create a new table:
-_Remember to change the keyspaceName if you used something different.
+✅  **Step 6a:** Switch back to first tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
+_Remember to change the keyspaceName if you used something different_.
 
 ```yaml
 mutation {
@@ -329,7 +316,7 @@ mutation {
 
 ## 7. Insert Values in Movie table
 
-✅  **Step 7a:** Move to tab `GRAPHQL`, everything should be set, use the following mutation to populate movies table: 
+✅  **Step 7a:** Now go to tab "graphql" again. Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
 
 ```yaml
 mutation insertMovies {
@@ -341,7 +328,7 @@ mutation insertMovies {
       synopsis:"Cobb steals information from his targets by entering their dreams.",
       duration:121,
       thumbnail:"https://i.imgur.com/RPa4UdO.mp4"}) {
-    value{title}
+        value{title}
     }
   
   prometheus: insertmovies_by_genre(value: { 
@@ -351,7 +338,7 @@ mutation insertMovies {
       synopsis:"After a clue to mankind's origins is discovered, explorers are sent to the darkest corner of the universe.",
       duration:134,
       thumbnail:"https://i.imgur.com/L8k6Bau.mp4"}) {
-    value{title}
+        value{title}
     }
   
   	aliens: insertmovies_by_genre(value: { 
@@ -361,7 +348,7 @@ mutation insertMovies {
       synopsis:"Ellen Ripley is sent back to the planet LV-426 to establish contact with a terraforming colony.",
       duration:134,
       thumbnail:"https://i.imgur.com/QvkrnyZ.mp4"}) {
-    value{title}
+        value{title}
     }
   
     bladeRunner: insertmovies_by_genre(value: { 
@@ -371,7 +358,7 @@ mutation insertMovies {
       synopsis:"Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard.",
       duration:145,
       thumbnail:"https://i.imgur.com/xhhvmj1.mp4"}) {
-    value{title}
+        value{title}
     }
   }
 ```
@@ -385,7 +372,7 @@ mutation insertMovies {
 
 ## 8. Retrieve values from Movie tables
 
-✅  **Step 8a:** In GraphQL Playground, not changing tab (yeah) list values from the table with the following command.
+✅  **Step 8a:** In GraphQL Playground, not changing tab (still second tab, "graphql", yeah) list values from the table with the following command:
 
 ```yaml
 query getMovieAction {
@@ -482,7 +469,7 @@ Click on the area Drag n drop a single file and look for the file `movies_by_gen
 
 ![image](tutorial/images/import-movies-1.png?raw=true)
 
-Once the file has been upload notive the `Upload Successful` message in green. You can now click `NEXT`
+Once the file has been upload notice the `Upload Successful` message in green. You can now click `NEXT`
 
 ✅ **Step 9d: Define target table**
 
@@ -750,19 +737,37 @@ Now that we know how the front-end works, let's launch our app!
     <img src="tutorial/images/netlify-install-cli.png?raw=true" />
     </details>
 
-## 6. Retrieve application token to securely connect to the database
+## 6. Retrieve connection parameters
 
-Use the token you previously generated. If you no longer have the token and did not download a .csv, you can generate a new token using [the instructions above](#2-create-a-security-token)
+You need two important parameters to enable the serverless functions
+to authenticate and access your database: the DB token and the GraphQL endpoint URL.
 
-You will also need the GraphQL Endpoint for your keyspace.
+The **token** is the one you generated [earlier](#2-create-a-security-token) (the one looking something like
+`AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`).
+
+The **GraphQL endpoint** is the URL for the "graphql" part of the GraphQL Playground
+you used [earlier](#4-insert-data-in-the-table-with-graphql). It looks like `https://b2f[...]-us-east1.apps.astra.datastax.com/api/graphql/netflix`.
+
+> Tip: you can always [generate a new "DB Administrator" token](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure) if needed;
+> likewise, you can retrieve the GraphQL endpoint by heading to the Astra DB "connect"
+> page for your database, select "GraphQL API" and scroll down the page
+> until you see a "Write Data" section. You may need to change the ending of the
+> URL given there to reflect the correct keyspace name, see the next images for
+> a visual guide.
+
+<details><summary>Show me how to find my GraphQL endpoint</summary>
+
 First, go to the Astra DB connect page for your database.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
 Then scroll down to find the endpoint for your keyspace.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
 
+</details>
+
 ## 7. Configure Environment Variables and Install Dependencies
 
-✅ Create `.env` file (do _not_ leave curly brackets)
+✅ Create `.env` file (e.g. with `touch .env; gp open .env`), containing the two
+strings you just collected:
 
 ```ini
 ASTRA_DB_APPLICATION_TOKEN=REPLACE_ME
@@ -857,8 +862,28 @@ This will take a few minutes.
 
 ## 3. Follow Part 2 in **YOUR** Repository
 
-Use this link to open Gitpod from **YOUR** repository!
+**Note** At this point, you MUST be reading this README from **YOUR** Github repository.
+That is, if the address bar still says `https://github.com/datastaxdevs/...` please
+head over to YOUR copy of the repo before going the Gitpod route!
+
+Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button_)
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
+<summary>(Psst, ... show me a workaround)</summary>
+
+<img src="img/gitpod_trick.png" />
+
+</details>
+
+Once you are up and running in Gitpod, follow all steps in Part 2, summarized here for convenience:
+
+- (wait 2-3 minutes, until the console prints _"workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"_);
+- `npm install -g netlify-cli` ;
+- collect [token and GraphQL endpoint URL](#6-retrieve-application-token-to-securely-connect-to-the-database);
+- create and fill `.env` file with the connection params;
+- `npm install` ;
+- `netlify dev` as sanity check (will open the same URL you'd get from `gp url 8888`, you should see the app running all right).
 
 ## 4. Connect Netlify to your site
 
@@ -873,22 +898,23 @@ Execute each of the commands below to link your code to your Netlify deployment.
   ```
 
 *👁️ Expected output*
-```
-Opening https://app.netlify.com/authorize?....
-⠋ Waiting for authorization...^C
-```
+<img src="img/waiting_for_authorization.png" />
 
-✅ **Step 4c:** Open the link in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
+✅ **Step 4c:** Open the link your see above (`https://app.netlify.com/authorize?response[...]`)
+in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
 
-  > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
+> When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
 
-*👁️ Expected output*
+*👁️ Expected output after authorizing Netlify*
 
 ```
 You are now logged into your Netlify account!
+
 Run netlify status for account details
+
 To see all available commands run: netlify help
-gitpod /workspace/appdev-week3-graphql $ 
+
+gitpod /workspace/workshop-graphql-netflix (master) $
 ```
 
 ✅ **Step 4d:** link your workspace to the associated site with the following command
@@ -897,15 +923,17 @@ gitpod /workspace/appdev-week3-graphql $
 netlify link
 ```
 
-*👁️ Expected output*
+*👁️ Expected output (after accepting the default link target)*
 
 ![image](tutorial/images/netlify-link.png?raw=true)
 
-✅ **Step 4e:** take the .env file upload it to netlify
+✅ **Step 4e:** inject the secrets contained in the `.env` to Netlify:
   
-  ```
-  netlify env:import .env
-  ```
+```
+netlify env:import .env
+```
+
+![image](img/netlify_env_import.png)
 
 <!--
   * Will be used to allow you to execute `netlify open`
@@ -917,27 +945,28 @@ netlify link
 ## 5. Deploy to production
 Now that you've hooked everything up, time to deploy to production.
 
-  * Run
-  ```
-  netlify build
-  ```
+Run
+```
+netlify build
+```
 
-  * Then run
-  ```
-  netlify deploy --prod
-  ```
+Then run
+```
+netlify deploy --prod
+```
 
-  * Then finally run
-  ```
-  netlify open:site
-  ```
+Then finally run
+```
+netlify open:site
+```
+(you may need to manually pick the URL of the deployed application and open it in a new browser tab).
   
-  You've deployed your app to Netlify!
-  ![Netlify Setup Example](./tutorial/images/prodDeploy.png?raw=true)
+You've deployed your app to Netlify!
+![Netlify Setup Example](img/deployed_netflix_clone.png)
 
 ## The END
 
-Congratulations, your made it to the END of the show.
+Congratulations, you made it to the END of the show.
 
 
 **🧑🏻‍🤝‍🧑🏽 Let's get in touch**
