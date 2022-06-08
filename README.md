@@ -20,7 +20,7 @@ See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 * Learn about **paging** and **infinite scrolling** in web ui
 * Leverage Netlify and DataStax Astra DB
 
-## ℹ️ Frequently asked questions ℹ️ 
+## ℹ️ Frequently asked questions ℹ️
 
 - *Can I run the workshop on my computer?*
 
@@ -81,25 +81,25 @@ That's it, you are done! Expect an email next few week(s)!
 8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
 9. [Load a CSV DataSet](#9-load-a-csv-dataset)
 
-###  Part II - Build Front-End
+### Part II - Build Front-End
 1. [Launch GitPod](#1-launch-gitpod-ide)
-2. [Serverless Functions](#2-serverless-functions)
-3. [Fetching from the Front-End](#3-fetching-from-the-front-end)
-4. [Install the Netlify CLI](#4-install-the-netlify-cli-command-line-interface)
-5. [Retrieve application token to securely connect to the database](#5-retrieve-application-token-to-securely-connect-to-the-database)
-6. [Configure Environment Variables and Install Dependencies](#6-configure-environment-variables-and-install-dependencies)
-7. [Launch your app](#7-launch-your-app)
+2. [Know your Gitpod](#2-know-your-gitpod)
+3. [Serverless Functions](#3-serverless-functions)
+4. [Fetching from the Front-End](#4-fetching-from-the-front-end)
+5. [Install the Netlify CLI](#5-install-the-netlify-cli-command-line-interface)
+6. [Retrieve application token to securely connect to the database](#6-retrieve-application-token-to-securely-connect-to-the-database)
+7. [Configure Environment Variables and Install Dependencies](#7-configure-environment-variables-and-install-dependencies)
+8. [Launch your app](#8-launch-your-app)
+
+**Optional:** [deploy your site to Netlify](#want-to-deploy-the-netflix-clone-optional)
 
 ### Extra resources
-[Intro to GraphQL Workshop](https://github.com/datastaxdevs/workshop-intro-to-graphql)
 
-[React starter using NPX](https://github.com/datastaxdevs/react-basics)
-
-[React ToDo app](https://github.com/datastaxdevs/appdev-week1-todolist)
-
-[What is JamStack?](https://github.com/datastaxdevs/workshop-battlestax/blob/master/README_JAM.md)
-
-[Video tutorial with Ania Kubow](#video-tutorial-with-ania-kubow)
+- [Intro to GraphQL Workshop](https://github.com/datastaxdevs/workshop-intro-to-graphql)
+- [React starter using NPX](https://github.com/datastaxdevs/react-basics)
+- [React ToDo app](https://github.com/datastaxdevs/appdev-week1-todolist)
+- [What is JamStack?](https://github.com/datastaxdevs/workshop-battlestax/blob/master/README_JAM.md)
+- [Video tutorial with Ania Kubow](#video-tutorial-with-ania-kubow)
 
 # Part 1 - DB Setup & Data Ingest
 
@@ -700,7 +700,7 @@ const fetchData = async () => {
 }
 ```
 
-We pass in the current `pageState` and `pageSize` state variables and recieve a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the recieved data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
+We pass in the current `pageState` and `pageSize` state variables and receive a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the received data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
 
 When we render the page, generate a `<Section>` component for each genre, and set a `<div>` to detect a mouseEnter to load the next page of genres.
 
