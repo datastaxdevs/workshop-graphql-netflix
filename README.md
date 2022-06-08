@@ -555,7 +555,7 @@ You can always get back to the file explorer view whenever by clicking on the ha
 The workshop application has opened with an ephemeral URL. To know the URL where your application endpoint will be exposed you can run the following command in the terminal after the build has completed. **Please note this URL and open this up in a new browser window as shown below**.
 
 ```bash
-gp url 8080
+gp url 8888
 ```
 
 **👁️ Expected output**
