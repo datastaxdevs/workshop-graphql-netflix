@@ -733,9 +733,9 @@ Now that we know how the front-end works, let's launch our app!
  npm install -g netlify-cli
 ```
 
- * <details><summary>Show me!</summary>
-    <img src="tutorial/images/netlify-install-cli.png?raw=true" />
-    </details>
+<details><summary>Show me!</summary>
+<img src="tutorial/images/netlify-install-cli.png?raw=true" />
+</details>
 
 ## 6. Retrieve connection parameters
 
@@ -870,6 +870,7 @@ Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the 
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
+<details>
 <summary>(Psst, ... show me a workaround)</summary>
 
 <img src="img/gitpod_trick.png" />
