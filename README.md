@@ -911,7 +911,7 @@ Execute each of the commands below to link your code to your Netlify deployment.
 <img src="img/waiting_for_authorization.png" />
 
 ✅ **Step 4c:** Open the link your see above (`https://app.netlify.com/authorize?response[...]`)
-in a new WINDOW for the link to work, and authorize Netlify CLi to access Netlify on your behalf.
+in a new WINDOW for the link to work, and authorize Netlify CLI to access Netlify on your behalf.
 
 > When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
 
