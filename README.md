@@ -123,8 +123,6 @@ Follow the instructions on [creating an Astra DB instance](https://awesome-astra
 
 _Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to "Resume" the database first._
 
-![image](./tutorial/images/db-pending.png)
-
 The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
 [🏠 Back to Table of Contents](#table-of-contents)
@@ -176,6 +174,17 @@ mutation {
 * Use the big "play-button" arrow in the middle of the screen to execute the query
 
 ![image](tutorial/images/playground-1.png?raw=true)
+
+**GraphQL Playground troubleshooting** (covers this whole section)
+
+|Trouble| Shooting|
+|---|---|
+|Server cannot be reached | Add Astra token to headers (including `AstraCS:...`; check quotes) |
+|Server cannot be reached (second tab) | Check playground target URL ends with `netflix` |
+Response not successful: Received status code 401 | Same as "server cannot be reached" |
+| Response not successful: Received status code 404 | Check spelling of keyspace in target URL |
+|"Play" button does nothing| Ensure query is syntactically correct |
+"Validation error of type FieldUndefined" | Most likely query in the wrong tab |
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
