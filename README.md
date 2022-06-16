@@ -123,7 +123,7 @@ Follow the instructions on [creating an Astra DB instance](https://awesome-astra
 
 _Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to "Resume" the database first._
 
-The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
+The status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
