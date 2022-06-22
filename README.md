@@ -247,6 +247,9 @@ mutation insertGenres {
   international: insertreference_list(value: {label:"genre", value:"International"}) {
      value{value}
   } 
+  italian: insertreference_list(value: {label:"genre", value:"Italian"}) {
+     value{value}
+  } 
   musicmusicals: insertreference_list(value: {label:"genre", value:"Music & Musicals"}) {
      value{value}
   } 
