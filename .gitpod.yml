@@ -6,6 +6,7 @@ tasks:
       npm install -g npm@latest
       npm install -g netlify-cli
       npm install
+      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
     command: |
       echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
       gp open README.md
