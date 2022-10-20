@@ -547,7 +547,7 @@ astra db dsbulk workshops load \
 
 ![astra-cli](tutorial/images/astra-cli-dsbulk.png?raw=true)
 
-That's it! all 6000+ movies should be loaded and ready to go!
+That's it! All 6000+ movies should be loaded and ready to go!
 
 
 
