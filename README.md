@@ -82,17 +82,17 @@ That's it, you are done! Expect an email next few week(s)!
 6. [Create **movie** table](#6-creating-a-movies-table)
 7. [Insert values in **movie** table](#7-insert-values-in-movie-table)
 8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
-9. [Load a CSV DataSet](#9-load-a-csv-dataset)
 
 ### Part II - Build Front-End
 1. [Launch GitPod](#1-launch-gitpod-ide)
 2. [Know your Gitpod](#2-know-your-gitpod)
-3. [Serverless Functions](#3-serverless-functions)
-4. [Fetching from the Front-End](#4-fetching-from-the-front-end)
-5. [Install the Netlify CLI](#5-install-the-netlify-cli-command-line-interface)
-6. [Retrieve connection parameters](#6-retrieve-connection-parameters)
-7. [Configure Environment Variables and Install Dependencies](#7-configure-environment-variables-and-install-dependencies)
-8. [Launch your app](#8-launch-your-app)
+3. [Astra CLI](#3-astra-cli)
+4. [Serverless Functions](#4-serverless-functions)
+5. [Fetching from the Front-End](#5-fetching-from-the-front-end)
+6. [Install the Netlify CLI](#6-install-the-netlify-cli-command-line-interface)
+7. [Retrieve connection parameters](#7-retrieve-connection-parameters)
+8. [Configure Environment Variables and Install Dependencies](#8-configure-environment-variables-and-install-dependencies)
+9. [Launch your app](#9-launch-your-app)
 
 **Optional:** [deploy your site to Netlify](#want-to-deploy-the-netflix-clone-optional)
 
@@ -461,73 +461,6 @@ query getMovieAction {
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
-## 9. Load a CSV DataSet
-
-✅ **Step 9a: Download the dataset**
-
-To download the DATASET, right-click (or CTRL + Click to open in new tab) the button below and download the target file on your machine.
-
-> *If the file opens in the browser save it with the name `movies_by_genre.csv`. This is important as the filename will be the table name.*
-
-<p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/appdev-week3-graphql/main/data/movies_by_genre.csv">
- <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
-</a>
-</p>
-
-✅ **Step 9b: Open Astra Data Loader Importer**
-
-- Locate the `Load Data` button to open the Data Loader.
-
-![image](tutorial/images/import-movies-0.png?raw=true)
-
-✅ **Step 9c: Upload the dataset**
-
-Click on the area Drag n drop a single file and look for the file `movies_by_genre.csv` on your machine, this file has been downloaded in step 9b.
-
-![image](tutorial/images/import-movies-1.png?raw=true)
-
-Once the file has been upload notice the `Upload Successful` message in green. You can now click `NEXT`
-
-✅ **Step 9d: Define target table**
-
-- Locate the field Table Name and make sure it is set to `movies_by_genre`
-
-![image](tutorial/images/import-movies-2.png?raw=true)
-
-- In `Keys and Clustering` section enter `genre` as the partition key.
-
-![image](tutorial/images/import-movies-4.png?raw=true)
-
-You can now click on `NEXT` to move forward.
-
-✅ **Step 9e: Define target database**
-
-![image](tutorial/images/import-movies-3.png?raw=true)
-
-Select the database we are currently using:
-
-| Field | Value |
-| --- | --- |
-| **Target Database** | `workshops` |
-| **Target Keyspace** | `netflix` |
-
-and click next to start the process asynchronously.
-
-✅ **Step 9f: Wait for the batch to import your data**
-
-After a few seconds (about 30s) ,you will get an email informing you that the batch has been scheduled.
-
-![image](tutorial/images/import-movies-5.png?raw=true)
-
-As you can see the operation here is asynchronous. About a minute later your will get another email to tell you the data has been inserted.
-
-![image](tutorial/images/import-movies-6.png?raw=true)
-
-**Congratulations the Database is SET !!!**
-
-[🏠 Back to Table of Contents](#table-of-contents)
-
 # Part 2 - Build Front-End
 
 ## 1. Launch GitPod IDE
@@ -587,7 +520,39 @@ Or allow ports to be opened by just exiting windows that are informational messa
 
 
 
-## 3. Serverless Functions
+## 3. Astra CLI
+This GitPod environment comes preinstalled with the Astra CLI. Now we'll use it to make sure our db is up and running, and load our large movie dataset into it.
+
+In a **new** terminal window, enter the following -
+``` bash
+astra setup
+```
+
+The CLI will then ask you for an Authentication Token, you can use the same one we generated earlier.
+
+**👁️ Expected output**
+
+![astra-cli](tutorial/images/astra-cli-setup.png?raw=true)
+
+Now lets load in our dataset using the built-in DSBulk tool.
+
+``` bash
+astra db dsbulk workshops load \
+  -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
+  -k netflix \
+  -t movies_by_genre
+```
+
+**👁️ Expected output**
+
+![astra-cli](tutorial/images/astra-cli-dsbulk.png?raw=true)
+
+That's it! All 6000+ movies should be loaded and ready to go!
+
+
+
+
+## 4. Serverless Functions
 
 Take a look at `functions/getGenres.js`
 
@@ -683,7 +648,7 @@ query {
 }
 ```
 
-## 4. Fetching from the Front-End
+## 5. Fetching from the Front-End
 
 Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
 
@@ -745,7 +710,7 @@ const fetchData = async () => {
 
 Now that we know how the front-end works, let's launch our app!
 
-## 5. Install the Netlify CLI (Command Line Interface)
+## 6. Install the Netlify CLI (Command Line Interface)
  * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
@@ -755,7 +720,7 @@ Now that we know how the front-end works, let's launch our app!
 <img src="tutorial/images/netlify-install-cli.png?raw=true" />
 </details>
 
-## 6. Retrieve connection parameters
+## 7. Retrieve connection parameters
 
 You need two important parameters to enable the serverless functions
 to authenticate and access your database: the DB token and the GraphQL endpoint URL.
@@ -782,7 +747,7 @@ Then scroll down to find the endpoint for your keyspace.
 
 </details>
 
-## 7. Configure Environment Variables and Install Dependencies
+## 8. Configure Environment Variables and Install Dependencies
 
 ✅ Create `.env` file (e.g. with `touch .env; gp open .env`), containing the two
 strings you just collected:
@@ -801,7 +766,7 @@ ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 npm install
 ```
 
-## 8. Launch your app
+## 9. Launch your app
   * Run the application 
   ```
   netlify dev
@@ -988,13 +953,8 @@ You've deployed your app to Netlify!
 Congratulations, you made it to the END of the show.
 
 
-**🧑🏻‍🤝‍🧑🏽 Let's get in touch**
-
-| ![B](tutorial/images/rags.png)                           |
-| ---------------------------------------------------------- |
-| Rags Srinivas <br>[@ragsns](https://github.com/ragsns) |
-
 [🏠 Back to Table of Contents](#0-table-of-contents)
 ---
 
 [![thankyou](tutorial/images/thankyou.gif)]()
+
