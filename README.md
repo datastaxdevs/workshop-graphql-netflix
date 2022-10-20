@@ -82,7 +82,6 @@ That's it, you are done! Expect an email next few week(s)!
 6. [Create **movie** table](#6-creating-a-movies-table)
 7. [Insert values in **movie** table](#7-insert-values-in-movie-table)
 8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
-9. [Load a CSV DataSet](#9-load-a-csv-dataset)
 
 ### Part II - Build Front-End
 1. [Launch GitPod](#1-launch-gitpod-ide)
@@ -461,73 +460,6 @@ query getMovieAction {
 
 [🏠 Back to Table of Contents](#table-of-contents)
 
-## 9. Load a CSV DataSet
-
-✅ **Step 9a: Download the dataset**
-
-To download the DATASET, right-click (or CTRL + Click to open in new tab) the button below and download the target file on your machine.
-
-> *If the file opens in the browser save it with the name `movies_by_genre.csv`. This is important as the filename will be the table name.*
-
-<p align="left">
-<a href="https://raw.githubusercontent.com/datastaxdevs/appdev-week3-graphql/main/data/movies_by_genre.csv">
- <img src="https://dabuttonfactory.com/button.png?t=Download Dataset&f=Roboto-Bold&ts=20&tc=fff&hp=20&vp=15&c=11&bgt=unicolored&bgc=15d798" />
-</a>
-</p>
-
-✅ **Step 9b: Open Astra Data Loader Importer**
-
-- Locate the `Load Data` button to open the Data Loader.
-
-![image](tutorial/images/import-movies-0.png?raw=true)
-
-✅ **Step 9c: Upload the dataset**
-
-Click on the area Drag n drop a single file and look for the file `movies_by_genre.csv` on your machine, this file has been downloaded in step 9b.
-
-![image](tutorial/images/import-movies-1.png?raw=true)
-
-Once the file has been upload notice the `Upload Successful` message in green. You can now click `NEXT`
-
-✅ **Step 9d: Define target table**
-
-- Locate the field Table Name and make sure it is set to `movies_by_genre`
-
-![image](tutorial/images/import-movies-2.png?raw=true)
-
-- In `Keys and Clustering` section enter `genre` as the partition key.
-
-![image](tutorial/images/import-movies-4.png?raw=true)
-
-You can now click on `NEXT` to move forward.
-
-✅ **Step 9e: Define target database**
-
-![image](tutorial/images/import-movies-3.png?raw=true)
-
-Select the database we are currently using:
-
-| Field | Value |
-| --- | --- |
-| **Target Database** | `workshops` |
-| **Target Keyspace** | `netflix` |
-
-and click next to start the process asynchronously.
-
-✅ **Step 9f: Wait for the batch to import your data**
-
-After a few seconds (about 30s) ,you will get an email informing you that the batch has been scheduled.
-
-![image](tutorial/images/import-movies-5.png?raw=true)
-
-As you can see the operation here is asynchronous. About a minute later your will get another email to tell you the data has been inserted.
-
-![image](tutorial/images/import-movies-6.png?raw=true)
-
-**Congratulations the Database is SET !!!**
-
-[🏠 Back to Table of Contents](#table-of-contents)
-
 # Part 2 - Build Front-End
 
 ## 1. Launch GitPod IDE
@@ -584,6 +516,35 @@ You can allow cutting and pasting into the window by clicking on `Allow` as show
 Or allow ports to be opened by just exiting windows that are informational messages about ports like below.
 
 ![gitpod](tutorial/images/OpenPorts.png?raw=true)
+
+
+
+## Astra CLI
+This GitPod environment comes preinstalled with the Astra CLI. Now we'll use it to make sure our db is up and running, and load our large movie dataset into it.
+
+In a new terminal window, enter the following -
+``` bash
+astra setup
+```
+
+The CLI will then ask you for an Authentication Token, you can use the same one we genereated earlier.
+You can use the CLI to create new databases and keyspaces. This should be unnecessary, but just in case -
+
+``` bash
+astra db create workshops -k netflix --if-not-exist --wait
+```
+
+Now lets load in our dataset using the built-in DSBulk tool.
+
+``` bash
+astra db dsbulk workshops load \
+  -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
+  -k netflix \
+  -t movies_by_genre
+```
+
+That's it! all 6000+ movies should be loaded and ready to go!
+
 
 
 
@@ -988,13 +949,8 @@ You've deployed your app to Netlify!
 Congratulations, you made it to the END of the show.
 
 
-**🧑🏻‍🤝‍🧑🏽 Let's get in touch**
-
-| ![B](tutorial/images/rags.png)                           |
-| ---------------------------------------------------------- |
-| Rags Srinivas <br>[@ragsns](https://github.com/ragsns) |
-
 [🏠 Back to Table of Contents](#0-table-of-contents)
 ---
 
 [![thankyou](tutorial/images/thankyou.gif)]()
+
