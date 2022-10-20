@@ -523,17 +523,16 @@ Or allow ports to be opened by just exiting windows that are informational messa
 ## 3. Astra CLI
 This GitPod environment comes preinstalled with the Astra CLI. Now we'll use it to make sure our db is up and running, and load our large movie dataset into it.
 
-In a new terminal window, enter the following -
+In a **new** terminal window, enter the following -
 ``` bash
 astra setup
 ```
 
-The CLI will then ask you for an Authentication Token, you can use the same one we genereated earlier.
-You can use the CLI to create new databases and keyspaces. This should be unnecessary, but just in case -
+The CLI will then ask you for an Authentication Token, you can use the same one we generated earlier.
 
-``` bash
-astra db create workshops -k netflix --if-not-exist --wait
-```
+**👁️ Expected output**
+
+![astra-cli](tutorial/images/astra-cli-setup.png?raw=true)
 
 Now lets load in our dataset using the built-in DSBulk tool.
 
@@ -543,6 +542,10 @@ astra db dsbulk workshops load \
   -k netflix \
   -t movies_by_genre
 ```
+
+**👁️ Expected output**
+
+![astra-cli](tutorial/images/astra-cli-dsbulk.png?raw=true)
 
 That's it! all 6000+ movies should be loaded and ready to go!
 
