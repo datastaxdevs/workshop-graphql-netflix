@@ -86,12 +86,13 @@ That's it, you are done! Expect an email next few week(s)!
 ### Part II - Build Front-End
 1. [Launch GitPod](#1-launch-gitpod-ide)
 2. [Know your Gitpod](#2-know-your-gitpod)
-3. [Serverless Functions](#3-serverless-functions)
-4. [Fetching from the Front-End](#4-fetching-from-the-front-end)
-5. [Install the Netlify CLI](#5-install-the-netlify-cli-command-line-interface)
-6. [Retrieve connection parameters](#6-retrieve-connection-parameters)
-7. [Configure Environment Variables and Install Dependencies](#7-configure-environment-variables-and-install-dependencies)
-8. [Launch your app](#8-launch-your-app)
+3. [Astra CLI](#3-astra-cli)
+4. [Serverless Functions](#4-serverless-functions)
+5. [Fetching from the Front-End](#5-fetching-from-the-front-end)
+6. [Install the Netlify CLI](#6-install-the-netlify-cli-command-line-interface)
+7. [Retrieve connection parameters](#7-retrieve-connection-parameters)
+8. [Configure Environment Variables and Install Dependencies](#8-configure-environment-variables-and-install-dependencies)
+9. [Launch your app](#9-launch-your-app)
 
 **Optional:** [deploy your site to Netlify](#want-to-deploy-the-netflix-clone-optional)
 
@@ -519,7 +520,7 @@ Or allow ports to be opened by just exiting windows that are informational messa
 
 
 
-## Astra CLI
+## 3. Astra CLI
 This GitPod environment comes preinstalled with the Astra CLI. Now we'll use it to make sure our db is up and running, and load our large movie dataset into it.
 
 In a new terminal window, enter the following -
@@ -548,7 +549,7 @@ That's it! all 6000+ movies should be loaded and ready to go!
 
 
 
-## 3. Serverless Functions
+## 4. Serverless Functions
 
 Take a look at `functions/getGenres.js`
 
@@ -644,7 +645,7 @@ query {
 }
 ```
 
-## 4. Fetching from the Front-End
+## 5. Fetching from the Front-End
 
 Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
 
@@ -706,7 +707,7 @@ const fetchData = async () => {
 
 Now that we know how the front-end works, let's launch our app!
 
-## 5. Install the Netlify CLI (Command Line Interface)
+## 6. Install the Netlify CLI (Command Line Interface)
  * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
  ```
  npm install -g netlify-cli
@@ -716,7 +717,7 @@ Now that we know how the front-end works, let's launch our app!
 <img src="tutorial/images/netlify-install-cli.png?raw=true" />
 </details>
 
-## 6. Retrieve connection parameters
+## 7. Retrieve connection parameters
 
 You need two important parameters to enable the serverless functions
 to authenticate and access your database: the DB token and the GraphQL endpoint URL.
@@ -743,7 +744,7 @@ Then scroll down to find the endpoint for your keyspace.
 
 </details>
 
-## 7. Configure Environment Variables and Install Dependencies
+## 8. Configure Environment Variables and Install Dependencies
 
 ✅ Create `.env` file (e.g. with `touch .env; gp open .env`), containing the two
 strings you just collected:
@@ -762,7 +763,7 @@ ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 npm install
 ```
 
-## 8. Launch your app
+## 9. Launch your app
   * Run the application 
   ```
   netlify dev
