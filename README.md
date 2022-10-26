@@ -304,8 +304,7 @@ query getAllGenre {
 
 ✅  **Step 6a:** Switch back to first tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
 
-![image](/images/graphql-back.png?raw=true)
-
+![image](/img/graphql-back.png?raw=true)
 
 _Remember to change the keyspaceName if you used something different_.
 
@@ -338,7 +337,11 @@ mutation {
 
 ## 7. Insert Values in Movie table
 
-✅  **Step 7a:** Now go to tab "graphql" again. Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
+✅  **Step 7a:** Now go to tab "graphql" again. 
+
+![image](img/graphql-playground-2.png?raw=true)
+
+Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
 
 ```yaml
 mutation insertMovies {
