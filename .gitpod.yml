@@ -2,12 +2,15 @@ tasks:
   - name: workshop-graphql-netflix
     before: |
       cd /workspace/workshop-graphql-netflix
+      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
+      printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
+      printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
       nvm install 16.13.0
       npm install -g npm@latest
       npm install -g netlify-cli
       npm install
-      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
     command: |
+      source /home/gitpod/.astra/cli/astra-init.sh
       echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
       gp open README.md
 ports:
