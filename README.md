@@ -155,7 +155,7 @@ will not be visible afterward). The token you'll need looks like `AstraCS:KDfdKe
 
 > *Note that values in the picture do no reflect the database name `workshops`, reason is we do not reproduce every picture each time*
 
-✅  **Step 3b:** In GraphQL Playground ("graphql-schema" tab), **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below
+✅  **Step 3b:** In GraphQL Playground ("graphql-schema" tab), **Validte HTTP HEADER** variable `x-cassandra-token` should have been populated for you. If this is not the case paste yout token there.
 
 ![image](img/graphql-playground.png?raw=true)
 
@@ -198,7 +198,7 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
-✅  **Step 4b:** Populate **HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token as shown below (again !! yes this is not the same tab)
+✅  **Step 4b:** Validate that **HTTP HEADER** got variable `x-cassandra-token` populated for you, on the bottom of the page. Put your token as shown below if not available.
 
 ![image](img/graphql-playground-2.png?raw=true)
 
@@ -303,6 +303,10 @@ query getAllGenre {
 ## 6. Creating a Movies Table
 
 ✅  **Step 6a:** Switch back to first tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
+
+![image](/images/graphql-back.png?raw=true)
+
+
 _Remember to change the keyspaceName if you used something different_.
 
 ```yaml
