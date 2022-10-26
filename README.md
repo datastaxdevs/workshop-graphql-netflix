@@ -747,10 +747,8 @@ you used [earlier](#4-insert-data-in-the-table-with-graphql). It looks like `htt
 
 <details><summary>Show me how to find my GraphQL endpoint</summary>
 
-First, go to the Astra DB connect page for your database.
+Go to the Astra DB connect page for your database. Locate `3` write data.
 ![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
-Then scroll down to find the endpoint for your keyspace.
-![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-02.png)
 
 </details>
 
@@ -766,6 +764,13 @@ ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 
 ![env-file](tutorial/images/env_file.png)
 
+To get the value of your token you can also
+
+```
+astra config get default 
+```
+
+
 
 👩‍💻  Install all the packages
 
@@ -779,6 +784,8 @@ npm install
   netlify dev
   ```
   * The application should automatically launch in the GitPod preview pane
+
+  ![graphql-endpoint-1](img/preview.png)
 
 
 # Extra resources
