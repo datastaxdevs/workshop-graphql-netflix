@@ -135,8 +135,8 @@ will not be visible afterward). The token you'll need looks like `AstraCS:KDfdKe
 
 > **⚠️ Important**
 > ```
-> The instructor will show you on screen how to create a token 
-> but will have to destroy to token immediately for security reasons.
+> The instructor will show the token creation on screen,
+> but will then destroy it immediately for security reasons.
 > ```
 
 [🏠 Back to Table of Contents](#table-of-contents)
@@ -541,14 +541,28 @@ The CLI will then ask you for an Authentication Token, you can use the same one 
 
 ![astra-cli](tutorial/images/astra-cli-setup.png?raw=true)
 
-Now lets load in our dataset using the built-in DSBulk tool.
+Now let's load in our dataset using the built-in DSBulk tool.
 
 ``` bash
+astra db load workshops \
+  -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
+  -k netflix \
+  -t movies_by_genre
+```
+
+<details><summary>Show the syntax for old versions of astra-cli</summary>
+
+Note: you should not need this.
+
+```bash
 astra db dsbulk workshops load \
   -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
   -k netflix \
   -t movies_by_genre
 ```
+
+</details>
+
 
 **👁️ Expected output**
 
