@@ -1,3 +1,18 @@
+<!--- STARTEXCLUDE --->
+# 🎓 Netflix Clone using Astra DB and GraphQL
+
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+[![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
+
+*50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
+
+A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages the GraphQL API with *paging* and *infinite scrolling.*
+This application is the result of the collaboration between [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and the Datastax Developer Advocate team.
+
+<!--- ENDEXCLUDE --->
+See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
+
 ![image](images/ui.png)
 
 ## 🎯 Objectives
@@ -83,7 +98,7 @@ That's it, you are done! Expect an email next few week(s)!
 7. [Insert values in **movie** table](#7-insert-values-in-movie-table)
 8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
 
-### Part II - Build Front-End
+### Part II - Build and Deploy Front-End
 1. [Launch GitPod](#1-launch-gitpod-ide)
 2. [Know your Gitpod](#2-know-your-gitpod)
 3. [Astra CLI](#3-astra-cli)
@@ -460,7 +475,7 @@ query getMovieAction {
 
 ![image](images/playground-2.png?raw=true)
 
-✅ **Step 8c: Fetch next page:**  Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
+✅ **Step 8c: Fetch next page:** Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
 ```yaml
 query getMovieAction {
@@ -487,80 +502,119 @@ query getMovieAction {
 If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
 _this is how pagination signals the end of the full results list._
 
-# Part 2 - Build Front-End
 
-## 1. Launch GitPod IDE
-- Click the button to launch the GitPod IDE.
+###
+###
+###
 
-* _Supported by <img src="images/chrome-logo.svg" height="20"/> Chrome and <img src="images/firefox-logo.svg" height="20"/> Firefox_
+# Part 2 - Build and Deploy Front-End
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-graphql-netflix)
+## 1. Deploy to Netlify
 
-   
-ℹ️ _It may take minutes (approx. 3-5) for GitPod to fully initialize._
+✅ **Step 1a: Netlify Button:** Click the following button to deploy to Netlify
 
-## 2. Know your gitpod
+- <details><summary> What does the netlify deploy button do?</summary>
 
-Take a moment to read this entire section since it'll help you with the rest of the workshop as you'll be spending lot of your time in Gitpod. If you're familiar with Gitpod, you can easily skip this entire section.
+The Netlify deploy button will:
 
-The extreme left side has the explorer view(1). The top left, middle to right is where you'll be editing files(2), etc. and the bottom left, middle to right is what we will refer to as the Gitpod terminal window(3) as shown below.
+- Create a new repository for you on Github (an unrelated _copy_, not a fork)
+- Create a site on Netlify (and deploy a nonworking build of the app, which lacks the DB connection parameters still)
+- Link the two together.
 
-**👁️ Expected output**
+</details>
 
-![gitpod](images/gitpod-01-home-annotated.png?raw=true)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
 
+<details><summary>Show me!</summary>
 
-You can always get back to the file explorer view whenever by clicking on the hamburger menu on the top left followed by `View` and `Explorer` as shown below.
+<img src="images/deploy-to-netlify.gif?raw=true" />
 
-![gitpod](images/Filexplorer0.png?raw=true)
+</details>
 
-✅ **Step 2a: Know your public URL**
+This will take a few minutes. You may have to authenticate through Github in the process.
 
-The workshop application has opened with an ephemeral URL. To know the URL where your application endpoint will be exposed you can run the following command in the terminal after the build has completed. **Please note this URL and open this up in a new browser window as shown below**.
+_Note: if there is an existing account in Netlify, check the settings to make sure the Netlify account is connected to the your Github account._
+<details>
+  <summary>Show me! </summary>
+  <img src="images/netlify-connect-01.png" />
+</details>
 
-```bash
-gp url 8888
-```
+✅ **Step 1b: Check the deploy logs:** Click on `Site deploy in progress` within the Netlify UI.
+<details>
+  <summary>Show me! </summary>
+  <img src="images/deploy-1.png" />
+</details>
 
-**👁️ Expected output**
+Then click the top deploy link to see the build process.
+<details>
+  <summary>Show me! </summary>
+  <img src="images/deploy-2.png" />
+</details>
 
-![gitpod](images/gitpod-02-url.png?raw=true)
+✅ **Step 1c: Complete the build:** Wait until the build shows `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
+<details>
+  <summary>Show me! </summary>
+  <img src="images/deploy-3.png" />
+</details>
 
+✅ **Step 1d: Get back to your new site:** Scroll up to the top and click on the site name (it'll be after "_[your login]_'s Team" next to the Netlify button).
+<details>
+  <summary>Show me! </summary>
+  <img src="images/deploy-4.png" />
+</details>
 
-Although the application is not running yet, 
-launch a new browser window (**don't close it for the rest of the workshop since you'll continually keep using this**. If you accidentally close it, just come back to this step. The browser will generate an error (due to application not running yet) which is fine for now as shown below.
+## 2. Launch Gitpod from YOUR Github repo
 
-**👁️ Expected output**
+✅ **Step 2a: Jump to YOUR repo:** Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.
+Scroll to where you were in the README.
+<details>
+  <summary>Show me! </summary>
+  <img src="images/deploy-5.png" />
+</details>
 
-![gitpod](images/newbrowser1.png?raw=true)
+**Note** At this point, you MUST be reading this README from **YOUR** Github repository.
+That is, if the address bar still says `https://github.com/datastaxdevs/...` please
+head over to YOUR copy of the repo before going the Gitpod route!
 
-You may encounter the following at different steps and although this may not be applicable right away, the steps are included **in advance** and summarized here so that you can keep an eye out for it. Different paths and different environments might be slightly different although Gipod levels the playing field a bit.
+✅ **Step 2b: Launch Gitpod:** Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button_)
 
-You can allow cutting and pasting into the window by clicking on `Allow` as shown below.
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
-![gitpod](images/allow.png?raw=true)
+_Note: the button works on <img src="images/chrome-logo.svg" height="20"/> Chrome and <img src="images/firefox-logo.svg" height="20"/> Firefox._
 
-Or allow ports to be opened by just exiting windows that are informational messages about ports like below.
+<details>
+<summary>Click to troubleshoot if you have another browser</summary>
 
-![gitpod](images/OpenPorts.png?raw=true)
+<img src="images/gitpod_trick.png" />
 
+</details>
 
+ℹ️ _It may take a few minutes (approx. 3-5) for GitPod to fully initialize._
 
-## 3. Astra CLI
-This GitPod environment comes preinstalled with the Astra CLI. Now we'll use it to make sure our db is up and running, and load our large movie dataset into it.
+Gitpod will be your IDE from now on. If you are familiar with VSCode, you can probably
+just use it. Otherwise, take a moment to review a separate page
+["Know your Gitpod"](know_your_gitpod.md)
+and then come back here.
 
-In a **new** terminal window, enter the following -
+## 3. Setup and use `astra-cli`
+
+You are going to use a CLI tool to simplify operations with Astra DB. The tool
+is preinstalled on your Gitpod.
+
+✅ **Step 3a: Set up the CLI:** Run the following in the Gitpod terminal and,
+when prompted, enter the `AstraCS:...` you obtained at the beginning.
+
 ``` bash
 astra setup
 ```
-
-The CLI will then ask you for an Authentication Token, you can use the same one we generated earlier.
 
 **👁️ Expected output**
 
 ![astra-cli](images/astra-cli-setup.png?raw=true)
 
-Now let's load in our dataset using the built-in DSBulk tool.
+✅ **Step 3b: Bulk data load:** Load a large movie dataset in the database.
+This command, in turn, installs and properly launches the `DSBulk` tool:
+
 
 ``` bash
 astra db load workshops \
@@ -582,7 +636,6 @@ astra db dsbulk workshops load \
 
 </details>
 
-
 **👁️ Expected output**
 
 ![astra-cli](images/astra-cli-dsbulk.png?raw=true)
@@ -590,9 +643,14 @@ astra db dsbulk workshops load \
 That's it! All 6000+ movies are now loaded and ready to go!
 
 
-
-
 ## 4. Serverless Functions
+
+> _Note_: this section and the next one ("Fetching from the Front-End")
+> are not steps to "perform", rather suggestions to dive in the client
+> code and figure out how the various parts (React components, Netlify
+> functions and finally the GraphQL server in Astra DB) fit together.
+> You can skip them if you are in a hurry, but please come back to these
+> for reference if you want to dissect the code a bit!
 
 Take a look at `functions/getGenres.js`
 
@@ -750,6 +808,21 @@ const fetchData = async () => {
 
 Now that we know how the front-end works, let's launch our app!
 
+
+
+###
+###
+###
+
+
+
+
+
+
+
+
+
+
 ## 6. Install the Netlify CLI (Command Line Interface)
  * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
  ```
@@ -827,82 +900,6 @@ While we focused on getting you up and running to production with Astra DB and N
 
 [Ania's Netflix Video](https://www.youtube.com/watch?v=g8COh40v2jU)
 
-# Want to Deploy the Netflix Clone [Optional]?
-
-Follow these steps to Deploy the Netflix clone to your own Netlify site!
-
-
-## 1. Deploy to Netlify
-
-- <details><summary> What does the netlify deploy button do?</summary>The Netlify deploy button will:<ul>
-    <li>Create a new repository for you on Github</li>
-    <li>Create a site on Netlify</li>
-    <li>Link the two together.</li></ul>
-</details>
-
-- Click the button to deploy
-
-  [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
- * <details><summary>Show me!</summary>
-    <img src="images/deploy-to-netlify.gif?raw=true" />
-    </details>
-
-This will take a few minutes.
-
-  * If there is an existing account in Netlify, make sure the Netlify account settings show that it's connected to the appropriate git repository,
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/netlify-connect-01.png" />
-    </details>
-
-  * Click on `Site deploy in progress` within the Netlify UI, 
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/deploy-1.png" />
-    </details>
-
-  * Click the top deploy link to see the build process.
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/deploy-2.png" />
-    </details>
-
-  * Wait until the build complete `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/deploy-3.png" />
-    </details>
-
-  * Scroll up to the top and click on the site name (it'll be after {yourlogin}'s Team next to the Netlify button).
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/deploy-4.png" />
-    </details>
-
-## 2. Access your GitHub repository
-
-  * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
-    <details>
-    <summary>Show me! </summary>
-    <img src="images/deploy-5.png" />
-    </details>
-
-## 3. Follow Part 2 in **YOUR** Repository
-
-**Note** At this point, you MUST be reading this README from **YOUR** Github repository.
-That is, if the address bar still says `https://github.com/datastaxdevs/...` please
-head over to YOUR copy of the repo before going the Gitpod route!
-
-Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button_)
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
-
-<details>
-<summary>Click to troubleshoot if your browser does not support the above</summary>
-
-<img src="images/gitpod_trick.png" />
-
-</details>
 
 Once you are up and running in Gitpod, follow all steps in Part 2, summarized here for convenience:
 
