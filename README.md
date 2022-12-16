@@ -1,4 +1,4 @@
-![image](./img/ui.png)
+![image](images/ui.png)
 
 ## 🎯 Objectives
 * Build and run a Netflix clone.
@@ -34,14 +34,14 @@
 
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
-- [Slide deck](./slides/slides.pdf)
+- [Slide deck](slides/slides.pdf)
 - [Workshop video](https://www.youtube.com/watch?v=y_jbhaiVCL0)
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
 
 ## Homework
 
-<img src="tutorial/images/netflix-badge.png?raw=true" width="200" align="right" />
+<img src="images/netflix-badge.png?raw=true" width="200" align="right" />
 
 Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
 
@@ -99,7 +99,7 @@ _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all
 
 Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* with *Open in a new TAB.*
 
-<a href="https://astra.dev/yt-01-04"><img src="img/create_astra_db.png?raw=true" /></a>
+<a href="https://astra.dev/yt-01-04"><img src="images/create_astra_db.png?raw=true" /></a>
 
 |Field|Value|
 |---|---|
@@ -135,20 +135,42 @@ Today, in particular, we will need the string labeled "token" (the one starting 
 
 ## 3. Create table **genre** with GraphQL
 
-✅  **Step 3a:** Open **GraphQL Playground** by 
-1. Click on your active database
+✅  **Step 3a:** Open **GraphQL Playground**:
+
+0. Ensure you are logged on to your [Astra](https://astra.datastax.com) account
+1. Click on the "workshops" database on the left (expanding the list if needed)
 2. Click `Connect` TAB
-3. Click `GRAPHQL API`
-4. Click link to your playground.
+3. Click the `APIs`  connection method
+4. Make sure `GraphQL API` is selected
+5. Locate the link to your GraphQL Playground in the text
 
-*As show on the picture below.*
-![image](img/open-playground.png?raw=true)
+![Open Astra DB GraphQL Playground image](images/open-playground-2.png)
 
-> *Note that values in the picture do no reflect the database name `workshops`, reason is we do not reproduce every picture each time*
+<details>
+<summary><strong>Click here if you are using the "New Astra Experience" UI</strong></summary>
 
-✅  **Step 3b:** In GraphQL Playground ("graphql-schema" tab), **Validte HTTP HEADER** variable `x-cassandra-token` should have been populated for you. If this is not the case paste yout token there.
+![Open Astra DB GraphQL Playground image, new Astra UI](images/open-playground-2-wh.png)
 
-![image](img/graphql-playground.png?raw=true)
+</details>
+
+**Note**: in the following, we will refer to "playground tabs". These are _not_ the tabs
+in your browser, rather they are tabs _within_ the Playground application,
+to switch between the (logically distinct) realms of "managing schema" and "managing data in the tables"
+(more on that later).
+
+![Playground tabs VS Browser tabs](images/tabs-vs-playgroundtabs-labeled.png)
+
+✅  **Step 3b:** Insert the Astra DB Token to run schema queries
+
+In the GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token (including the `AstraCS:` part).
+_This is the "Database Administrator" token you created earlier on the Astra DB dashboard (Step 2 above)._
+
+**Note**: make sure you are on the **`graphql-schema`** playground tab in this step, as this image illustrates:
+
+![GraphQL Playground and token header, Schema playground tab](images/graphql-playground.png)
+
+> Note: the GraphQL Playground starts with a ready-to-use _temporary token_ as the `x-cassandra-token` header. But we want the queries run in the Playground
+> to be identical to those that the Netlify functions will run from code, so **please replace the token with your DB token as instructed**.
 
 ✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, (making sure to replace `netflix` if you used a different keyspace name):
 
@@ -170,7 +192,7 @@ mutation {
 ```
 * Use the big "play-button" arrow in the middle of the screen to execute the query
 
-![image](tutorial/images/playground-1.png?raw=true)
+![image](images/playground-1.png?raw=true)
 
 **GraphQL Playground troubleshooting** (covers this whole section)
 
@@ -189,7 +211,7 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ✅  **Step 4b:** Validate that **HTTP HEADER** got variable `x-cassandra-token` populated for you, on the bottom of the page. Put your token as shown below if not available.
 
-![image](img/graphql-playground-2.png?raw=true)
+![image](images/graphql-playground-2.png?raw=true)
 
 ✅  **Step 4c:** In GraphQL Playground,populate the `reference_list` table with the following values
 
@@ -283,13 +305,13 @@ query getAllGenre {
 ```
 
 *👁️ Expected output*
-![image](img/graphql-playground-3.png?raw=true)
+![image](images/graphql-playground-3.png?raw=true)
 
 ## 6. Creating a Movies Table
 
 ✅  **Step 6a:** Switch back to first tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
 
-![image](/img/graphql-back.png?raw=true)
+![image](images/graphql-back.png?raw=true)
 
 _Remember to change the keyspaceName if you used something different_.
 
@@ -316,13 +338,13 @@ mutation {
 ```
 
 *👁️ Expected output*
-![image](img/graphql-playground-4.png?raw=true)
+![image](images/graphql-playground-4.png?raw=true)
 
 ## 7. Insert Values in Movie table
 
 ✅  **Step 7a:** Now go to tab "graphql" again. 
 
-![image](img/graphql-playground-2.png?raw=true)
+![image](images/graphql-playground-2.png?raw=true)
 
 Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
 
@@ -372,7 +394,7 @@ mutation insertMovies {
 ```
 
 *👁️ Expected output*
-![image](img/graphql-playground-5.png?raw=true)
+![image](images/graphql-playground-5.png?raw=true)
 
 > ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
 
@@ -397,7 +419,7 @@ query getMovieAction {
 ```
 
 *👁️ Expected output*
-![image](img/graphql-playground-6.png?raw=true)
+![image](images/graphql-playground-6.png?raw=true)
 
 ✅ **Step 8b Enable paging:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform paging. Let's do same query as before now asking for a `page size to 2`
 
@@ -421,7 +443,7 @@ query getMovieAction {
 
 *👁️ Expected output*
 
-![image](tutorial/images/playground-2.png?raw=true)
+![image](images/playground-2.png?raw=true)
 
 ✅ **Step 8c: Fetch next page paging:**  Notice that `pageState` is also now returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace your own pageState `YOUR_PAGE_STATE`
 
@@ -445,14 +467,14 @@ query getMovieAction {
  
 *👁️ Expected output*
 
-![image](tutorial/images/playground-3.png?raw=true)
+![image](images/playground-3.png?raw=true)
 
 # Part 2 - Build Front-End
 
 ## 1. Launch GitPod IDE
 - Click the button to launch the GitPod IDE.
 
-* _Supported by <img src="tutorial/images/chrome-logo.svg" height="20"/> Chrome and <img src="tutorial/images/firefox-logo.svg" height="20"/> Firefox_
+* _Supported by <img src="images/chrome-logo.svg" height="20"/> Chrome and <img src="images/firefox-logo.svg" height="20"/> Firefox_
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-graphql-netflix)
 
@@ -467,12 +489,12 @@ The extreme left side has the explorer view(1). The top left, middle to right is
 
 **👁️ Expected output**
 
-![gitpod](tutorial/images/gitpod-01-home-annotated.png?raw=true)
+![gitpod](images/gitpod-01-home-annotated.png?raw=true)
 
 
 You can always get back to the file explorer view whenever by clicking on the hamburger menu on the top left followed by `View` and `Explorer` as shown below.
 
-![gitpod](tutorial/images/Filexplorer0.png?raw=true)
+![gitpod](images/Filexplorer0.png?raw=true)
 
 ✅ **Step 2a: Know your public URL**
 
@@ -484,7 +506,7 @@ gp url 8888
 
 **👁️ Expected output**
 
-![gitpod](tutorial/images/gitpod-02-url.png?raw=true)
+![gitpod](images/gitpod-02-url.png?raw=true)
 
 
 Although the application is not running yet, 
@@ -492,17 +514,17 @@ launch a new browser window (**don't close it for the rest of the workshop since
 
 **👁️ Expected output**
 
-![gitpod](tutorial/images/newbrowser1.png?raw=true)
+![gitpod](images/newbrowser1.png?raw=true)
 
 You may encounter the following at different steps and although this may not be applicable right away, the steps are included **in advance** and summarized here so that you can keep an eye out for it. Different paths and different environments might be slightly different although Gipod levels the playing field a bit.
 
 You can allow cutting and pasting into the window by clicking on `Allow` as shown below.
 
-![gitpod](tutorial/images/allow.png?raw=true)
+![gitpod](images/allow.png?raw=true)
 
 Or allow ports to be opened by just exiting windows that are informational messages about ports like below.
 
-![gitpod](tutorial/images/OpenPorts.png?raw=true)
+![gitpod](images/OpenPorts.png?raw=true)
 
 
 
@@ -518,7 +540,7 @@ The CLI will then ask you for an Authentication Token, you can use the same one 
 
 **👁️ Expected output**
 
-![astra-cli](tutorial/images/astra-cli-setup.png?raw=true)
+![astra-cli](images/astra-cli-setup.png?raw=true)
 
 Now let's load in our dataset using the built-in DSBulk tool.
 
@@ -545,7 +567,7 @@ astra db dsbulk workshops load \
 
 **👁️ Expected output**
 
-![astra-cli](tutorial/images/astra-cli-dsbulk.png?raw=true)
+![astra-cli](images/astra-cli-dsbulk.png?raw=true)
 
 That's it! All 6000+ movies should be loaded and ready to go!
 
@@ -556,7 +578,7 @@ That's it! All 6000+ movies should be loaded and ready to go!
 
 Take a look at `functions/getGenres.js`
 
-``` javascript
+```javascript
 const fetch = require('node-fetch')
 
 exports.handler = async function (event) {
@@ -607,7 +629,7 @@ exports.handler = async function (event) {
 
 You'll notice the familiar GraphQL query "getAllGenres" we used previously in the playground. It's been modified a bit to utilize paging.
 
-``` javascript
+```javascript
 options: {
   pageSize: ${JSON.stringify(body.pageSize)},
   pageState: ${JSON.stringify(body.pageState)}
@@ -616,7 +638,7 @@ options: {
 
 This section allows us to pass in the desired page size and current page state from the front-end.
 
-``` javascript
+```javascript
 {
   values {
     value
@@ -629,7 +651,7 @@ And, in addition to the values of the query, we are also returning the page stat
 
 The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding the page size to 6.
 
-``` javascript
+```javascript
 query {
   movies_by_genre (
     value: { genre: ${JSON.stringify(genre)}},
@@ -654,7 +676,7 @@ Let's take a look at how we fetch from these serverless functions from the front
 
 We have a fetch method defined that will retrieve a page of genres by calling the `getGenres` serverless function.
 
-``` javascript
+```javascript
 const fetchData = async () => {
   if (! isFetching)  {
     setIsFetching(true)
@@ -674,7 +696,7 @@ We pass in the current `pageState` and `pageSize` state variables and receive a 
 
 When we render the page, generate a `<Section>` component for each genre, and set a `<div>` to detect a mouseEnter to load the next page of genres.
 
-``` javascript
+```javascript
 <>
   <NavBar />
   <HeroSection />
@@ -696,7 +718,7 @@ When we render the page, generate a `<Section>` component for each genre, and se
 
 The `<Section>` component works in the same way, though we will fully replace the data in the `movies` variable.
 
-``` javascript
+```javascript
 const fetchData = async () => {
   const response = await fetch("/.netlify/functions/getMovies", {
     method: "POST",
@@ -717,7 +739,7 @@ Now that we know how the front-end works, let's launch our app!
 ```
 
 <details><summary>Show me!</summary>
-<img src="tutorial/images/netlify-install-cli.png?raw=true" />
+<img src="images/netlify-install-cli.png?raw=true" />
 </details>
 
 ## 7. Retrieve connection parameters
@@ -732,16 +754,13 @@ The **GraphQL endpoint** is the URL for the "graphql" part of the GraphQL Playgr
 you used [earlier](#4-insert-data-in-the-table-with-graphql). It looks like `https://b2f[...]-us-east1.apps.astra.datastax.com/api/graphql/netflix`.
 
 > Tip: you can always [generate a new "DB Administrator" token](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure) if needed;
-> likewise, you can retrieve the GraphQL endpoint by heading to the Astra DB "connect"
-> page for your database, select "GraphQL API" and scroll down the page
-> until you see a "Write Data" section. You may need to change the ending of the
-> URL given there to reflect the correct keyspace name, see the next images for
-> a visual guide.
+> likewise, you can retrieve the GraphQL endpoint at any time as described [above](#3-create-table-genre-with-graphql);
+> moreover, if your Playground is open, you can simply copy the URL from the "GraphQL" playground tab there.
 
 <details><summary>Show me how to find my GraphQL endpoint</summary>
 
 Go to the Astra DB connect page for your database. Locate `3` write data.
-![graphql-endpoint-1](tutorial/images/graphql-keyspace-url-01.png)
+![graphql-endpoint-1](images/graphql-keyspace-url-01.png)
 
 </details>
 
@@ -755,7 +774,7 @@ ASTRA_DB_APPLICATION_TOKEN=REPLACE_ME
 ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
 ```
 
-![env-file](tutorial/images/env_file.png)
+![env-file](images/env_file.png)
 
 To get the value of your token you can also
 
@@ -778,7 +797,7 @@ npm install
   ```
   * The application should automatically launch in the GitPod preview pane
 
-  ![graphql-endpoint-1](img/preview.png)
+  ![graphql-endpoint-1](images/preview.png)
 
 
 # Extra resources
@@ -807,7 +826,7 @@ Follow these steps to Deploy the Netflix clone to your own Netlify site!
 
   [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/datastaxdevs/workshop-graphql-netflix)
  * <details><summary>Show me!</summary>
-    <img src="tutorial/images/deploy-to-netlify.gif?raw=true" />
+    <img src="images/deploy-to-netlify.gif?raw=true" />
     </details>
 
 This will take a few minutes.
@@ -815,31 +834,31 @@ This will take a few minutes.
   * If there is an existing account in Netlify, make sure the Netlify account settings show that it's connected to the appropriate git repository,
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/netlify-connect-01.png" />
+    <img src="images/netlify-connect-01.png" />
     </details>
 
   * Click on `Site deploy in progress` within the Netlify UI, 
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-1.png" />
+    <img src="images/deploy-1.png" />
     </details>
 
   * Click the top deploy link to see the build process.
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-2.png" />
+    <img src="images/deploy-2.png" />
     </details>
 
   * Wait until the build complete `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-3.png" />
+    <img src="images/deploy-3.png" />
     </details>
 
   * Scroll up to the top and click on the site name (it'll be after {yourlogin}'s Team next to the Netlify button).
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-4.png" />
+    <img src="images/deploy-4.png" />
     </details>
 
 ## 2. Access your GitHub repository
@@ -847,7 +866,7 @@ This will take a few minutes.
   * Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.  Scroll to where you were in the README.
     <details>
     <summary>Show me! </summary>
-    <img src="tutorial/images/deploy-5.png" />
+    <img src="images/deploy-5.png" />
     </details>
 
 ## 3. Follow Part 2 in **YOUR** Repository
@@ -861,9 +880,9 @@ Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 <details>
-<summary>(Psst, ... show me a workaround)</summary>
+<summary>Click to troubleshoot if your browser does not support the above</summary>
 
-<img src="img/gitpod_trick.png" />
+<img src="images/gitpod_trick.png" />
 
 </details>
 
@@ -889,7 +908,7 @@ Execute each of the commands below to link your code to your Netlify deployment.
   ```
 
 *👁️ Expected output*
-<img src="img/waiting_for_authorization.png" />
+<img src="images/waiting_for_authorization.png" />
 
 ✅ **Step 4c:** Open the link your see above (`https://app.netlify.com/authorize?response[...]`)
 in a new WINDOW for the link to work, and authorize Netlify CLI to access Netlify on your behalf.
@@ -916,7 +935,7 @@ netlify link
 
 *👁️ Expected output (after accepting the default link target)*
 
-![image](tutorial/images/netlify-link.png?raw=true)
+![image](images/netlify-link.png?raw=true)
 
 ✅ **Step 4e:** inject the secrets contained in the `.env` to Netlify:
   
@@ -924,7 +943,7 @@ netlify link
 netlify env:import .env
 ```
 
-![image](img/netlify_env_import.png)
+![image](images/netlify_env_import.png)
 
 <!--
   * Will be used to allow you to execute `netlify open`
@@ -953,7 +972,7 @@ netlify open:site
 (you may need to manually pick the URL of the deployed application and open it in a new browser tab).
   
 You've deployed your app to Netlify!
-![Netlify Setup Example](img/deployed_netflix_clone.png)
+![Netlify Setup Example](images/deployed_netflix_clone.png)
 
 ## The END
 
@@ -963,5 +982,5 @@ Congratulations, you made it to the END of the show.
 [🏠 Back to Table of Contents](#0-table-of-contents)
 ---
 
-[![thankyou](tutorial/images/thankyou.gif)]()
+[![thankyou](images/thankyou.gif)]()
 
