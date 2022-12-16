@@ -1,18 +1,3 @@
-<!--- STARTEXCLUDE --->
-# 🎓 Netflix Clone using Astra DB and GraphQL
-
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
-[![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
-
-*50 minutes, Intermediate, [Start Building](#1-login-or-register-to-astradb-and-create-database)*
-
-A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages the GraphQL API with *paging* and *infinite scrolling.*
-This application is the result of the collaboration between [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and the Datastax Developer Advocate team.
-
-<!--- ENDEXCLUDE --->
-See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
-
 ![image](./img/ui.png)
 
 ## 🎯 Objectives
@@ -110,36 +95,42 @@ That's it, you are done! Expect an email next few week(s)!
 
 > 🎁 *When creating your instance, use the promotion code **ANIA200** to get 200$ of additional free credit!*
 
-**`ASTRADB`** is the simplest way to use Cassandra in an application with almost zero operations  - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 20M reads/writes, 80GB storage monthly - sufficient to run small production workloads. Click here to start:
+_**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, 40M read/write operations and about 80GB storage monthly for free - sufficient to run small production workloads. If you use up your credits the databases will pause, no charge, and you will be given the option to upgrade to a higher tier._
+
+Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* with *Open in a new TAB.*
 
 <a href="https://astra.dev/yt-01-04"><img src="img/create_astra_db.png?raw=true" /></a>
 
-Follow the instructions on [creating an Astra DB instance](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) and use the following values:
-
-|Field| Value|
+|Field|Value|
 |---|---|
-|**database name**| `workshops` |
-|**keyspace**| `netflix` |
+|**Database Name**| `workshops`|
+|**Keyspace Name**| `netflix`|
+|**Regions**| Select `GOOGLE CLOUD`, then an Area close to you, then a region with no LOCK 🔒 icons: the LOCKed regions are the region not accessible to the Free Tier.
 
-_Note: If you already have a database named `workshops` you can just add the keyspace name `netflix` to it. You may need to "Resume" the database first._
+> **ℹ️ Note:** If you already have a database `workshops`, simply add a keyspace `netflix` using the `Add Keyspace` button on the bottom right hand corner of the DB Dashboard page. You may have to "Resume" the database first in case it is in "hibernated" state.
 
-The status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
+While the database is being created, you will also get a **Security token** (needed to authenticate with your database and start using it):
+**please IGNORE THIS ONE, as we will be soon creating a new, more powerful token for today**.
 
-[🏠 Back to Table of Contents](#table-of-contents)
+The status will change from `Pending` to `Active` when the database is ready, this usually only takes 2-3 minutes.
 
 
 ## 2. Create a security token
 
-[Create a token for your app](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure), _using the "Database Administrator" role_. Keep it handy for later use (best to download the CSV token, as the values
-will not be visible afterward). The token you'll need looks like `AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`
+> Note: this step is very important, as the token generated automatically for you with
+> the database lacks some permissions we'll use in the workshop.
+
+[Create a token for your app](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure), _using the **"Database Administrator"** role_.
+Keep it handy for later use (best to download it in CSV format, as the values
+will not be visible afterward).
+This will provide authentication later when interacting with the database.
+Today, in particular, we will need the string labeled "token" (the one starting with `AstraCS:...`).
 
 > **⚠️ Important**
 > ```
 > The instructor will show the token creation on screen,
 > but will then destroy it immediately for security reasons.
 > ```
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 
 ## 3. Create table **genre** with GraphQL
@@ -191,8 +182,6 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 | Response not successful: Received status code 404 | Check spelling of keyspace in target URL |
 |"Play" button does nothing| Ensure query is syntactically correct |
 "Validation error of type FieldUndefined" | Most likely query in the wrong tab |
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 4. Insert data in the Table with GraphQL
 
@@ -279,8 +268,6 @@ mutation insertGenres {
 
 * Use the big "play-button" arrow in the middle of the screen to execute the query
 
-[🏠 Back to Table of Contents](#table-of-contents)
-
 ## 5. Retrieving list of values
 
 ✅  **Step 5a:** In GraphQL Playground, not changing tab (second tab: "graphql", yeah) list values from the table with the following query.
@@ -297,8 +284,6 @@ query getAllGenre {
 
 *👁️ Expected output*
 ![image](img/graphql-playground-3.png?raw=true)
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 6. Creating a Movies Table
 
@@ -332,8 +317,6 @@ mutation {
 
 *👁️ Expected output*
 ![image](img/graphql-playground-4.png?raw=true)
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 7. Insert Values in Movie table
 
@@ -392,8 +375,6 @@ mutation insertMovies {
 ![image](img/graphql-playground-5.png?raw=true)
 
 > ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 ## 8. Retrieve values from Movie tables
 
@@ -465,8 +446,6 @@ query getMovieAction {
 *👁️ Expected output*
 
 ![image](tutorial/images/playground-3.png?raw=true)
-
-[🏠 Back to Table of Contents](#table-of-contents)
 
 # Part 2 - Build Front-End
 
