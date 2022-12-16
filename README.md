@@ -9,26 +9,41 @@
 
 ## ℹ️ Frequently asked questions ℹ️
 
-- *Can I run the workshop on my computer?*
+<details>
+<summary><strong>Can I run the workshop on my computer?</strong></summary>
 
-> There is nothing preventing you from running the workshop on your own machine.
-> If you do so, you will need
-> * git installed on your local system
-> * [node 15 and npm 7 or later](https://www.whitesourcesoftware.com/free-developer-tools/blog/update-node-js/)
->
-> You will have to adapt commands and paths based on your environment and install the dependencies by yourself. **We won't provide support** to keep on track with schedule. However, we will do our best to give you the info you need to be successful.
+There is nothing preventing you from running the workshop on your own machine.
+If you do so, you will need
+* git installed on your local system
+* [node 15 and npm 7 or later](https://www.whitesourcesoftware.com/free-developer-tools/blog/update-node-js/)
 
-- *What other prerequisites are there?*
-> * You will need a github account
-> * You will also need Netlify and Astra DB accounts, but we'll work through that in the exercises
-> * Use **Chrome** or **Firefox** for the best experience. Other browsers are great, but don't work well with the GitPod integration we use a bit later.
+You will have to adapt commands and paths based on your environment and install the dependencies by yourself. **We won't provide support** to keep on track with schedule. However, we will do our best to give you the info you need to be successful.
 
-- *Do I need to pay for anything for this workshop?*
-> * **No.** All tools and services we provide here are FREE.
+</details>
 
-- *Will I get a certificate if I attend this workshop?*
+<details>
+<summary><strong>What other prerequisites are there?</strong></summary>
 
-> Attending the session is not enough. You need to complete the homeworks detailed below and you will get a nice badge.
+* You will need a github account
+* You will also need Netlify and Astra DB accounts, but we'll work through that in the exercises
+* Use **Chrome** or **Firefox** for the best experience. Other browsers are great, but don't work well with the GitPod integration we use a bit later.
+
+</details>
+
+<details>
+<summary><strong>Do I need to pay for anything for this workshop?</strong></summary>
+
+**No.** All tools and services we provide here are FREE.
+
+</details>
+
+<details>
+<summary><strong>Will I get a certificate if I attend this workshop?</strong></summary>
+
+Attending the session is not enough. You need to complete the homeworks detailed below and you will get a nice badge.
+
+</details>
+
 
 ## Materials for the Session
 
