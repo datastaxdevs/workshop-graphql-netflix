@@ -3,7 +3,7 @@
 ## 🎯 Objectives
 * Build and run a Netflix clone.
 * Learn **GraphQL API** and how to use it with a database to create the tables and navigate the data.
-* Learn about **paging** and **infinite scrolling** in a Web UI.
+* Learn about **pagination** and **infinite scrolling** in a Web UI.
 * Leverage Netlify and DataStax Astra DB.
 * Deploy the Netflix clone to production with Netlify.
 
@@ -191,7 +191,7 @@ _This is the "Database Administrator" token you created earlier on the Astra DB 
 
 - Copy the following mutation on the left panel
 ```yaml
-mutation {
+mutation createReferenceList {
   reference_list: createTable(
     keyspaceName:"netflix",
     tableName:"reference_list",
@@ -331,7 +331,7 @@ query getAllGenre {
 _Remember to change the keyspaceName if you used something different_.
 
 ```yaml
-mutation {
+mutation createMoviesTable {
   movies_by_genre: createTable(
     keyspaceName:"netflix",
     tableName:"movies_by_genre",
@@ -436,7 +436,7 @@ query getMovieAction {
 *👁️ Expected output*
 ![image](images/graphql-playground-6.png?raw=true)
 
-✅ **Step 8b Enable paging:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform paging. Let's do same query as before now asking for a `page size to 2`
+✅ **Step 8b Enable pagination:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform pagination. Let's do same query as before now asking for a page size of 2:
 
 ```yaml
 query getMovieAction {
@@ -460,13 +460,13 @@ query getMovieAction {
 
 ![image](images/playground-2.png?raw=true)
 
-✅ **Step 8c: Fetch next page paging:**  Notice that `pageState` is also now returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace your own pageState `YOUR_PAGE_STATE`
+✅ **Step 8c: Fetch next page:**  Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
 ```yaml
 query getMovieAction {
     movies_by_genre (
       value: {genre:"Sci-Fi"},
-       options: {pageSize: 2, pageState: "<YOUR_PAGE_STATE>"},
+       options: {pageSize: 2, pageState: "YOUR_PAGE_STATE"},
        orderBy: [year_DESC]) {
       values {
         year,
@@ -483,6 +483,9 @@ query getMovieAction {
 *👁️ Expected output*
 
 ![image](images/playground-3.png?raw=true)
+
+If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
+_this is how pagination signals the end of the full results list._
 
 # Part 2 - Build Front-End
 
@@ -584,7 +587,7 @@ astra db dsbulk workshops load \
 
 ![astra-cli](images/astra-cli-dsbulk.png?raw=true)
 
-That's it! All 6000+ movies should be loaded and ready to go!
+That's it! All 6000+ movies are now loaded and ready to go!
 
 
 
@@ -642,7 +645,7 @@ exports.handler = async function (event) {
 }
 ```
 
-You'll notice the familiar GraphQL query "getAllGenres" we used previously in the playground. It's been modified a bit to utilize paging.
+You'll notice the familiar GraphQL query "getAllGenres" we used previously in the playground. It's been modified a bit to utilize pagination.
 
 ```javascript
 options: {
@@ -664,7 +667,7 @@ This section allows us to pass in the desired page size and current page state f
 
 And, in addition to the values of the query, we are also returning the page state from the query.
 
-The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding the page size to 6.
+The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding a page size of 6.
 
 ```javascript
 query {
@@ -928,7 +931,7 @@ Execute each of the commands below to link your code to your Netlify deployment.
 ✅ **Step 4c:** Open the link your see above (`https://app.netlify.com/authorize?response[...]`)
 in a new WINDOW for the link to work, and authorize Netlify CLI to access Netlify on your behalf.
 
-> When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane._
+> When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane.
 
 *👁️ Expected output after authorizing Netlify*
 
@@ -938,8 +941,6 @@ You are now logged into your Netlify account!
 Run netlify status for account details
 
 To see all available commands run: netlify help
-
-gitpod /workspace/workshop-graphql-netflix (master) $
 ```
 
 ✅ **Step 4d:** link your workspace to the associated site with the following command
