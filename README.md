@@ -101,16 +101,16 @@ That's it, you are done! Expect an email next few week(s)!
 
 ### Part II - Build and Deploy Front-End
 
-1. [Deploy to Netlify](#deploy-to-netlify)
-2. [Launch Gitpod from YOUR Github repo](#launch-gitpod-from-your-github-repo)
-3. [Setup and use `astra-cli`](#setup-and-use-astra-cli)
-4. [Serverless Functions](#serverless-functions)
-5. [Fetching from the Front-End](#fetching-from-the-front-end)
-6. [Install the Netlify CLI](#install-the-netlify-cli)
-7. [Provide DB connection parameters](#provide-db-connection-parameters)
-8. [Run the app in dev mode](#run-the-app-in-dev-mode)
-9. [Connect to your Netlify site](#connect-to-your-netlify-site)
-10. [Deploy in production!](#deploy-in-production)
+1. [Deploy to Netlify](#1-deploy-to-netlify)
+2. [Launch Gitpod from YOUR Github repo](#2-launch-gitpod-from-your-github-repo)
+3. [Setup and use `astra-cli`](#3-setup-and-use-astra-cli)
+4. [Serverless Functions](#4-serverless-functions)
+5. [Fetching from the Front-End](#5-fetching-from-the-front-end)
+6. [Install the Netlify CLI](#6-install-the-netlify-cli)
+7. [Provide DB connection parameters](#7-provide-db-connection-parameters)
+8. [Run the app in dev mode](#8-run-the-app-in-dev-mode)
+9. [Connect to your Netlify site](#9-connect-to-your-netlify-site)
+10. [Deploy in production!](#10-deploy-in-production)
 
 ### Extra resources
 
