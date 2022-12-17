@@ -11,7 +11,7 @@ tasks:
       npm install
     command: |
       source /home/gitpod/.astra/cli/astra-init.sh
-      echo "workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"
+      echo "Astra DB Netflix Clone READY ... Let's go !"
       gp open README.md
 ports:
   - port: 8888

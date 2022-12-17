@@ -128,7 +128,7 @@ That's it, you are done! Expect an email next few week(s)!
 
 _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, 40M read/write operations and about 80GB storage monthly for free - sufficient to run small production workloads. If you use up your credits the databases will pause, no charge, and you will be given the option to upgrade to a higher tier._
 
-Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* with *Open in a new TAB.*
+Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. **Right-Click** the following button and *Open in a new TAB.*
 
 <a href="https://astra.dev/yt-01-04"><img src="images/create_astra_db.png?raw=true" /></a>
 
@@ -191,7 +191,7 @@ to switch between the (logically distinct) realms of "managing schema" and "mana
 
 ![Playground tabs VS Browser tabs](images/tabs-vs-playgroundtabs-labeled.png)
 
-✅  **Step 3b:** Insert the Astra DB Token to run schema queries
+✅  **Step 3b:** Provide the database token as header
 
 In the GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token (including the `AstraCS:` part).
 _This is the "Database Administrator" token you created earlier on the Astra DB dashboard (Step 2 above)._
@@ -203,9 +203,10 @@ _This is the "Database Administrator" token you created earlier on the Astra DB 
 > Note: the GraphQL Playground starts with a ready-to-use _temporary token_ as the `x-cassandra-token` header. But we want the queries run in the Playground
 > to be identical to those that the Netlify functions will run from code, so **please replace the token with your DB token as instructed**.
 
-✅  **Step 3c:** In GraphQL Playground, create a table with the following mutation, (making sure to replace `netflix` if you used a different keyspace name):
+✅  **Step 3c:** In GraphQL Playground, create the `reference_list` table:
 
-- Copy the following mutation on the left panel
+Copy the following **mutation** to the left panel
+
 ```yaml
 mutation createReferenceList {
   reference_list: createTable(
@@ -221,9 +222,10 @@ mutation createReferenceList {
   )
 }
 ```
-* Use the big "play-button" arrow in the middle of the screen to execute the query
 
-![image](images/playground-1.png?raw=true)
+and then use the big "play button" arrow in the center to execute it.
+
+![image](images/playground-1.png)
 
 **GraphQL Playground troubleshooting** (covers this whole section)
 
@@ -240,9 +242,9 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
-✅  **Step 4b:** Validate that **HTTP HEADER** got variable `x-cassandra-token` populated for you, on the bottom of the page. Put your token as shown below if not available.
+✅  **Step 4b:** Repeat the insertion of the `x-cassandra-token` header for this playground tab (as you did for the first one):
 
-![image](images/graphql-playground-2.png?raw=true)
+![image](images/graphql-playground-2.png)
 
 ✅  **Step 4c:** In GraphQL Playground,populate the `reference_list` table with the following values
 
@@ -336,13 +338,13 @@ query getAllGenre {
 ```
 
 *👁️ Expected output*
-![image](images/graphql-playground-3.png?raw=true)
+![image](images/graphql-playground-3.png)
 
 ## 6. Creating a Movies Table
 
 ✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
 
-![image](images/graphql-back.png?raw=true)
+![image](images/graphql-back.png)
 
 _Remember to change the keyspaceName if you used something different_.
 
@@ -369,13 +371,13 @@ mutation createMoviesTable {
 ```
 
 *👁️ Expected output*
-![image](images/graphql-playground-4.png?raw=true)
+![image](images/graphql-playground-4.png)
 
 ## 7. Insert Values in Movie table
 
 ✅  **Step 7a:** Now go to playground tab "graphql" again. 
 
-![image](images/graphql-playground-2.png?raw=true)
+![image](images/graphql-playground-2.png)
 
 Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
 
@@ -425,7 +427,7 @@ mutation insertMovies {
 ```
 
 *👁️ Expected output*
-![image](images/graphql-playground-5.png?raw=true)
+![image](images/graphql-playground-5.png)
 
 > ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
 
@@ -450,7 +452,7 @@ query getMovieAction {
 ```
 
 *👁️ Expected output*
-![image](images/graphql-playground-6.png?raw=true)
+![image](images/graphql-playground-6.png)
 
 ✅ **Step 8b Enable pagination:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform pagination. Let's do same query as before now asking for a page size of 2:
 
@@ -474,7 +476,7 @@ query getMovieAction {
 
 *👁️ Expected output*
 
-![image](images/playground-2.png?raw=true)
+![image](images/playground-2.png)
 
 ✅ **Step 8c: Fetch next page:** Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
@@ -498,7 +500,7 @@ query getMovieAction {
  
 *👁️ Expected output*
 
-![image](images/playground-3.png?raw=true)
+![image](images/playground-3.png)
 
 If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
 _this is how pagination signals the end of the full results list._
@@ -524,49 +526,61 @@ The Netlify deploy button will:
 
 <details><summary>Show me!</summary>
 
-<img src="images/deploy-to-netlify.gif?raw=true" />
+![Netlify button in action](images/deploy-to-netlify.gif)
 
 </details>
 
 This will take a few minutes. You may have to authenticate through Github in the process.
 
 _Note: if there is an existing account in Netlify, check the settings to make sure the Netlify account is connected to the your Github account._
-<details>
-  <summary>Show me! </summary>
-  <img src="images/netlify-connect-01.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, "connected accounts"](images/netlify-connect-01.png)
+
 </details>
 
 ✅ **Step 1b: Check the deploy logs:** Click on `Site deploy in progress` within the Netlify UI.
-<details>
-  <summary>Show me! </summary>
-  <img src="images/deploy-1.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, "site deploy in progress"](images/deploy-1.png)
+
 </details>
 
 Then click the top deploy link to see the build process.
-<details>
-  <summary>Show me! </summary>
-  <img src="images/deploy-2.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, "Production/Building"](images/deploy-2.png)
+
 </details>
 
 ✅ **Step 1c: Complete the build:** Wait until the build shows `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
-<details>
-  <summary>Show me! </summary>
-  <img src="images/deploy-3.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, logs showing build finishing](images/deploy-3.png)
+
 </details>
 
 ✅ **Step 1d: Get back to your new site:** Scroll up to the top and click on the site name (it'll be after "_[your login]_'s Team" next to the Netlify button).
-<details>
-  <summary>Show me! </summary>
-  <img src="images/deploy-4.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, site name next to your team's name](images/deploy-4.png)
+
 </details>
 
 ## 2. Launch Gitpod from YOUR Github repo
 
 ✅ **Step 2a: Jump to YOUR repo:** Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.
 Scroll to where you were in the README.
-<details>
-  <summary>Show me! </summary>
-  <img src="images/deploy-5.png" />
+
+<details><summary>Show me!</summary>
+
+![Deploy to Netlify, ](images/deploy-5.png)
+
 </details>
 
 **Note** At this point, you MUST be reading this README from **YOUR** Github repository.
@@ -586,7 +600,8 @@ _Note: the button works on <img src="images/chrome-logo.svg" height="20"/> Chrom
 
 </details>
 
-ℹ️ _It may take a few minutes (approx. 3-5) for GitPod to fully initialize._
+ℹ️ _It may take a few minutes (approx. 3-5) for GitPod to fully initialize.
+Please wait until the console in the loewr half of Gitpod is responsive._
 
 Gitpod will be your IDE from now on. If you are familiar with VSCode, you can probably
 just use it. Otherwise, take a moment to review a separate page
@@ -607,7 +622,7 @@ astra setup
 
 **👁️ Expected output**
 
-![astra-cli](images/astra-cli-setup.png?raw=true)
+![astra-cli](images/astra-cli-setup.png)
 
 ✅ **Step 3b: Bulk data load:** Load a large movie dataset in the database.
 This command, in turn, installs and properly launches the `DSBulk` tool:
@@ -638,7 +653,7 @@ astra db dsbulk workshops load \
 
 **👁️ Expected output**
 
-![astra-cli](images/astra-cli-dsbulk.png?raw=true)
+![astra-cli](images/astra-cli-dsbulk.png)
 
 That's it! All 6000+ movies are now loaded and ready to go!
 
@@ -826,7 +841,9 @@ npm install -g netlify-cli
 ```
 
 <details><summary>Show me!</summary>
-<img src="images/netlify-install-cli.png?raw=true" />
+
+![Install Netlify CLI](images/netlify-install-cli.png)
+
 </details>
 
 With the Netlify command-line interface you will build and deploy
