@@ -629,7 +629,7 @@ This command, in turn, installs and properly launches the `DSBulk` tool:
 
 ``` bash
 astra db load workshops \
-  -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
+  -url data/movies_by_genre.csv \
   -k netflix \
   -t movies_by_genre
 ```
@@ -640,7 +640,7 @@ Note: you should not need this.
 
 ```bash
 astra db dsbulk workshops load \
-  -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
+  -url data/movies_by_genre.csv \
   -k netflix \
   -t movies_by_genre
 ```
