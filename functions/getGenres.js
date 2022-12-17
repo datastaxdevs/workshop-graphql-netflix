@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 exports.handler = async function (event) {
 
   const body = JSON.parse(event.body)
-  const url = process.env.ASTRA_GRAPHQL_ENDPOINT
+  const url = process.env.ASTRA_DB_GRAPHQL_URL
   const query = `
     query getAllGenres {
       reference_list (

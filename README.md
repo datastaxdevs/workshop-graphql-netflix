@@ -11,6 +11,7 @@ A simple **ReactJS** Netflix homepage clone running on *Astra DB* that leverages
 This application is the result of the collaboration between [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) and the Datastax Developer Advocate team.
 
 <!--- ENDEXCLUDE --->
+
 See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
 
 ![image](images/ui.png)
@@ -76,7 +77,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
 
 1. Complete the practice steps from this repository as described below.
-2. Insert a movie OR genre of your choice in the database (It's ok to copy an existing one, just change the name a bit so we can tell it is yours).
+2. Insert a movie OR genre of your choice in the database (It's OK to re-use the trailer file URL from another movie! Just make the title recognizable as yours).
 3. Take a screenshot of your Netflix clone running either from your Gitpod or (better) deployed to production in Netlify (in this case, you could also give us the Netlify URL).
 4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name in the submission comment field as well).
 5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
@@ -99,17 +100,17 @@ That's it, you are done! Expect an email next few week(s)!
 8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
 
 ### Part II - Build and Deploy Front-End
-1. [Launch GitPod](#1-launch-gitpod-ide)
-2. [Know your Gitpod](#2-know-your-gitpod)
-3. [Astra CLI](#3-astra-cli)
-4. [Serverless Functions](#4-serverless-functions)
-5. [Fetching from the Front-End](#5-fetching-from-the-front-end)
-6. [Install the Netlify CLI](#6-install-the-netlify-cli-command-line-interface)
-7. [Retrieve connection parameters](#7-retrieve-connection-parameters)
-8. [Configure Environment Variables and Install Dependencies](#8-configure-environment-variables-and-install-dependencies)
-9. [Launch your app](#9-launch-your-app)
 
-**Optional:** [deploy your site to Netlify](#want-to-deploy-the-netflix-clone-optional)
+1. [Deploy to Netlify](#deploy-to-netlify)
+2. [Launch Gitpod from YOUR Github repo](#launch-gitpod-from-your-github-repo)
+3. [Setup and use `astra-cli`](#setup-and-use-astra-cli)
+4. [Serverless Functions](#serverless-functions)
+5. [Fetching from the Front-End](#fetching-from-the-front-end)
+6. [Install the Netlify CLI](#install-the-netlify-cli)
+7. [Provide DB connection parameters](#provide-db-connection-parameters)
+8. [Run the app in dev mode](#run-the-app-in-dev-mode)
+9. [Connect to your Netlify site](#connect-to-your-netlify-site)
+10. [Deploy in production!](#deploy-in-production)
 
 ### Extra resources
 
@@ -229,15 +230,15 @@ mutation createReferenceList {
 |Trouble| Shooting|
 |---|---|
 |Server cannot be reached | Add Astra token to headers (including `AstraCS:...`; check quotes) |
-|Server cannot be reached (second tab) | Check playground target URL ends with `netflix` |
+|Server cannot be reached (second playground tab) | Check playground target URL ends with `netflix` |
 Response not successful: Received status code 401 | Same as "server cannot be reached" |
 | Response not successful: Received status code 404 | Check spelling of keyspace in target URL |
 |"Play" button does nothing| Ensure query is syntactically correct |
-"Validation error of type FieldUndefined" | Most likely query in the wrong tab |
+"Validation error of type FieldUndefined" | Most likely query in the wrong playground tab, or writing to table not created yet |
 
 ## 4. Insert data in the Table with GraphQL
 
-✅  **Step 4a:** In graphQL playground, change tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
+✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
 ✅  **Step 4b:** Validate that **HTTP HEADER** got variable `x-cassandra-token` populated for you, on the bottom of the page. Put your token as shown below if not available.
 
@@ -322,7 +323,7 @@ mutation insertGenres {
 
 ## 5. Retrieving list of values
 
-✅  **Step 5a:** In GraphQL Playground, not changing tab (second tab: "graphql", yeah) list values from the table with the following query.
+✅  **Step 5a:** In GraphQL Playground, not changing playground tab (stay on the second: "graphql", yeah) list values from the table with the following query.
 
 ```yaml
 query getAllGenre {
@@ -339,7 +340,7 @@ query getAllGenre {
 
 ## 6. Creating a Movies Table
 
-✅  **Step 6a:** Switch back to first tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
+✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
 
 ![image](images/graphql-back.png?raw=true)
 
@@ -372,7 +373,7 @@ mutation createMoviesTable {
 
 ## 7. Insert Values in Movie table
 
-✅  **Step 7a:** Now go to tab "graphql" again. 
+✅  **Step 7a:** Now go to playground tab "graphql" again. 
 
 ![image](images/graphql-playground-2.png?raw=true)
 
@@ -430,7 +431,7 @@ mutation insertMovies {
 
 ## 8. Retrieve values from Movie tables
 
-✅  **Step 8a:** In GraphQL Playground, not changing tab (still second tab, "graphql", yeah) list values from the table with the following command:
+✅  **Step 8a:** In GraphQL Playground, not changing playground tab (stay on the second tab, "graphql", yeah) list values from the table with the following command:
 
 ```yaml
 query getMovieAction {
@@ -502,12 +503,8 @@ query getMovieAction {
 If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
 _this is how pagination signals the end of the full results list._
 
-
-###
-###
-###
-
 # Part 2 - Build and Deploy Front-End
+
 
 ## 1. Deploy to Netlify
 
@@ -615,7 +612,6 @@ astra setup
 ✅ **Step 3b: Bulk data load:** Load a large movie dataset in the database.
 This command, in turn, installs and properly launches the `DSBulk` tool:
 
-
 ``` bash
 astra db load workshops \
   -url https://raw.githubusercontent.com/datastaxdevs/workshop-graphql-netflix/master/data/movies_by_genre.csv \
@@ -634,6 +630,10 @@ astra db dsbulk workshops load \
   -t movies_by_genre
 ```
 
+> *Note*: we mock the trailers for these thousands of movies by using a handful
+> of them over and over. Don't be surprised if you'll see the wrong trailers
+> for your favorite movie!
+
 </details>
 
 **👁️ Expected output**
@@ -649,8 +649,11 @@ That's it! All 6000+ movies are now loaded and ready to go!
 > are not steps to "perform", rather suggestions to dive in the client
 > code and figure out how the various parts (React components, Netlify
 > functions and finally the GraphQL server in Astra DB) fit together.
-> You can skip them if you are in a hurry, but please come back to these
+> **You can skip them and jump to the [next step](#6-install-the-netlify-cli)**
+> if you are in a hurry, but please come back to these
 > for reference if you want to dissect the code a bit!
+
+<details><summary>Show me this section</summary>
 
 Take a look at `functions/getGenres.js`
 
@@ -660,7 +663,7 @@ const fetch = require('node-fetch')
 exports.handler = async function (event) {
 
   const body = JSON.parse(event.body)
-  const url = process.env.ASTRA_GRAPHQL_ENDPOINT
+  const url = process.env.ASTRA_DB_GRAPHQL_URL
   const query = `
     query getAllGenres {
       reference_list (
@@ -704,6 +707,7 @@ exports.handler = async function (event) {
 ```
 
 You'll notice the familiar GraphQL query "getAllGenres" we used previously in the playground. It's been modified a bit to utilize pagination.
+When building the GraphQL query, we pass the desired page size and state to the GraphQL API:
 
 ```javascript
 options: {
@@ -712,7 +716,8 @@ options: {
 }
 ```
 
-This section allows us to pass in the desired page size and current page state from the front-end.
+We ask the API server to give us back the table column "value" (containing the genre name), but also the page state
+for when we'll need the next page:
 
 ```javascript
 {
@@ -723,9 +728,7 @@ This section allows us to pass in the desired page size and current page state f
 }
 ```
 
-And, in addition to the values of the query, we are also returning the page state from the query.
-
-The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding a page size of 6.
+The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding a page size of 6:
 
 ```javascript
 query {
@@ -746,7 +749,11 @@ query {
 }
 ```
 
+</details>
+
 ## 5. Fetching from the Front-End
+
+<details><summary>Show me this section</summary>
 
 Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
 
@@ -770,7 +777,7 @@ const fetchData = async () => {
 
 We pass in the current `pageState` and `pageSize` state variables and receive a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the received data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
 
-When we render the page, generate a `<Section>` component for each genre, and set a `<div>` to detect a mouseEnter to load the next page of genres.
+When rendering the page, we generate a `<Section>` component for each genre, plus a `<div>` at the bottom, which will detect a mouseEnter event and trigger loading a new page of genres:
 
 ```javascript
 <>
@@ -808,88 +815,187 @@ const fetchData = async () => {
 
 Now that we know how the front-end works, let's launch our app!
 
+</details>
 
+## 6. Install the Netlify CLI
 
-###
-###
-###
+In the `workshop-graphql-netflix` directory, run the following:
 
-
-
-
-
-
-
-
-
-
-## 6. Install the Netlify CLI (Command Line Interface)
- * In the `workshop-graphql-netflix` directory run the following command to install the netlify-cli
- ```
- npm install -g netlify-cli
+```
+npm install -g netlify-cli
 ```
 
 <details><summary>Show me!</summary>
 <img src="images/netlify-install-cli.png?raw=true" />
 </details>
 
-## 7. Retrieve connection parameters
+With the Netlify command-line interface you will build and deploy
+the application directly from the Gitpod terminal.
 
-You need two important parameters to enable the serverless functions
-to authenticate and access your database: the DB token and the GraphQL endpoint URL.
+## 7. Provide DB connection parameters
 
-The **token** is the one you generated [earlier](#2-create-a-security-token) (the one looking something like
-`AstraCS:KDfdKeNREyWQvDpDrBqwBsUB:ec80667c....`).
+The "serverless functions" part of your app, in order to speak to
+your DB through GraphQL, needs two important pieces of information:
+the API endpoint and the token. You will now create a `.env` file which
+defines them as environment variables.
 
-The **GraphQL endpoint** is the URL for the "graphql" part of the GraphQL Playground
-you used [earlier](#4-insert-data-in-the-table-with-graphql). It looks like `https://b2f[...]-us-east1.apps.astra.datastax.com/api/graphql/netflix`.
+The quickest way is to have `astra-cli` generate one for you:
 
-> Tip: you can always [generate a new "DB Administrator" token](https://awesome-astra.github.io/docs/pages/astra/create-token/#c-procedure) if needed;
-> likewise, you can retrieve the GraphQL endpoint at any time as described [above](#3-create-table-genre-with-graphql);
-> moreover, if your Playground is open, you can simply copy the URL from the "GraphQL" playground tab there.
+```
+astra db create-dotenv -k netflix workshops
+```
 
-<details><summary>Show me how to find my GraphQL endpoint</summary>
+<details><summary>I want to do it manually</summary>
 
-Go to the Astra DB connect page for your database. Locate `3` write data.
-![graphql-endpoint-1](images/graphql-keyspace-url-01.png)
+If for some reason you don't use `astra-cli`, follow these steps:
+
+- copy `cp .env.sample .env` and open it: `gp open .env`;
+- `.env` is now open in the IDE editor and has two placeholders to replace:
+- insert the `AstraCS:...` database token (keep the quotes);
+- insert the GraphQL API address (it will look something like `https://b2f[...]/graphql/netflix`).
+
+You can generate a new database token if you want. The GraphQL address
+can be found in the playground: it is the URL you have edited to end in `netflix`
+_inside the second playground tab, which has its own address bar_ (as opposed to your browser's).
 
 </details>
 
-## 8. Configure Environment Variables and Install Dependencies
+## 8. Run the app in dev mode
 
-✅ Create `.env` file (e.g. with `touch .env; gp open .env`), containing the two
-strings you just collected:
-
-```ini
-ASTRA_DB_APPLICATION_TOKEN=REPLACE_ME
-ASTRA_GRAPHQL_ENDPOINT=REPLACE_ME
-```
-
-![env-file](images/env_file.png)
-
-To get the value of your token you can also
-
-```
-astra config get default 
-```
-
-
-
-👩‍💻  Install all the packages
+✅ **Step 8a: Install dependencies:**
 
 ```bash
 npm install
 ```
 
-## 9. Launch your app
-  * Run the application 
-  ```
-  netlify dev
-  ```
-  * The application should automatically launch in the GitPod preview pane
+✅ **Step 8b: Start the app:** With the command
 
-  ![graphql-endpoint-1](images/preview.png)
+```
+netlify dev
+```
 
+the application should automatically be displayed in GitPod's "simple browser".
+Note that in this **dev-mode run** everything is local to your Gitpod instance:
+_the "serverless functions", in particular, are actually running there,
+alongside the rest of the application!_
+
+<details><summary>Show me!</summary>
+
+![run-in-preview-pane](images/preview.png)
+
+</details>
+
+You can copy the URL in Gitpod's simple browser and open in a new tab
+(of your real browser, that is) for a
+better experience. But now let's move to the actual deploy phase.
+
+## 9. Connect to your Netlify site
+
+✅ **Step 9a:** Stop the dev run with `Ctrl-C`.
+
+✅ **Step 9b:** Authenticate with Netlify: run
+
+```
+netlify login
+```
+
+then grab the URL printed on the console
+(something like `https://app.netlify.com/authorize?response[...]`)
+and manually **open it in a new tab** (Gitpod blocks it for security).
+You will be asked to authorize "netlify-cli" to access your Netlify account
+in the process.
+
+<details><summary>Show me!</summary>
+
+![Netlify login](images/waiting_for_authorization.png)
+
+</details>
+
+Once you complete the login, you will see a console output like:
+
+```
+You are now logged into your Netlify account!
+Run netlify status for account details
+To see all available commands run: netlify help
+```
+
+✅ **Step 9c:** Associate to your Netlify site: run
+
+```
+netlify link
+```
+
+and make sure you confirm the choice of associating to
+"current git remote origin".
+
+<details><summary>Show me!</summary>
+
+![Netlify link](images/netlify-link.png)
+
+</details>
+
+## 10. Deploy in production!
+
+✅ **Step 10a:** Inject secrets to the Netlify site
+
+```
+netlify env:import .env
+```
+
+Now the (actually) serverless functions in Netlify have the connection
+parameters they need.
+
+<details><summary>Show me!</summary>
+
+![image](images/netlify_env_import.png)
+
+</details>
+
+✅ **Step 10b:** Build the app
+
+Run
+```
+netlify build
+```
+✅ **Step 10c:** Deploy!
+
+```
+netlify deploy --prod
+```
+
+✅ **Step 10d:** Visit your site.
+
+```
+netlify open:site
+```
+
+If needed, manually copy-paste your site URL in a new browser tab... and enjoy
+your work!
+
+![Netlify Setup Example](images/deployed_netflix_clone.png)
+
+## The END
+
+Congratulations, you made it!
+
+Now don't forget to complete your assignment and [submit it](#homework)
+to get your badge of completion!
+
+```
+       ██╗    ██╗███████╗██╗     ██╗          
+       ██║    ██║██╔════╝██║     ██║          
+       ██║ █╗ ██║█████╗  ██║     ██║          
+       ██║███╗██║██╔══╝  ██║     ██║          
+       ╚███╔███╔╝███████╗███████╗███████╗     
+        ╚══╝╚══╝ ╚══════╝╚══════╝╚══════╝     
+                                              
+       ██████╗  ██████╗ ███╗   ██╗███████╗██╗ 
+       ██╔══██╗██╔═══██╗████╗  ██║██╔════╝██║ 
+       ██║  ██║██║   ██║██╔██╗ ██║█████╗  ██║ 
+       ██║  ██║██║   ██║██║╚██╗██║██╔══╝  ╚═╝ 
+       ██████╔╝╚██████╔╝██║ ╚████║███████╗██╗ 
+       ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝ 
+```
 
 # Extra resources
 
@@ -899,101 +1005,3 @@ Thank you to our wonderful friend Ania Kubow for producing the Netflix clone. If
 While we focused on getting you up and running to production with Astra DB and Netlify, Ania's video will dig into more details on the app itself. Check it out to dig in more.
 
 [Ania's Netflix Video](https://www.youtube.com/watch?v=g8COh40v2jU)
-
-
-Once you are up and running in Gitpod, follow all steps in Part 2, summarized here for convenience:
-
-- (wait 2-3 minutes, until the console prints _"workshop-astra-NETFLIX gitpod ready - LET'S DO THIS!"_);
-- `npm install -g netlify-cli` ;
-- collect [token and GraphQL endpoint URL](#6-retrieve-application-token-to-securely-connect-to-the-database);
-- create and fill `.env` file with the connection params;
-- `npm install` ;
-- `netlify dev` as sanity check (will open the same URL you'd get from `gp url 8888`, you should see the app running all right).
-
-## 4. Connect Netlify to your site
-
-Execute each of the commands below to link your code to your Netlify deployment.
-
-✅ **Step 4a:**  we'll need to **STOP** the `netlify dev` command if you still have it running. In the terminal where you executed the netlify command issue a `CTRL+C` (control key + the C key) in order to stop the process.
-
-✅ **Step 4b:** Enter the following command to pop up a browser to authenticate with netlify
-
-  ```
-  netlify login
-  ```
-
-*👁️ Expected output*
-<img src="images/waiting_for_authorization.png" />
-
-✅ **Step 4c:** Open the link your see above (`https://app.netlify.com/authorize?response[...]`)
-in a new WINDOW for the link to work, and authorize Netlify CLI to access Netlify on your behalf.
-
-> When using GitPod the preview pane **will not display this properly.** You must click the "open in a new window" button in the very top right of the preview pane.
-
-*👁️ Expected output after authorizing Netlify*
-
-```
-You are now logged into your Netlify account!
-
-Run netlify status for account details
-
-To see all available commands run: netlify help
-```
-
-✅ **Step 4d:** link your workspace to the associated site with the following command
-
-```
-netlify link
-```
-
-*👁️ Expected output (after accepting the default link target)*
-
-![image](images/netlify-link.png?raw=true)
-
-✅ **Step 4e:** inject the secrets contained in the `.env` to Netlify:
-  
-```
-netlify env:import .env
-```
-
-![image](images/netlify_env_import.png)
-
-<!--
-  * Will be used to allow you to execute `netlify open`
-  ```
-  netlify sites:list
-  ```
--->
-
-## 5. Deploy to production
-Now that you've hooked everything up, time to deploy to production.
-
-Run
-```
-netlify build
-```
-
-Then run
-```
-netlify deploy --prod
-```
-
-Then finally run
-```
-netlify open:site
-```
-(you may need to manually pick the URL of the deployed application and open it in a new browser tab).
-  
-You've deployed your app to Netlify!
-![Netlify Setup Example](images/deployed_netflix_clone.png)
-
-## The END
-
-Congratulations, you made it to the END of the show.
-
-
-[🏠 Back to Table of Contents](#0-table-of-contents)
----
-
-[![thankyou](images/thankyou.gif)]()
-
