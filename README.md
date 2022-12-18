@@ -69,21 +69,6 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 - [Workshop video](https://www.youtube.com/watch?v=y_jbhaiVCL0)
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
-
-## Homework
-
-<img src="images/netflix-badge.png?raw=true" width="200" align="right" />
-
-Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
-
-1. Complete the practice steps from this repository as described below.
-2. Insert a movie OR genre of your choice in the database (It's OK to re-use the trailer file URL from another movie! Just make the title recognizable as yours).
-3. Take a screenshot of your Netflix clone running either from your Gitpod or (better) deployed to production in Netlify (in this case, you could also give us the Netlify URL).
-4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name in the submission comment field as well).
-5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
-6. Submit your homework [here](https://dtsx.io/homework-graphql-netflix).
-
-That's it, you are done! Expect an email next few week(s)!
   
 # Let's start
 
@@ -92,12 +77,12 @@ That's it, you are done! Expect an email next few week(s)!
 ### Part I - DB Setup & Data Ingest
 1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
 2. [Create a security token](#2-create-a-security-token)
-3. [Create table **genre** with GraphQL](#3-create-table-genre-with-graphql)
-4. [Insert data in **genre**  with GraphQL](#4-insert-data-in-the-table-with-graphql)
-5. [Retrieve values of **genre** table](#5-retrieving-list-of-values)
-6. [Create **movie** table](#6-creating-a-movies-table)
-7. [Insert values in **movie** table](#7-insert-values-in-movie-table)
-8. [Retrieve values from **movie** table](#8-retrieve-values-from-movie-tables)
+3. [Create table for genres with GraphQL](#3-create-table-for-genres-with-graphql)
+4. [Insert genre data with GraphQL](#4-insert-genre-data-with-graphql)
+5. [Retrieve genres with GraphQL](#5-retrieve-genres-with-graphql)
+6. [Create a table for movies](#6-create-a-table-for-movies)
+7. [Insert a few movies](#7-insert-a-few-movies)
+8. [Retrieve movies: Pagination](#8-retrieve-movies-pagination)
 
 ### Part II - Build and Deploy Front-End
 
@@ -111,6 +96,8 @@ That's it, you are done! Expect an email next few week(s)!
 8. [Run the app in dev mode](#8-run-the-app-in-dev-mode)
 9. [Connect to your Netlify site](#9-connect-to-your-netlify-site)
 10. [Deploy in production!](#10-deploy-in-production)
+
+[**Complete the assignment, receive your Badge!**](#homework)
 
 ### Extra resources
 
@@ -164,7 +151,7 @@ Today, in particular, we will need the string labeled "token" (the one starting 
 > ```
 
 
-## 3. Create table **genre** with GraphQL
+## 3. Create table for genres with GraphQL
 
 ✅  **Step 3a:** Open **GraphQL Playground**:
 
@@ -238,7 +225,7 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 |"Play" button does nothing| Ensure query is syntactically correct |
 "Validation error of type FieldUndefined" | Most likely query in the wrong playground tab, or writing to table not created yet |
 
-## 4. Insert data in the Table with GraphQL
+## 4. Insert genre data with GraphQL
 
 ✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
 
@@ -246,9 +233,9 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ![image](images/graphql-playground-2.png)
 
-✅  **Step 4c:** In GraphQL Playground,populate the `reference_list` table with the following values
+✅  **Step 4c:** In the GraphQL Playground, run the mutation that writes genre data:
 
-- Copy the following mutation on the left panel
+Copy the following mutation on the left panel:
 
 ```yaml
 mutation insertGenres {
@@ -321,11 +308,11 @@ mutation insertGenres {
 }
 ```
 
-* Use the big "play-button" arrow in the middle of the screen to execute the query
+then click on the big "play button" arrow in the center to execute the mutation
 
-## 5. Retrieving list of values
+## 5. Retrieve genres with GraphQL
 
-✅  **Step 5a:** In GraphQL Playground, not changing playground tab (stay on the second: "graphql", yeah) list values from the table with the following query.
+✅  **Step 5a:** In GraphQL Playground, not changing playground tab (stay on the second: "graphql", yeah) run the following query to read the `value` column of all table rows:
 
 ```yaml
 query getAllGenre {
@@ -340,13 +327,11 @@ query getAllGenre {
 *👁️ Expected output*
 ![image](images/graphql-playground-3.png)
 
-## 6. Creating a Movies Table
+## 6. Create a table for movies
 
-✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"). The token header should be already set, use the following mutation to create a new table:
+✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"; the token header should be already set). Use the following mutation to create a new table:
 
 ![image](images/graphql-back.png)
-
-_Remember to change the keyspaceName if you used something different_.
 
 ```yaml
 mutation createMoviesTable {
@@ -373,13 +358,13 @@ mutation createMoviesTable {
 *👁️ Expected output*
 ![image](images/graphql-playground-4.png)
 
-## 7. Insert Values in Movie table
+## 7. Insert a few movies
 
-✅  **Step 7a:** Now go to playground tab "graphql" again. 
+✅  **Step 7a:** Go to playground tab "graphql" again. 
 
 ![image](images/graphql-playground-2.png)
 
-Everything should be set: use the following mutation to populate the `movies_by_genre` table: 
+Use the following mutation to populate the `movies_by_genre` table with four movies:
 
 ```yaml
 mutation insertMovies {
@@ -429,9 +414,7 @@ mutation insertMovies {
 *👁️ Expected output*
 ![image](images/graphql-playground-5.png)
 
-> ℹ️ You can find more movie data in the `data` folder, however, we will be doing a bulk import of all this data shortly.
-
-## 8. Retrieve values from Movie tables
+## 8. Retrieve movies: Pagination
 
 ✅  **Step 8a:** In GraphQL Playground, not changing playground tab (stay on the second tab, "graphql", yeah) list values from the table with the following command:
 
@@ -1013,6 +996,21 @@ to get your badge of completion!
        ██████╔╝╚██████╔╝██║ ╚████║███████╗██╗ 
        ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝ 
 ```
+
+## Homework
+
+<img src="images/netflix-badge.png?raw=true" width="200" align="right" />
+
+Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
+
+1. Complete the practice steps from this repository as described below.
+2. Insert a movie OR genre of your choice in the database (It's OK to re-use the trailer file URL from another movie! Just make the title recognizable as yours).
+3. Take a screenshot of your Netflix clone running either from your Gitpod or (better) deployed to production in Netlify (in this case, you could also give us the Netlify URL).
+4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name in the submission comment field as well).
+5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
+6. Submit your homework [here](https://dtsx.io/homework-graphql-netflix).
+
+That's it, you are done! Expect an email next few week(s)!
 
 # Extra resources
 
