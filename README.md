@@ -66,10 +66,11 @@ Attending the session is not enough. You need to complete the homeworks detailed
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
 - [Slide deck](slides/slides.pdf)
-- [Workshop video](https://www.youtube.com/watch?v=y_jbhaiVCL0)
 - [Discord chat](https://bit.ly/cassandra-workshop)
-- [Questions and Answers](https://community.datastax.com/)
-  
+- ["cassandra" on StackOverflow](https://stackoverflow.com/questions/tagged/cassandra)
+- ["cassandra" on DBA StackExchange](https://dba.stackexchange.com/questions/tagged/cassandra)
+
+
 # Let's start
 
 ## Table of contents
@@ -176,16 +177,22 @@ in your browser, rather they are tabs _within_ the Playground application,
 to switch between the (logically distinct) realms of "managing schema" and "managing data in the tables"
 (more on that later).
 
-![Playground tabs VS Browser tabs](images/tabs-vs-playgroundtabs-labeled.png)
+![Playground tabs VS Browser tabs](images/tabs-vs-playgroundtabs-labeled-2.png)
 
 ✅  **Step 3b:** Provide the database token as header
 
 In the GraphQL Playground, **Populate HTTP HEADER** variable `x-cassandra-token` on the bottom of the page with your token (including the `AstraCS:` part).
 _This is the "Database Administrator" token you created earlier on the Astra DB dashboard (Step 2 above)._
 
-**Note**: make sure you are on the **`graphql-schema`** playground tab in this step, as this image illustrates:
+
+<details>
+<summary>
+**Note**: make sure you are on the **`graphql-schema`** playground tab in this step. Click here to show image.
+</summary>
 
 ![GraphQL Playground and token header, Schema playground tab](images/graphql-playground.png)
+
+</details>
 
 > Note: the GraphQL Playground starts with a ready-to-use _temporary token_ as the `x-cassandra-token` header. But we want the queries run in the Playground
 > to be identical to those that the Netlify functions will run from code, so **please replace the token with your DB token as instructed**.
@@ -210,9 +217,13 @@ mutation createReferenceList {
 }
 ```
 
-and then use the big "play button" arrow in the center to execute it.
+<details>
+<summary>and then use the big "play button" arrow in the center to execute it. Click for screenshot.</summary>
 
 ![image](images/playground-1.png)
+
+</details>
+
 
 **GraphQL Playground troubleshooting** (covers this whole section)
 
@@ -231,7 +242,12 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ✅  **Step 4b:** Repeat the insertion of the `x-cassandra-token` header for this playground tab (as you did for the first one):
 
+<details>
+<summary>Show me!</summary>
+
 ![image](images/graphql-playground-2.png)
+
+</details>
 
 ✅  **Step 4c:** In the GraphQL Playground, run the mutation that writes genre data:
 
@@ -324,14 +340,29 @@ query getAllGenre {
 }
 ```
 
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ click for expected output*
+</summary>
+
 ![image](images/graphql-playground-3.png)
+
+</details>
 
 ## 6. Create a table for movies
 
-✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"; the token header should be already set). Use the following mutation to create a new table:
+✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"; the token header should be already set).
+
+<details>
+<summary>
+Click for screenshot
+</summary>
 
 ![image](images/graphql-back.png)
+
+</details>
+
+Use the following mutation to create a new table:
 
 ```yaml
 mutation createMoviesTable {
@@ -355,14 +386,27 @@ mutation createMoviesTable {
 }
 ```
 
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ Click for expected output*
+</summary>
+
 ![image](images/graphql-playground-4.png)
+
+</details>
 
 ## 7. Insert a few movies
 
 ✅  **Step 7a:** Go to playground tab "graphql" again. 
 
+<details>
+<summary>
+Click for screenshot
+</summary>
+
 ![image](images/graphql-playground-2.png)
+
+</details>
 
 Use the following mutation to populate the `movies_by_genre` table with four movies:
 
@@ -411,8 +455,15 @@ mutation insertMovies {
   }
 ```
 
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ Click for expected output*
+</summary>
+
 ![image](images/graphql-playground-5.png)
+
+</details>
+
 
 ## 8. Retrieve movies: Pagination
 
@@ -434,10 +485,17 @@ query getMovieAction {
 }
 ```
 
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ Click for expected output*
+</summary>
+
 ![image](images/graphql-playground-6.png)
 
-✅ **Step 8b Enable pagination:** For small datasets you can retrieve all values in the table but for performance or network reasons you need to perform pagination. Let's do same query as before now asking for a page size of 2:
+</details>
+
+
+✅ **Step 8b: Enable pagination:** On a small dataset, you can retrieve all values in the table at once; but in general, for performance or network reasons, you'll need pagination. Let's do the same query as before, but asking for a _page size of 2_:
 
 ```yaml
 query getMovieAction {
@@ -457,9 +515,15 @@ query getMovieAction {
 }
 ```
 
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ click for expected output*
+</summary>
 
 ![image](images/playground-2.png)
+
+</details>
+
 
 ✅ **Step 8c: Fetch next page:** Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
@@ -481,9 +545,15 @@ query getMovieAction {
 }
 ```
  
-*👁️ Expected output*
+<details>
+<summary>
+*👁️ click for expected output*
+</summary>
 
 ![image](images/playground-3.png)
+
+</details>
+
 
 If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
 _this is how pagination signals the end of the full results list._
