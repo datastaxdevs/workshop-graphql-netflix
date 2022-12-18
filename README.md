@@ -1071,7 +1071,7 @@ netlify open:site
 
 <details><summary>Show me!</summary>
 
-![Netlify Open site](images/netlify-open-site.png)
+![Netlify Open site](images/netlify-open-site-2.png)
 
 </details>
 
