@@ -89,7 +89,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 1. [Deploy to Netlify](#1-deploy-to-netlify)
 2. [Launch Gitpod from YOUR Github repo](#2-launch-gitpod-from-your-github-repo)
-3. [Setup and use `astra-cli`](#3-setup-and-use-astra-cli)
+3. [Set up and use `astra-cli`](#3-set-up-and-use-astra-cli)
 4. [Serverless Functions](#4-serverless-functions)
 5. [Fetching from the Front-End](#5-fetching-from-the-front-end)
 6. [Install the Netlify CLI](#6-install-the-netlify-cli)
@@ -342,7 +342,7 @@ query getAllGenre {
 
 <details>
 <summary>
-<strong>👁️ click for expected output</strong>
+Show me!
 </summary>
 
 ![image](images/graphql-playground-3.png)
@@ -388,7 +388,7 @@ mutation createMoviesTable {
 
 <details>
 <summary>
-*👁️ Click for expected output*
+Show me!
 </summary>
 
 ![image](images/graphql-playground-4.png)
@@ -457,7 +457,7 @@ mutation insertMovies {
 
 <details>
 <summary>
-*👁️ Click for expected output*
+Show me!
 </summary>
 
 ![image](images/graphql-playground-5.png)
@@ -487,7 +487,7 @@ query getMovieAction {
 
 <details>
 <summary>
-*👁️ Click for expected output*
+Show me!
 </summary>
 
 ![image](images/graphql-playground-6.png)
@@ -517,7 +517,7 @@ query getMovieAction {
 
 <details>
 <summary>
-*👁️ click for expected output*
+Show me!
 </summary>
 
 ![image](images/playground-2.png)
@@ -547,7 +547,7 @@ query getMovieAction {
  
 <details>
 <summary>
-*👁️ click for expected output*
+Show me!
 </summary>
 
 ![image](images/playground-3.png)
@@ -565,7 +565,10 @@ _this is how pagination signals the end of the full results list._
 
 ✅ **Step 1a: Netlify Button:** Click the following button to deploy to Netlify
 
-- <details><summary> What does the netlify deploy button do?</summary>
+<details>
+<summary>
+What does the Netlify deploy button do?
+</summary>
 
 The Netlify deploy button will:
 
@@ -640,7 +643,7 @@ Scroll to where you were in the README.
 That is, if the address bar still says `https://github.com/datastaxdevs/...` please
 head over to YOUR copy of the repo before going the Gitpod route!
 
-✅ **Step 2b: Launch Gitpod:** Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button_)
+✅ **Step 2b: Launch Gitpod:** Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button to open in new tab._)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
@@ -654,17 +657,18 @@ _Note: the button works on <img src="images/chrome-logo.svg" height="20"/> Chrom
 </details>
 
 ℹ️ _It may take a few minutes (approx. 3-5) for GitPod to fully initialize.
-Please wait until the console in the loewr half of Gitpod is responsive._
+Please wait until the console in the lower half of Gitpod is responsive._
 
 Gitpod will be your IDE from now on. If you are familiar with VSCode, you can probably
 just use it. Otherwise, take a moment to review a separate page
 ["Know your Gitpod"](know_your_gitpod.md)
 and then come back here.
 
-## 3. Setup and use `astra-cli`
+## 3. Set up and use `astra-cli`
 
 You are going to use a CLI tool to simplify operations with Astra DB. The tool
-is preinstalled on your Gitpod.
+is [preinstalled](https://docs.datastax.com/en/astra-classic/docs/astra-cli/installation.html)
+on your Gitpod.
 
 ✅ **Step 3a: Set up the CLI:** Run the following in the Gitpod terminal and,
 when prompted, enter the `AstraCS:...` you obtained at the beginning.
@@ -673,12 +677,18 @@ when prompted, enter the `AstraCS:...` you obtained at the beginning.
 astra setup
 ```
 
-**👁️ Expected output**
+<details>
+<summary>
+Show me!
+</summary>
 
 ![astra-cli](images/astra-cli-setup.png)
 
+</details>
+
+
 ✅ **Step 3b: Bulk data load:** Load a large movie dataset in the database.
-This command, in turn, installs and properly launches the `DSBulk` tool:
+This command installs and properly launches the `DSBulk` tool:
 
 ``` bash
 astra db load workshops \
@@ -704,12 +714,16 @@ astra db dsbulk workshops load \
 
 </details>
 
-**👁️ Expected output**
+<details>
+<summary>
+Show me!
+</summary>
 
 ![astra-cli](images/astra-cli-dsbulk.png)
 
-That's it! All 6000+ movies are now loaded and ready to go!
+</details>
 
+That's it! All 6000+ movies are now loaded and ready to go!
 
 ## 4. Serverless Functions
 
