@@ -342,7 +342,9 @@ query getAllGenre {
 
 <details>
 <summary>
+
 *👁️ click for expected output*
+
 </summary>
 
 ![image](images/graphql-playground-3.png)
