@@ -27,7 +27,7 @@ gp url 8888
 ![gitpod](images/gitpod-02-url.png?raw=true)
 
 
-You can launch a new browser window and keep it open for the rest of the workshop, even in case the application is not running yet (in which case you can always refresh the tab).
+You can launch a new browser window and keep it open for the rest of the workshop, even in case the application is not running yet (in which case you can always refresh the tab later, after starting the app).
 
 ![gitpod](images/newbrowser1.png?raw=true)
 

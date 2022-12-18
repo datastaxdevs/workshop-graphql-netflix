@@ -187,7 +187,7 @@ _This is the "Database Administrator" token you created earlier on the Astra DB 
 
 <details>
 <summary>
-**Note**: make sure you are on the **`graphql-schema`** playground tab in this step. Click here to show image.
+<strong>Note</strong>: make sure you are on the <strong>graphql-schema</strong> playground tab in this step. Click here to show image.
 </summary>
 
 ![GraphQL Playground and token header, Schema playground tab](images/graphql-playground.png)
@@ -238,7 +238,8 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ## 4. Insert genre data with GraphQL
 
-✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. Edit the end of the URl to change from `system` to the name of your keyspace: `netflix`
+✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. The Playground has its own "address bar"
+(**note**: not the one of your browser). Edit the end of the URL there, from `system` to the name of your keyspace: `netflix`
 
 ✅  **Step 4b:** Repeat the insertion of the `x-cassandra-token` header for this playground tab (as you did for the first one):
 
@@ -331,7 +332,7 @@ then click on the big "play button" arrow in the center to execute the mutation
 ✅  **Step 5a:** In GraphQL Playground, not changing playground tab (stay on the second: "graphql", yeah) run the following query to read the `value` column of all table rows:
 
 ```yaml
-query getAllGenre {
+query getAllGenres {
     reference_list (value: {label:"genre"}) {
       values {
       	value
@@ -351,7 +352,7 @@ Show me!
 
 ## 6. Create a table for movies
 
-✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"; the token header should be already set).
+✅  **Step 6a:** Switch back to first playground tab ("graphql-schema"; the token header will be already set).
 
 <details>
 <summary>
@@ -471,17 +472,17 @@ Show me!
 
 ```yaml
 query getMovieAction {
-    movies_by_genre (
-      value: {genre:"Sci-Fi"},
-       orderBy: [year_DESC]) {
-      values {
-        year,
-        title,
-        duration,
-        synopsis,
-        thumbnail
-      }
+  movies_by_genre (
+    value: {genre:"Sci-Fi"},
+     orderBy: [year_DESC]) {
+    values {
+      year,
+      title,
+      duration,
+      synopsis,
+      thumbnail
     }
+  }
 }
 ```
 
@@ -498,7 +499,7 @@ Show me!
 ✅ **Step 8b: Enable pagination:** On a small dataset, you can retrieve all values in the table at once; but in general, for performance or network reasons, you'll need pagination. Let's do the same query as before, but asking for a _page size of 2_:
 
 ```yaml
-query getMovieAction {
+query getMovieActionPag1 {
     movies_by_genre (
       value: {genre:"Sci-Fi"},
        options: {pageSize: 2},
@@ -528,7 +529,7 @@ Show me!
 ✅ **Step 8c: Fetch next page:** Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
 ```yaml
-query getMovieAction {
+query getMovieActionNextPage {
     movies_by_genre (
       value: {genre:"Sci-Fi"},
        options: {pageSize: 2, pageState: "YOUR_PAGE_STATE"},
@@ -563,7 +564,9 @@ _this is how pagination signals the end of the full results list._
 
 ## 1. Deploy to Netlify
 
-✅ **Step 1a: Netlify Button:** Click the following button to deploy to Netlify
+✅ **Step 1a: Netlify Button:** Click the following button to deploy to Netlify.
+
+**Note**: preferrably Ctrl-click for a new tab.
 
 <details>
 <summary>
@@ -586,7 +589,10 @@ The Netlify deploy button will:
 
 </details>
 
-This will take a few minutes. You may have to authenticate through Github in the process.
+This will take a few minutes:
+
+- you may have to authenticate through Github in the process;
+- confirm the repo name and "Save & Deploy" when asked.
 
 _Note: if there is an existing account in Netlify, check the settings to make sure the Netlify account is connected to the your Github account._
 
@@ -612,7 +618,7 @@ Then click the top deploy link to see the build process.
 
 </details>
 
-✅ **Step 1c: Complete the build:** Wait until the build shows `Netlify Build Complete`,  **When you see Pushing to repository** you're ready to move on.
+✅ **Step 1c: Complete the build:** Wait until the build shows `Netlify Build Complete`,  **When you see "_Pushing to repository..._"** you're ready to move on.
 
 <details><summary>Show me!</summary>
 
@@ -682,7 +688,7 @@ astra setup
 Show me!
 </summary>
 
-![astra-cli](images/astra-cli-setup.png)
+![astra-cli](images/astra-cli-setup-2.png)
 
 </details>
 
@@ -719,7 +725,7 @@ astra db dsbulk workshops load \
 Show me!
 </summary>
 
-![astra-cli](images/astra-cli-dsbulk.png)
+![astra-cli](images/astra-cli-dsbulk-2.png)
 
 </details>
 
@@ -731,7 +737,7 @@ That's it! All 6000+ movies are now loaded and ready to go!
 > are not steps to "perform", rather suggestions to dive in the client
 > code and figure out how the various parts (React components, Netlify
 > functions and finally the GraphQL server in Astra DB) fit together.
-> **You can skip them and jump to the [next step](#6-install-the-netlify-cli)**
+> **You can skip them and jump to the [next practical step](#6-install-the-netlify-cli)**
 > if you are in a hurry, but please come back to these
 > for reference if you want to dissect the code a bit!
 
@@ -969,7 +975,7 @@ alongside the rest of the application!_
 
 </details>
 
-You can copy the URL in Gitpod's simple browser and open in a new tab
+You can copy the URL found in Gitpod's simple browser and open in a new tab
 (of your real browser, that is) for a
 better experience. But now let's move to the actual deploy phase.
 
@@ -1014,7 +1020,7 @@ and make sure you confirm the choice of associating to
 
 <details><summary>Show me!</summary>
 
-![Netlify link](images/netlify-link.png)
+![Netlify link](images/netlify-link-2.png)
 
 </details>
 
@@ -1031,6 +1037,9 @@ parameters they need.
 
 <details><summary>Show me!</summary>
 
+_Note: If you generated the `.env` with
+`astra-cli`, the actual output is much more verbose._
+
 ![image](images/netlify_env_import.png)
 
 </details>
@@ -1041,6 +1050,13 @@ Run
 ```
 netlify build
 ```
+
+<details><summary>Show me!</summary>
+
+![Netlify build](images/netlify-build.png)
+
+</details>
+
 ✅ **Step 10c:** Deploy!
 
 ```
@@ -1052,6 +1068,12 @@ netlify deploy --prod
 ```
 netlify open:site
 ```
+
+<details><summary>Show me!</summary>
+
+![Netlify Open site](images/netlify-open-site.png)
+
+</details>
 
 If needed, manually copy-paste your site URL in a new browser tab... and enjoy
 your work!
