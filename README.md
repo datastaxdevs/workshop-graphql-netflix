@@ -1128,7 +1128,7 @@ to get your badge of completion!
 5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
 6. Submit your homework [here](https://dtsx.io/homework-graphql-netflix).
 
-That's it, you are done! Expect an email next few week(s)!
+That's it, you are done: expect an email in the next days!
 
 # Extra resources
 
