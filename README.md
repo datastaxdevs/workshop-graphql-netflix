@@ -143,7 +143,7 @@ The status will change from `Pending` to `Active` when the database is ready, th
 Keep it handy for later use (best to download it in CSV format, as the values
 will not be visible afterward).
 This will provide authentication later when interacting with the database.
-Today, in particular, we will need the string labeled "token" (the one starting with `AstraCS:...`).
+Today, in particular, you'll need the string labeled "token" (the one starting with `AstraCS:...`).
 
 > **⚠️ Important**
 > ```
@@ -194,7 +194,7 @@ _This is the "Database Administrator" token you created earlier on the Astra DB 
 
 </details>
 
-> Note: the GraphQL Playground starts with a ready-to-use _temporary token_ as the `x-cassandra-token` header. But we want the queries run in the Playground
+> Note: the GraphQL Playground starts with a ready-to-use _temporary token_ as the `x-cassandra-token` header. But you want the queries run in the Playground
 > to be identical to those that the Netlify functions will run from code, so **please replace the token with your DB token as instructed**.
 
 ✅  **Step 3c:** In GraphQL Playground, create the `reference_list` table:
@@ -238,8 +238,11 @@ Response not successful: Received status code 401 | Same as "server cannot be re
 
 ## 4. Insert genre data with GraphQL
 
-✅  **Step 4a:** In graphQL playground, change playground tab to now use `graphql`. The Playground has its own "address bar"
-(**note**: not the one of your browser). Edit the end of the URL there, from `system` to the name of your keyspace: `netflix`
+✅  **Step 4a:** Get to the API URL for your keyspace
+
+In graphQL playground, **change playground tab** to now use `graphql`. The Playground has its own address bar
+(**note**: it's _not_ the address bar of your browser). Edit the ending of the URL shown there, from `system` to the
+name of the keyspace: `netflix`
 
 ✅  **Step 4b:** Repeat the insertion of the `x-cassandra-token` header for this playground tab (as you did for the first one):
 
@@ -496,7 +499,7 @@ Show me!
 </details>
 
 
-✅ **Step 8b: Enable pagination:** On a small dataset, you can retrieve all values in the table at once; but in general, for performance or network reasons, you'll need pagination. Let's do the same query as before, but asking for a _page size of 2_:
+✅ **Step 8b: Enable pagination:** On a small dataset, you can retrieve all values in the table at once; but in general, for performance or network reasons, you'll need pagination. Run a similar query as before, but this time asking for a _page size of 2_:
 
 ```yaml
 query getMovieActionPag1 {
@@ -526,7 +529,10 @@ Show me!
 </details>
 
 
-✅ **Step 8c: Fetch next page:** Notice that `pageState` now is also returned. Let's use it to fetch the next 2 items (next page). Edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
+✅ **Step 8c: Fetch the next page:**
+
+Notice that `pageState` now is also returned. Use it to fetch the next 2 items (next page):
+edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 
 ```yaml
 query getMovieActionNextPage {
@@ -556,7 +562,7 @@ Show me!
 </details>
 
 
-If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! We had scrolled through all rows already:
+If you try to paste the _newly-obtained_ value for `pageState` and re-run the query, you get an empty list and a null `pageState` in return. D'oh! You had scrolled through all rows already:
 _this is how pagination signals the end of the full results list._
 
 # Part 2 - Build and Deploy Front-End
@@ -575,7 +581,7 @@ What does the Netlify deploy button do?
 
 The Netlify deploy button will:
 
-- Create a new repository for you on Github (an unrelated _copy_, not a fork)
+- Create a new repository for you on Github (Note: it's an unrelated _copy_, not a fork)
 - Create a site on Netlify (and deploy a nonworking build of the app, which lacks the DB connection parameters still)
 - Link the two together.
 
@@ -594,7 +600,7 @@ This will take a few minutes:
 - you may have to authenticate through Github in the process;
 - confirm the repo name and "Save & Deploy" when asked.
 
-_Note: if there is an existing account in Netlify, check the settings to make sure the Netlify account is connected to the your Github account._
+_Note: if there is an existing account in Netlify, check the settings to make sure the Netlify account is connected to your Github account._
 
 <details><summary>Show me!</summary>
 
@@ -645,11 +651,13 @@ Scroll to where you were in the README.
 
 </details>
 
-**Note** At this point, you MUST be reading this README from **YOUR** Github repository.
-That is, if the address bar still says `https://github.com/datastaxdevs/...` please
-head over to YOUR copy of the repo before going the Gitpod route!
+> **Note** At this point, you MUST be reading this README from **YOUR** Github repository.
+> That is, if the address bar still says `https://github.com/datastaxdevs/...` please
+> head over to YOUR copy of the repo before going the Gitpod route!
 
-✅ **Step 2b: Launch Gitpod:** Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button to open in new tab._)
+✅ **Step 2b: Launch Gitpod:**
+
+Use this link to open Gitpod from **YOUR** repository! (_Tip: Ctrl-click on the button to open in new tab._)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
@@ -676,7 +684,9 @@ You are going to use a CLI tool to simplify operations with Astra DB. The tool
 is [preinstalled](https://docs.datastax.com/en/astra-classic/docs/astra-cli/installation.html)
 on your Gitpod.
 
-✅ **Step 3a: Set up the CLI:** Run the following in the Gitpod terminal and,
+✅ **Step 3a: Set up the CLI:**
+
+Run the following in the Gitpod terminal and,
 when prompted, enter the `AstraCS:...` you obtained at the beginning.
 
 ``` bash
@@ -703,7 +713,16 @@ astra db load workshops \
   -t movies_by_genre
 ```
 
-<details><summary>Show the syntax for old versions of astra-cli</summary>
+<details>
+<summary>
+Show me!
+</summary>
+
+![astra-cli](images/astra-cli-dsbulk-2.png)
+
+</details>
+
+<details><summary>Show the syntax for old versions of astra-cli (click here)</summary>
 
 Note: you should not need this.
 
@@ -714,32 +733,23 @@ astra db dsbulk workshops load \
   -t movies_by_genre
 ```
 
+</details>
+
 > *Note*: we mock the trailers for these thousands of movies by using a handful
 > of them over and over. Don't be surprised if you'll see the wrong trailers
 > for your favorite movie!
-
-</details>
-
-<details>
-<summary>
-Show me!
-</summary>
-
-![astra-cli](images/astra-cli-dsbulk-2.png)
-
-</details>
 
 That's it! All 6000+ movies are now loaded and ready to go!
 
 ## 4. Serverless Functions
 
 > _Note_: this section and the next one ("Fetching from the Front-End")
-> are not steps to "perform", rather suggestions to dive in the client
+> are not steps to "perform", rather suggestions to dive in the app
 > code and figure out how the various parts (React components, Netlify
 > functions and finally the GraphQL server in Astra DB) fit together.
-> **You can skip them and jump to the [next practical step](#6-install-the-netlify-cli)**
+> **You can skip these and jump to the [next practical step](#6-install-the-netlify-cli)**
 > if you are in a hurry, but please come back to these
-> for reference if you want to dissect the code a bit!
+> for reference if you want to dissect the code!
 
 <details><summary>Show me this section</summary>
 
@@ -794,8 +804,9 @@ exports.handler = async function (event) {
 }
 ```
 
-You'll notice the familiar GraphQL query "getAllGenres" we used previously in the playground. It's been modified a bit to utilize pagination.
-When building the GraphQL query, we pass the desired page size and state to the GraphQL API:
+You'll notice the familiar GraphQL query "getAllGenres" you used previously in the playground.
+It's been modified a bit to utilize pagination.
+When building the GraphQL query, you pass the desired page size and state to the GraphQL API:
 
 ```javascript
 options: {
@@ -804,8 +815,8 @@ options: {
 }
 ```
 
-We ask the API server to give us back the table column "value" (containing the genre name), but also the page state
-for when we'll need the next page:
+You ask the API server to give us back the table column "value" (containing the genre name), but also the page state
+for when you'll need the next page:
 
 ```javascript
 {
@@ -816,7 +827,7 @@ for when we'll need the next page:
 }
 ```
 
-The serverless function `functions/getMovies.js` works in much the same way, though we pass in the specific genre we want, and are hardcoding a page size of 6:
+The serverless function `functions/getMovies.js` works in much the same way, but you provide the specific genre you want and the page size is hardcoded:
 
 ```javascript
 query {
@@ -843,9 +854,9 @@ query {
 
 <details><summary>Show me this section</summary>
 
-Let's take a look at how we fetch from these serverless functions from the front-end. Start in `src/App.js`
+Take a look at how you fetch from these serverless functions from the front-end. Start in `src/App.js`
 
-We have a fetch method defined that will retrieve a page of genres by calling the `getGenres` serverless function.
+There is a fetch method defined, that will retrieve a page of genres by calling the `getGenres` serverless function.
 
 ```javascript
 const fetchData = async () => {
@@ -863,9 +874,9 @@ const fetchData = async () => {
 }
 ```
 
-We pass in the current `pageState` and `pageSize` state variables and receive a response from the serverless function. We then set the `pageState` var to the new pagestate, and set the `genres` state variable to the received data. (Note that we are concatenating the new data to the var, since we want to keep all previously fetched data, not replace).
+You pass in the current `pageState` and `pageSize` state variables and receive a response from the serverless function. You then set the `pageState` var to the new pagestate, and set the `genres` state variable to the received data. (Note that you are concatenating the new data to the var, since you want to keep all previously fetched data, not replace).
 
-When rendering the page, we generate a `<Section>` component for each genre, plus a `<div>` at the bottom, which will detect a mouseEnter event and trigger loading a new page of genres:
+When rendering the page, you generate a `<Section>` component for each genre, plus a `<div>` at the bottom, which will detect a `mouseEnter` event and trigger the loading of a new pageful of genres:
 
 ```javascript
 <>
@@ -887,7 +898,7 @@ When rendering the page, we generate a `<Section>` component for each genre, plu
 </>
 ```
 
-The `<Section>` component works in the same way, though we will fully replace the data in the `movies` variable.
+The `<Section>` component works in the same way, but you will fully replace the data in the `movies` variable this time.
 
 ```javascript
 const fetchData = async () => {
@@ -901,7 +912,7 @@ const fetchData = async () => {
 }
 ```
 
-Now that we know how the front-end works, let's launch our app!
+Now that you know how the front-end works, launch the app!
 
 </details>
 
@@ -946,7 +957,7 @@ If for some reason you don't use `astra-cli`, follow these steps:
 
 You can generate a new database token if you want. The GraphQL address
 can be found in the playground: it is the URL you have edited to end in `netflix`
-_inside the second playground tab, which has its own address bar_ (as opposed to your browser's).
+in the second playground tab ([Part 1, step 4a](#4-insert-genre-data-with-graphql)).
 
 </details>
 
@@ -977,7 +988,7 @@ alongside the rest of the application!_
 
 You can copy the URL found in Gitpod's simple browser and open in a new tab
 (of your real browser, that is) for a
-better experience. But now let's move to the actual deploy phase.
+better experience. But now it's time to move to the actual deploy phase.
 
 ## 9. Connect to your Netlify site
 
@@ -1047,6 +1058,7 @@ _Note: If you generated the `.env` with
 ✅ **Step 10b:** Build the app
 
 Run
+
 ```
 netlify build
 ```
@@ -1107,12 +1119,12 @@ to get your badge of completion!
 
 <img src="images/netflix-badge.png?raw=true" width="200" align="right" />
 
-Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
+Complete your upgrade and get your verified skill badge! Do the assignment and submit your homework!
 
 1. Complete the practice steps from this repository as described below.
 2. Insert a movie OR genre of your choice in the database (It's OK to re-use the trailer file URL from another movie! Just make the title recognizable as yours).
 3. Take a screenshot of your Netflix clone running either from your Gitpod or (better) deployed to production in Netlify (in this case, you could also give us the Netlify URL).
-4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name in the submission comment field as well).
+4. The screenshot should clearly show the movie/genre you added (make sure you tell us its name when submitting).
 5. (Optional for extra wisdom) Watch the 2-hour video by Ania [HERE](#video-tutorial-with-ania-kubow), build the app yourself, and show us the running final result.
 6. Submit your homework [here](https://dtsx.io/homework-graphql-netflix).
 
