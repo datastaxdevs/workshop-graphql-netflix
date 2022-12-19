@@ -98,7 +98,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 9. [Connect to your Netlify site](#9-connect-to-your-netlify-site)
 10. [Deploy in production!](#10-deploy-in-production)
 
-[**Complete the assignment, receive your Badge!**](#homework)
+[**🎓 Complete the assignment, receive your Badge!**](#homework)
 
 ### Extra resources
 
@@ -1119,7 +1119,7 @@ to get your badge of completion!
 
 <img src="images/netflix-badge.png?raw=true" width="200" align="right" />
 
-Complete your upgrade and get your verified skill badge! Do the assignment and submit your homework!
+🎓 Complete your upgrade and get your verified skill badge! Do the assignment and submit your homework!
 
 1. Complete the practice steps from this repository as described below.
 2. Insert a movie OR genre of your choice in the database (It's OK to re-use the trailer file URL from another movie! Just make the title recognizable as yours).
