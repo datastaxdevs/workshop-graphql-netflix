@@ -87,7 +87,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 ### Part II - Build and Deploy Front-End
 
-1. [Deploy to Netlify](#1-deploy-to-netlify)
+1. [Deploy skeletal GUI to Netlify](#1-deploy-to-netlify)
 2. [Launch Gitpod from YOUR Github repo](#2-launch-gitpod-from-your-github-repo)
 3. [Set up and use `astra-cli`](#3-set-up-and-use-astra-cli)
 4. [Serverless Functions](#4-serverless-functions)
@@ -568,9 +568,9 @@ _this is how pagination signals the end of the full results list._
 # Part 2 - Build and Deploy Front-End
 
 
-## 1. Deploy to Netlify
+## 1. Deploy skeletal GUI to Netlify
 
-✅ **Step 1a: Netlify Button:** Click the following button to deploy to Netlify.
+✅ **Step 1a: Netlify Button:** Click the following button to deploy the skeletal GUI to Netlify. There is no data since there is no database connected to the app (yet); we will connect the database to the app shortly.
 
 **Note**: preferrably Ctrl-click for a new tab.
 
@@ -638,6 +638,9 @@ Then click the top deploy link to see the build process.
 
 ![Deploy to Netlify, site name next to your team's name](images/deploy-4.png)
 
+and you should see the skeletal GUI (without the data from the database) as shown below.
+
+![Deploy to Netlify, site name next to your team's name](images/deploy-4skeletal.png)
 </details>
 
 ## 2. Launch Gitpod from YOUR Github repo
