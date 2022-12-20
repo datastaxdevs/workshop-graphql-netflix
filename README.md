@@ -87,7 +87,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 ### Part II - Build and Deploy Front-End
 
-1. [Deploy skeletal GUI to Netlify](#1-deploy-to-netlify)
+1. [Deploy skeletal GUI to Netlify](#1-deploy-skeletal-gui-to-netlify)
 2. [Launch Gitpod from YOUR Github repo](#2-launch-gitpod-from-your-github-repo)
 3. [Set up and use `astra-cli`](#3-set-up-and-use-astra-cli)
 4. [Serverless Functions](#4-serverless-functions)
