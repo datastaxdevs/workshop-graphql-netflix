@@ -163,12 +163,12 @@ Today, in particular, you'll need the string labeled "token" (the one starting w
 4. Make sure `GraphQL API` is selected
 5. Locate the link to your GraphQL Playground in the text
 
-![Open Astra DB GraphQL Playground image](images/open-playground-2.png)
+![Open Astra DB GraphQL Playground image](images/open-playground-2-wh.png)
 
 <details>
-<summary><strong>Click here if you are using the "New Astra Experience" UI</strong></summary>
+<summary><strong>Click here if you are not using the "New Astra Experience" UI (yet)</strong></summary>
 
-![Open Astra DB GraphQL Playground image, new Astra UI](images/open-playground-2-wh.png)
+![Open Astra DB GraphQL Playground image, old Astra UI](images/open-playground-2.png)
 
 </details>
 
@@ -638,9 +638,10 @@ Then click the top deploy link to see the build process.
 
 ![Deploy to Netlify, site name next to your team's name](images/deploy-4.png)
 
-and you should see the skeletal GUI (without the data from the database) as shown below.
+Clicking on the site name you will see the skeletal GUI (without the data from the database):
 
-![Deploy to Netlify, site name next to your team's name](images/deploy-4skeletal.png)
+![Netlify site, no data yet (skeletal GUI)](images/deploy-4skeletal.png)
+
 </details>
 
 ## 2. Launch Gitpod from YOUR Github repo
