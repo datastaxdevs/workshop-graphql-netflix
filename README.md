@@ -477,7 +477,8 @@ Show me!
 query getMovieAction {
   movies_by_genre (
       value: {genre:"Sci-Fi"},
-      orderBy: [year_DESC]) {
+      orderBy: [year_DESC]
+  ) {
     values {
       year,
       title,
@@ -506,7 +507,8 @@ query getMovieActionPag1 {
     movies_by_genre (
         value: {genre:"Sci-Fi"},
         options: {pageSize: 2},
-        orderBy: [year_DESC]) {
+        orderBy: [year_DESC]
+    ) {
       values {
         year,
         title,
@@ -538,8 +540,9 @@ edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 query getMovieActionNextPage {
     movies_by_genre (
         value: {genre:"Sci-Fi"},
-        options: {pageSize: 2, pageState: "ABAABAAAB9oJSW5jZXB0aW9u8H////3wf////Q=="},
-        orderBy: [year_DESC]) {
+        options: {pageSize: 2, pageState: "YOUR_PAGE_STATE"},
+        orderBy: [year_DESC]
+    ) {
       values {
         year,
         title,
@@ -632,7 +635,7 @@ Then click the top deploy link to see the build process.
 
 </details>
 
-✅ **Step 1d: Get back to your new site:** Scroll up to the top and click on the site name (it'll be after "_[your login]_'s Team" next to the Netlify button).
+✅ **Step 1d: Get back to your new site:** Scroll up to the top and click on the site name (it'll be after "_[your login]_'s Team" next to the Netlify button). Then locate your app's full URL and click to open it.
 
 <details><summary>Show me!</summary>
 
