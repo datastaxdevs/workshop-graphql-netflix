@@ -476,8 +476,8 @@ Show me!
 ```yaml
 query getMovieAction {
   movies_by_genre (
-    value: {genre:"Sci-Fi"},
-     orderBy: [year_DESC]) {
+      value: {genre:"Sci-Fi"},
+      orderBy: [year_DESC]) {
     values {
       year,
       title,
@@ -504,9 +504,9 @@ Show me!
 ```yaml
 query getMovieActionPag1 {
     movies_by_genre (
-      value: {genre:"Sci-Fi"},
-       options: {pageSize: 2},
-       orderBy: [year_DESC]) {
+        value: {genre:"Sci-Fi"},
+        options: {pageSize: 2},
+        orderBy: [year_DESC]) {
       values {
         year,
         title,
@@ -537,9 +537,9 @@ edit the next query to replace `YOUR_PAGE_STATE` with your own string value:
 ```yaml
 query getMovieActionNextPage {
     movies_by_genre (
-      value: {genre:"Sci-Fi"},
-       options: {pageSize: 2, pageState: "YOUR_PAGE_STATE"},
-       orderBy: [year_DESC]) {
+        value: {genre:"Sci-Fi"},
+        options: {pageSize: 2, pageState: "ABAABAAAB9oJSW5jZXB0aW9u8H////3wf////Q=="},
+        orderBy: [year_DESC]) {
       values {
         year,
         title,
@@ -628,7 +628,7 @@ Then click the top deploy link to see the build process.
 
 <details><summary>Show me!</summary>
 
-![Deploy to Netlify, logs showing build finishing](images/deploy-3.png)
+![Deploy to Netlify, logs showing build finishing](images/deploy-3b.png)
 
 </details>
 
@@ -638,7 +638,11 @@ Then click the top deploy link to see the build process.
 
 ![Deploy to Netlify, site name next to your team's name](images/deploy-4.png)
 
-Clicking on the site name you will see the skeletal GUI (without the data from the database):
+Clicking on the full URL (something like `https://YOUR-SITE-NAME.netlify.app`) you will see the skeletal GUI (without the data from the database) in a new tab. Here is where to click:
+
+![Deploy to Netlify, access the skeletal GUI](images/deploy-4sitename.png)
+
+and here, finally, your skeletal GUI in its full splendour:
 
 ![Netlify site, no data yet (skeletal GUI)](images/deploy-4skeletal.png)
 
@@ -646,7 +650,7 @@ Clicking on the site name you will see the skeletal GUI (without the data from t
 
 ## 2. Launch Gitpod from YOUR Github repo
 
-✅ **Step 2a: Jump to YOUR repo:** Click on the `GitHub` in `Deploys from GitHub` to get back to your new repository.
+✅ **Step 2a: Jump to YOUR repo:** Click on the `GitHub` in `Deploys from GitHub` to get to your new repository on Github.
 Scroll to where you were in the README.
 
 <details><summary>Show me!</summary>
@@ -708,7 +712,7 @@ Show me!
 
 
 ✅ **Step 3b: Bulk data load:** Load a large movie dataset in the database.
-This command installs and properly launches the `DSBulk` tool:
+This command installs and properly launches the `DSBulk` tool ([docs](https://docs.datastax.com/en/dsbulk/docs/dsbulkAbout.html)):
 
 ``` bash
 astra db load workshops \
@@ -1012,17 +1016,13 @@ in the process.
 
 <details><summary>Show me!</summary>
 
-![Netlify login](images/waiting_for_authorization.png)
+![Netlify login](images/waiting_for_authorization-2.png)
 
 </details>
 
-Once you complete the login, you will see a console output like:
+Once you complete the login, you will see a console output like this:
 
-```
-You are now logged into your Netlify account!
-Run netlify status for account details
-To see all available commands run: netlify help
-```
+![Netlify login](images/netlify-login-2.png)
 
 ✅ **Step 9c:** Associate to your Netlify site: run
 
@@ -1078,6 +1078,12 @@ netlify build
 ```
 netlify deploy --prod
 ```
+
+<details><summary>Show me!</summary>
+
+![Netlify deploy in prod](images/netlify-deploy-prod-2.png)
+
+</details>
 
 ✅ **Step 10d:** Visit your site.
 
