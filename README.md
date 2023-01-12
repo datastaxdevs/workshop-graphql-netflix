@@ -684,6 +684,8 @@ _Note: the button works on <img src="images/chrome-logo.svg" height="20"/> Chrom
 ℹ️ _It may take a few minutes (approx. 3-5) for GitPod to fully initialize.
 Please wait until the console in the lower half of Gitpod is responsive._
 
+> You may see a dialog about "opening this workspace in VS Code Desktop": you can safely dismiss it.
+
 Gitpod will be your IDE from now on. If you are familiar with VSCode, you can probably
 just use it. Otherwise, take a moment to review a separate page
 ["Know your Gitpod"](know_your_gitpod.md)
