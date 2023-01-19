@@ -1,0 +1,16 @@
+{
+  "name": "GraphQL Netflix Workshop",
+  "description": "A simple ReactJS Netflix homepage clone running on Astra DB that leverages the GraphQL API with paging and infinite scrolling. This application is the result of the collaboration between Ania Kubow and the Datastax Developer Advocate team.",  "duration": "50 minutes",
+  "skillLevel": "Intermediate",
+  "language":["javascript"],
+  "stack":["react"],
+  "heroImage": "https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/ui.png"
+  "githubUrl": "https://github.com/datastaxdevs/workshop-graphql-netflix",
+  "youTubeUrl": [ "https://www.youtube.com/watch?v=g8COh40v2jU"],
+  "tags": [
+    { "name": "react" },
+    { "name": "javascript" }
+  ],
+  "category": "workshop",
+  "usecases": []
+}
