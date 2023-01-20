@@ -4,7 +4,7 @@
   "skillLevel": "Intermediate",
   "language":["javascript"],
   "stack":["react"],
-  "heroImage": "https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/ui.png"
+  "heroImage": "https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/ui.png",
   "githubUrl": "https://github.com/datastaxdevs/workshop-graphql-netflix",
   "youTubeUrl": [ "https://www.youtube.com/watch?v=g8COh40v2jU"],
   "tags": [
