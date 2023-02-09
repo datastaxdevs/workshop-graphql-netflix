@@ -111,7 +111,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 # Part 1 - DB Setup & Data Ingest
 
-## 1. [Login or Register to AstraDB and create database]{#1-login-or-register-to-astradb-and-create-database}
+## 1. Login or Register to AstraDB and create database
 
 > 🎁 *When creating your instance, use the promotion code **ANIA200** to get 200$ of additional free credit!*
 
