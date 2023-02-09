@@ -74,6 +74,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 # Let's start
 
 ## Table of contents
+[TOC]
 
 ### Part I - DB Setup & Data Ingest
 1. [Create Astra DB Instance](#1-login-or-register-to-astradb-and-create-database)
