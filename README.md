@@ -125,7 +125,8 @@ Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/
 |---|---|
 |**Database Name**| `workshops`|
 |**Keyspace Name**| `netflix`|
-|**Regions**| Select `GOOGLE CLOUD`, then an Area close to you, then a region with no LOCK 🔒 icons: the LOCKed regions are the region not accessible to the Free Tier.
+|**Regions**| Select `GOOGLE CLOUD`, then an Area close to you, then a region with no LOCK 🔒 icons: the LOCKed regions are the region not accessible to the Free Tier.|
+.
 
 > **ℹ️ Note:** If you already have a database `workshops`, simply add a keyspace `netflix` using the `Add Keyspace` button on the bottom right hand corner of the DB Dashboard page. You may have to "Resume" the database first in case it is in "hibernated" state.
 
