@@ -148,10 +148,8 @@ This will provide authentication later when interacting with the database.
 Today, in particular, you'll need the string labeled "token" (the one starting with `AstraCS:...`).
 
 > **⚠️ Important**
-> ```
 > The instructor will show the token creation on screen,
 > but will then destroy it immediately for security reasons.
-> ```
 
 
 ## 3. Create table for genres with GraphQL
