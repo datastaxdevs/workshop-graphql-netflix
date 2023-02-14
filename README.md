@@ -161,7 +161,7 @@ Today, in particular, you'll need the string labeled "token" (the one starting w
 4. Make sure `GraphQL API` is selected
 5. Locate the link to your GraphQL Playground in the text
 
-![Open Astra DB GraphQL Playground image](https://github.com/datastaxdevs/workshop-graphql-netflix/raw/images/open-playground-2-wh.png)
+![Open Astra DB GraphQL Playground image](https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/open-playground-2-wh.png)
 
 <details>
 <summary><strong>Click here if you are not using the "New Astra Experience" UI (yet)</strong></summary>
@@ -175,7 +175,7 @@ in your browser, rather they are tabs _within_ the Playground application,
 to switch between the (logically distinct) realms of "managing schema" and "managing data in the tables"
 (more on that later).
 
-![Playground tabs VS Browser tabs](https://github.com/datastaxdevs/workshop-graphql-netflix/raw/images/tabs-vs-playgroundtabs-labeled-2.png)
+![Playground tabs VS Browser tabs](https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/tabs-vs-playgroundtabs-labeled-2.png)
 
 ✅  **Step 3b:** Provide the database token as header
 
