@@ -12,7 +12,7 @@ This application is the result of the collaboration between [Ania Kubow](https:/
 
 <!--- ENDEXCLUDE --->
 
-See the [Video Walkthrough](https://imgur.com/3ns3UJB) of what you will build!
+See the [Video Demo](https://imgur.com/3ns3UJB) of what you will build!
 
 ![image](https://github.com/datastaxdevs/workshop-graphql-netflix/raw/master/images/ui.png)
 
