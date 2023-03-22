@@ -56,7 +56,7 @@ You will have to adapt commands and paths based on your environment and install 
 <details>
 <summary><strong>Will I get a certificate if I attend this workshop?</strong></summary>
 
-Attending the session is not enough. You need to complete the homeworks detailed below and you will get a nice badge.
+Yes, but attending the session is not enough. You need to complete the homeworks detailed below and you will get a participation badge.
 
 </details>
 
@@ -66,7 +66,7 @@ Attending the session is not enough. You need to complete the homeworks detailed
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
 - [Slide deck](slides/slides.pdf)
-- [Discord chat](https://bit.ly/cassandra-workshop)
+- [Discord chat](https://dtsx.io/discord)
 - ["cassandra" on StackOverflow](https://stackoverflow.com/questions/tagged/cassandra)
 - ["cassandra" on DBA StackExchange](https://dba.stackexchange.com/questions/tagged/cassandra)
 
